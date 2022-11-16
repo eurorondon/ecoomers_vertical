@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../../Redux/Actions/ProductActions";
 import Loading from "../LoadingError/Loading";
 import Message from "../LoadingError/Error";
+import Grid from "../Grid";
 
 const ShopSection = (props) => {
   const { keyword, pagenumber } = props;
@@ -19,60 +20,24 @@ const ShopSection = (props) => {
   }, [dispatch, keyword, pagenumber]);
   return (
     <>
+      {/* <Grid /> */}
       <div className="container">
-        <div className="section">
-          <div className="row">
-            <div className="col-lg-12 col-md-12 article">
-              <div className="shopcontainer row">
-                {loading ? (
-                  <div className="mb-5">
-                    <Loading />
-                  </div>
-                ) : error ? (
-                  <Message variant="alert-danger">{error}</Message>
-                ) : (
-                  <>
-                    {products.map((product) => (
-                      <div
-                        className="shop col-6 col-xl-4 col-lg-6"
-                        key={product._id}
-                      >
-                        <div className="border-product">
-                          <Link to={`/products/${product._id}`}>
-                            <div className="shopBack">
-                              <img src={product.image[0]} alt={product.name} />
-                            </div>
-                          </Link>
-
-                          <div className="shoptext">
-                            <p>
-                              <Link to={`/products/${product._id}`}>
-                                {product.name}
-                              </Link>
-                            </p>
-
-                            <Rating
-                              value={product.rating}
-                              text={`${product.numReviews} reviews`}
-                            />
-                            <h3>${product.price}</h3>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </>
-                )}
-
-                {/* Pagination */}
-                <Pagination
-                  pages={pages}
-                  page={page}
-                  keyword={keyword ? keyword : ""}
-                />
-              </div>
-            </div>
+        {loading ? (
+          <div className="mb-5">
+            <Loading />
           </div>
-        </div>
+        ) : error ? (
+          <Message variant="alert-danger">{error}</Message>
+        ) : (
+          <Grid />
+        )}
+
+        {/* Pagination */}
+        <Pagination
+          pages={pages}
+          page={page}
+          keyword={keyword ? keyword : ""}
+        />
       </div>
     </>
   );
