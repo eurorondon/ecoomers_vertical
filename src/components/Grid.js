@@ -17,23 +17,31 @@ const Grid = () => {
       <div className="shoptext">
         <div className="grid my-5">
           {products.map((product) => (
-            <>
-              <div
-                className="cardpen"
-                onClick={() => {
-                  navigatehandle(product._id);
-                }}
-                style={{
-                  backgroundImage: ` url(${product.image[0]})`,
-                }}
-              >
+            <div className=" mb-5">
+              <Link to={`/products/${product._id}`}>
+                <div
+                  className="cardpen"
+                  onClick={() => {
+                    navigatehandle(product._id);
+                  }}
+                  style={{
+                    backgroundImage: ` url(${product.image[0]})`,
+
+                    minHeight: "18rem",
+                  }}
+                />
+              </Link>
+
+              <div>
                 <Link to={`/products/${product._id}`}>
                   <div className="card__details d-flex justify-content-between align-items-end ">
                     {product.name} <h5>${product.price}</h5>
                   </div>
+                  <p>comprar</p>
+                  <button className="btn btn-primary">otra cosa</button>
                 </Link>
               </div>
-            </>
+            </div>
           ))}
         </div>
       </div>
