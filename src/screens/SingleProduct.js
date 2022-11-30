@@ -20,6 +20,7 @@ const SingleProduct = ({ history, match }) => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const [modal, setModal] = useState(false);
+  const [galeria, setGaleria] = useState("");
 
   const productId = match.params.id;
   const dispatch = useDispatch();
@@ -59,7 +60,8 @@ const SingleProduct = ({ history, match }) => {
     );
   };
 
-  const modalHandle = () => {
+  const modalHandle = (img) => {
+    setGaleria(img);
     setModal(true);
   };
 
@@ -68,7 +70,7 @@ const SingleProduct = ({ history, match }) => {
   return (
     <>
       <Header />
-      <Modal modal={modal} setModal={setModal}>
+      <Modal modal={modal} setModal={setModal} galeria={galeria}>
         <h1>hola</h1>
       </Modal>
       <div className=" container-md px-0 my-5">
@@ -99,7 +101,7 @@ const SingleProduct = ({ history, match }) => {
                 style={{ minHeight: "250px" }}
               >
                 {product.image ? (
-                  product.image.map((image, index) => (
+                  product.image.map((img, index) => (
                     <div
                       className={
                         product.image.length != 1
@@ -109,9 +111,9 @@ const SingleProduct = ({ history, match }) => {
                       // className="single-card"
                       key={index}
                       style={{
-                        backgroundImage: ` url(${image})`,
+                        backgroundImage: ` url(${img})`,
                       }}
-                      onClick={modalHandle}
+                      onClick={() => modalHandle(img)}
                     ></div>
                   ))
                 ) : (

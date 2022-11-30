@@ -613,7 +613,7 @@ textarea:focus {
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.8);
-  padding: 5px;
+  /* padding: 5px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -621,10 +621,11 @@ textarea:focus {
 }
 
 .contenedorModal {
-  margin-top: 40px;
-  width: 90%;
-  min-height: 60%;
+  /* margin-top: 20px; */
+  /* width: 90%; */
+  /* min-height: 60%; */
   /* max-height: 80%; */
+  height: 80vh;
   background-color: rgb(101, 101, 101);
   position: relative;
   /* border-radius: 5px; */
@@ -977,8 +978,9 @@ svg {
 
 @media only screen and (max-width: 992px) {
   .contenedorModal {
-    width: 100%;
-    padding: 0 1px;
+    /* width: 70%; */
+    /* height: 200px; */
+    /* padding: 0, 50px; */
   }
 }
 
