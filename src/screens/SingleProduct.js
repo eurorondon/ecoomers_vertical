@@ -12,6 +12,7 @@ import Loading from "../components/LoadingError/Loading";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../Redux/Constants/ProductConstants";
 import moment from "moment";
 import SimpleSlider from "../components/SlickTest";
+import Grid from "../components/Grid";
 
 const SingleProduct = ({ history, match }) => {
   const [qty, setQty] = useState(1);
@@ -61,7 +62,7 @@ const SingleProduct = ({ history, match }) => {
   return (
     <>
       <Header />
-      <div className="container single-product">
+      <div className=" container-md px-0 my-5">
         {loading ? (
           <Loading />
         ) : error ? (
@@ -72,17 +73,18 @@ const SingleProduct = ({ history, match }) => {
               <div
                 className={
                   image && image.length === 1
-                    ? "col-md-6 single-product-grid-1 bg-dark "
+                    ? "col-md-6 p-0 single-product-grid-1 bg-dark  px-0"
                     : image && image.length === 2
-                    ? "col-md-6 single-product-grid-2 "
+                    ? "col-md-6 single-product-grid-2 px-0 "
                     : image && image.length === 3
-                    ? "col-md-6 single-product-grid-3 "
+                    ? "col-md-6 single-product-grid-3 px-0 "
                     : image && image.length === 4
-                    ? "col-md-6 single-product-grid-4 "
+                    ? "col-md-6 single-product-grid-4 px-0 "
                     : image && image.length === 5
-                    ? "col col-md-6 single-product-grid-5 "
+                    ? "col col-md-6 single-product-grid-5 px-0 "
                     : "single-product-grid-5"
                 }
+                // ojoooooo oaqui le cambie para verion telefono
                 style={{ minHeight: "250px" }}
               >
                 {product.image ? (
