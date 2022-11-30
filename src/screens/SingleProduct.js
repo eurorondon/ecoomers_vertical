@@ -55,6 +55,9 @@ const SingleProduct = ({ history, match }) => {
       })
     );
   };
+
+  const { image } = product;
+
   return (
     <>
       <Header />
@@ -66,10 +69,44 @@ const SingleProduct = ({ history, match }) => {
         ) : (
           <>
             <div className="row">
-              <div className="col-md-6">
-                <div className="single-image">
-                  <SimpleSlider />
-                </div>
+              <div
+                className={
+                  image && image.length === 1
+                    ? "col-md-6 single-product-grid-1 bg-dark "
+                    : image && image.length === 2
+                    ? "col-md-6 single-product-grid-2 "
+                    : image && image.length === 3
+                    ? "col-md-6 single-product-grid-3 "
+                    : image && image.length === 4
+                    ? "col-md-6 single-product-grid-4 "
+                    : image && image.length === 5
+                    ? "col col-md-6 single-product-grid-5 "
+                    : "single-product-grid-5"
+                }
+                style={{ minHeight: "250px" }}
+              >
+                {product.image ? (
+                  product.image.map((image, index) => (
+                    <div
+                      className={
+                        product.image.length != 1
+                          ? "  single-card"
+                          : "single-card-1"
+                      }
+                      // className="single-card"
+                      key={index}
+                      style={{ backgroundImage: ` url(${image})` }}
+                    >
+                      {/* <img
+                        src={image}
+                        className=" img-fluid mx-auto my-auto  "
+                        style={{ maxHeight: "30rem", margin: "", maxWidth: "" }}
+                      /> */}
+                    </div>
+                  ))
+                ) : (
+                  <p>no carga</p>
+                )}
               </div>
               <div className="col-md-6">
                 <div className="product-dtl">

@@ -359,6 +359,160 @@ textarea:focus {
 }
 
 /* SINGLE PRODUCT */
+
+.single-card {
+  /* background-color: red; */
+  /* border-radius: 10px; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  background: #c4c4c4;
+  /* grid-column-start: auto; */
+  /* grid-row-start: auto; */
+  color: #fff;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7IfaiqU50kf2sO2IpNJQ2vrphzqadKgtblA&usqp=CAU");
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12); */
+  /* transition: box-shadow 0.3s ease-out, transform 0.3s ease-out; */
+  /* transition-delay: 0.1s; */
+}
+
+/* GRID PARA 5 O MAS PRODCUTOS  */
+.single-product-grid-5 {
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 5px;
+}
+
+.single-product-grid-5 div:nth-child(1) {
+  grid-row: 1/3;
+  background-color: #9d5b5b;
+}
+
+.single-product-grid-5 div:nth-child(2) {
+  background-color: #393939;
+  padding: 5px;
+}
+.single-product-grid-5 div:nth-child(3) {
+  background-color: #1d768f;
+  padding: 5px;
+}
+
+/* GRID PARA CUATRO PRODUCTOS */
+.single-product-grid-4 {
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 5px;
+}
+
+.single-product-grid-4 div:nth-child(1) {
+  grid-row: 1/3;
+  background-color: #9d5b5b;
+}
+
+.single-product-grid-4 div:nth-child(2) {
+  grid-column: 2/4;
+}
+.single-product-grid div:nth-child(3) {
+  background-color: #1d768f;
+}
+
+/* GRID PARA TRES PRODUCTOS */
+.single-product-grid-3 {
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 5px;
+}
+
+.single-product-grid-3 div:nth-child(1) {
+  grid-row: 1/3;
+  background-color: #9d5b5b;
+}
+
+.single-product-grid-3 div:nth-child(2) {
+  background-color: #1d768f;
+}
+.single-product-grid div:nth-child(3) {
+  background-color: #1d768f;
+}
+
+/* GRID PARA DOS PRODUCTOS */
+.single-product-grid-2 {
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-rows: repeat(2, 1fr); */
+  gap: 5px;
+}
+
+/* .single-product-grid-3 div:nth-child(1) {
+  grid-row: 1/3;
+  background-color: #9d5b5b;
+}
+
+.single-product-grid-3 div:nth-child(2) {
+  background-color: #1d768f;
+}
+.single-product-grid div:nth-child(3) {
+  background-color: #1d768f;
+} */
+
+/* GRID PARA UN PRODUCTO */
+.single-product-grid-1 {
+  display: grid;
+
+  height: auto;
+  grid-template-columns: repeat(1, 1fr);
+  /* grid-template-rows: repeat(2, 1fr); */
+  gap: 5px;
+}
+
+.single-card-1 {
+  /* background-color: red; */
+  /* border-radius: 10px; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  background: #c4c4c4;
+  color: #fff;
+  /* grid-column-start: auto; */
+  /* grid-row-start: auto; */
+  color: #fff;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7IfaiqU50kf2sO2IpNJQ2vrphzqadKgtblA&usqp=CAU");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.ayuda {
+  background-color: #1cb803;
+}
+
+/* .single-product-grid-3 div:nth-child(1) {
+  grid-row: 1/3;
+  background-color: #9d5b5b;
+}
+
+.single-product-grid-3 div:nth-child(2) {
+  background-color: #1d768f;
+}
+.single-product-grid div:nth-child(3) {
+  background-color: #1d768f;
+} */
+
 .single-product {
   margin-top: 50px;
   margin-bottom: 50px;
