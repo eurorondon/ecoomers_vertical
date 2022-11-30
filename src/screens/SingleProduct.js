@@ -13,11 +13,13 @@ import { PRODUCT_CREATE_REVIEW_RESET } from "../Redux/Constants/ProductConstants
 import moment from "moment";
 import SimpleSlider from "../components/SlickTest";
 import Grid from "../components/Grid";
+import Modal from "../components/Modal";
 
 const SingleProduct = ({ history, match }) => {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
+  const [modal, setModal] = useState(false);
 
   const productId = match.params.id;
   const dispatch = useDispatch();
@@ -57,14 +59,23 @@ const SingleProduct = ({ history, match }) => {
     );
   };
 
+  const modalHandle = () => {
+    setModal(true);
+  };
+
   const { image } = product;
 
   return (
     <>
       <Header />
+      <Modal modal={modal} setModal={setModal}>
+        <h1>hola</h1>
+      </Modal>
       <div className=" container-md px-0 my-5">
         {loading ? (
-          <Loading />
+          <div className="" style={{ marginTop: "200px" }}>
+            <Loading />
+          </div>
         ) : error ? (
           <Message variant="alert-danger">{error}</Message>
         ) : (
@@ -97,14 +108,11 @@ const SingleProduct = ({ history, match }) => {
                       }
                       // className="single-card"
                       key={index}
-                      style={{ backgroundImage: ` url(${image})` }}
-                    >
-                      {/* <img
-                        src={image}
-                        className=" img-fluid mx-auto my-auto  "
-                        style={{ maxHeight: "30rem", margin: "", maxWidth: "" }}
-                      /> */}
-                    </div>
+                      style={{
+                        backgroundImage: ` url(${image})`,
+                      }}
+                      onClick={modalHandle}
+                    ></div>
                   ))
                 ) : (
                   <p>no carga</p>

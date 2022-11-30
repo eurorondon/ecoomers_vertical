@@ -9,7 +9,6 @@ const Grid = () => {
 
   const navigatehandle = (id) => {
     <Navigate to={`/products/${id}`} />;
-    console.log(id);
   };
 
   return (

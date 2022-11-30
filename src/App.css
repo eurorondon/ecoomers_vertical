@@ -445,20 +445,24 @@ textarea:focus {
 .single-product-grid-3 {
   background-color: #ffffff;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
   gap: 2px;
 }
 
 .single-product-grid-3 div:nth-child(1) {
-  grid-row: 1/3;
+  grid-column: 1/5;
+  grid-row: 1/9;
   background-color: #9d5b5b;
 }
 
 .single-product-grid-3 div:nth-child(2) {
-  background-color: #1d768f;
+  grid-column: 5/9;
+  grid-row: 1/6;
 }
-.single-product-grid div:nth-child(3) {
+.single-product-grid-3 div:nth-child(3) {
+  grid-column: 5/9;
+  grid-row: 6/9;
   background-color: #1d768f;
 }
 
@@ -511,10 +515,6 @@ textarea:focus {
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
-}
-
-.ayuda {
-  background-color: #1cb803;
 }
 
 /* .single-product-grid-3 div:nth-child(1) {
@@ -602,6 +602,78 @@ textarea:focus {
 .round-black-btn:hover,
 .round-black-btn:focus {
   background: #1cb803;
+}
+
+/* Modal */
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.contenedorModal {
+  margin-top: 40px;
+  width: 90%;
+  min-height: 60%;
+  /* max-height: 80%; */
+  background-color: rgb(101, 101, 101);
+  position: relative;
+  /* border-radius: 5px; */
+  box-shadow: rgba(100, 100, 111, 0.2) 8px 7px 29px 0px;
+  /* padding: 20px; */
+}
+
+.encabezadoModal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin-bottom: 20px; */
+  padding: 20px;
+  /* border-bottom: 1px solid #e8e8e8; */
+}
+.encabezadoModal h3 {
+  font-weight: 500px;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.botonCerrar {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: 0.3s ease all;
+  border-radius: 5px;
+  color: #1766dc;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  background: #f51717;
+  color: #f2f2f2;
+}
+
+.botonCerrar:hover {
+  background: #c05e5e;
+  color: #f2f2f2;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
 }
 
 /* LOGIN */
@@ -901,6 +973,13 @@ textarea:focus {
 .page-item.active .page-link {
   background-color: black;
   border: 1px solid black;
+}
+
+@media only screen and (max-width: 992px) {
+  .contenedorModal {
+    width: 100%;
+    padding: 0 1px;
+  }
 }
 
 @media only screen and (max-width: 600px) {

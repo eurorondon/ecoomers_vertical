@@ -23,7 +23,7 @@ const ShopSection = (props) => {
       {/* <Grid /> */}
       <div className="container">
         {loading ? (
-          <div className="mb-5">
+          <div className="" style={{ margin: "200px 0px" }}>
             <Loading />
           </div>
         ) : error ? (

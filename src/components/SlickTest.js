@@ -18,7 +18,7 @@ const SimpleSlider = () => {
   return (
     <div
       className="  d-flex  justify-content-center  mx-auto   "
-      style={{ maxWidth: "100%", maxHeight: "" }}
+      style={{ maxWidth: "", maxHeight: "" }}
     >
       <Slider
         {...settings}
@@ -31,7 +31,7 @@ const SimpleSlider = () => {
               <img
                 src={image}
                 className=" img-fluid mx-auto my-auto  "
-                style={{ maxHeight: "30rem", margin: "", maxWidth: "" }}
+                style={{ maxHeight: "", margin: "", maxWidth: "" }}
               />
             </div>
           ))
