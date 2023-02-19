@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../Redux/Actions/userActions";
 
 const Header = () => {
-  const [keyword, setKeyword] = useState();
+  // const [keyword, setKeyword] = useState();
   const dispatch = useDispatch();
-  let history = useHistory();
+  // let history = useHistory();
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -17,14 +17,14 @@ const Header = () => {
     dispatch(logout());
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    if (keyword.trim()) {
-      history.push(`/search/${keyword}`);
-    } else {
-      history.push("/");
-    }
-  };
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  //   if (keyword.trim()) {
+  //     history.push(`/search/${keyword}`);
+  //   } else {
+  //     history.push("/");
+  //   }
+  // };
   return (
     <div>
       {/* Top Header */}
@@ -122,7 +122,8 @@ const Header = () => {
                   </Link>
                 </div>
                 <div className="col-12 d-flex align-items-center">
-                  <form onSubmit={submitHandler} className="input-group">
+                  {/* <form onSubmit={submitHandler} className="input-group"> */}
+                  <form className="input-group">
                     <input
                       type="search"
                       className="form-control rounded search"
@@ -147,7 +148,8 @@ const Header = () => {
                 </Link>
               </div>
               <div className="col-md-6 col-8 d-flex align-items-center">
-                <form onSubmit={submitHandler} className="input-group">
+                {/* <form onSubmit={submitHandler} className="input-group"> */}
+                <form className="input-group">
                   <input
                     type="search"
                     className="form-control rounded search"

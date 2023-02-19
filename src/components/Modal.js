@@ -6,7 +6,7 @@ const Modal = ({ children, modal, setModal, galeria }) => {
     <>
       {modal && (
         <div className="overlay">
-          <div className="contenedorModal">
+          <div className="contenedorModal" style={{ maxWidth: "95%" }}>
             {/* <div className="encabezadoModal">
               <h3>Galeria de Imagenes</h3>
             </div> */}
@@ -24,7 +24,7 @@ const Modal = ({ children, modal, setModal, galeria }) => {
               x
             </button>
             <img
-              className="img-fluid px-2 "
+              className="img-fluid  "
               src={galeria}
               alt=""
               style={{ maxHeight: "100%" }}

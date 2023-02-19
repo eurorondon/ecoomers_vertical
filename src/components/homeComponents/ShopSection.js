@@ -9,15 +9,15 @@ import Message from "../LoadingError/Error";
 import Grid from "../Grid";
 
 const ShopSection = (props) => {
-  const { keyword, pagenumber } = props;
+  // const { keyword, pagenumber } = props;
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products, page, pages } = productList;
+  const { loading, error, products } = productList;
 
   useEffect(() => {
-    dispatch(listProduct(keyword, pagenumber));
-  }, [dispatch, keyword, pagenumber]);
+    dispatch(listProduct());
+  }, [dispatch]);
   return (
     <>
       {/* <Grid /> */}
@@ -33,11 +33,11 @@ const ShopSection = (props) => {
         )}
 
         {/* Pagination */}
-        <Pagination
+        {/* <Pagination
           pages={pages}
           page={page}
           keyword={keyword ? keyword : ""}
-        />
+        /> */}
       </div>
     </>
   );

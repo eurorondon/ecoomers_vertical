@@ -7,6 +7,8 @@ const Grid = () => {
   const productList = useSelector((state) => state.productList);
   const { products } = productList;
 
+  console.log(products);
+
   const navigatehandle = (id) => {
     <Navigate to={`/products/${id}`} />;
   };
@@ -36,8 +38,7 @@ const Grid = () => {
                   <div className="card__details d-flex justify-content-between align-items-end ">
                     {product.name} <h5>${product.price}</h5>
                   </div>
-                  <p>comprar</p>
-                  <button className="btn btn-primary">otra cosa</button>
+                  <button className="btn btn-primary">Comprar</button>
                 </Link>
               </div>
             </div>
