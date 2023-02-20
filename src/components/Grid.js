@@ -13,10 +13,10 @@ const Grid = () => {
 
   return (
     <>
-      <div className="shoptext">
-        <div className="grid my-5">
+      <div className="shoptext" style={{}}>
+        <div className="grid my-2">
           {products.map((product) => (
-            <div className=" mb-5">
+            <div className=" mb-5" style={{ flex: "1" }}>
               <Link to={`/products/${product._id}`}>
                 <div
                   className="cardpen"
@@ -25,8 +25,11 @@ const Grid = () => {
                   }}
                   style={{
                     backgroundImage: ` url(${product.image[0]})`,
-
-                    minHeight: "18rem",
+                    // aqui debe cambiarse cuando se cree el responsive OJO y tambien en css grid style!!
+                    backgroundSize: "220px auto",
+                    backgroundRepeat: "no-repeat",
+                    // aqui debe cambiarse cuando se cree el responsive OJO !!
+                    minHeight: "200px",
                   }}
                 />
               </Link>
