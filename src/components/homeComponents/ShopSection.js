@@ -10,15 +10,15 @@ import Grid from "../Grid";
 
 const ShopSection = (props) => {
   // const { keyword, pagenumber } = props;
-  const { keyword } = props;
+  const { keyword, pagenumber } = props;
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  const { loading, error, products, page, pages } = productList;
 
   useEffect(() => {
-    dispatch(listProduct(keyword));
-  }, [dispatch, keyword]);
+    dispatch(listProduct(keyword, pagenumber));
+  }, [dispatch, keyword, pagenumber]);
   return (
     <>
       {/* <Grid /> */}
@@ -34,11 +34,11 @@ const ShopSection = (props) => {
         )}
 
         {/* Pagination */}
-        {/* <Pagination
+        <Pagination
           pages={pages}
           page={page}
           keyword={keyword ? keyword : ""}
-        /> */}
+        />
       </div>
     </>
   );
