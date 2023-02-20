@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import Rating from "./Rating";
 import Pagination from "./pagination";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,9 +16,33 @@ const ShopSection = (props) => {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
 
+  const [category, setCategory] = useState();
+  let history = useHistory();
+  // const [filters, setFilters] = useState("");
+  console.log(category);
+
   useEffect(() => {
-    dispatch(listProduct(keyword, pagenumber));
-  }, [dispatch, keyword, pagenumber]);
+    dispatch(listProduct(keyword, pagenumber, category));
+  }, [dispatch, keyword, pagenumber, category]);
+
+  const handleCategory = (e) => {
+    if (category) {
+      history.push(`/search/${category}`);
+    } else {
+      history.push("/");
+    }
+  };
+
+  // const handleCategory = (e) => {
+  //   const value = e.target.value;
+  //   setCategory({
+  //     [e.target.name]: value,
+  //   });
+  //   console.log(value);
+  // };
+
+  // const location = useLocation();
+  // console.log(location.pathname);
   return (
     <>
       {/* <Grid /> */}
@@ -30,7 +54,24 @@ const ShopSection = (props) => {
         ) : error ? (
           <Message variant="alert-danger">{error}</Message>
         ) : (
-          <Grid />
+          <>
+            <select
+              name="categoria"
+              id=""
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option disabled selected value="">
+                {category ? category : "Categoria"}
+              </option>
+              <option value="">Todos</option>
+              <option value="women">women</option>
+              <option value="Platos">Platos</option>
+              <option value="Conservadores">Conservadores</option>
+              <option value="Aluminio">Aluminio</option>
+              <option value="Limpieza">Limpieza</option>
+            </select>
+            <Grid />
+          </>
         )}
 
         {/* Pagination */}

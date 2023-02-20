@@ -15,14 +15,14 @@ import { logout } from "./userActions";
 
 // PRODUCT LIST
 export const listProduct =
-  (keyword = "", pageNumber = "") =>
+  (keyword = "", pageNumber = "", category = "") =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
       const { data } = await axios.get(
-        `${URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+        `${URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}&category=${category}`
       );
-      console.log(data);
+      console.log(category);
       dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
     } catch (error) {
       dispatch({

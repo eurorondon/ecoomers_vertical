@@ -7,8 +7,6 @@ const Grid = () => {
   const productList = useSelector((state) => state.productList);
   const { products } = productList;
 
-  console.log(products);
-
   const navigatehandle = (id) => {
     <Navigate to={`/products/${id}`} />;
   };
