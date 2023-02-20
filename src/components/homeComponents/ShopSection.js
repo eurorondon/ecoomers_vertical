@@ -10,14 +10,15 @@ import Grid from "../Grid";
 
 const ShopSection = (props) => {
   // const { keyword, pagenumber } = props;
+  const { keyword } = props;
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
   useEffect(() => {
-    dispatch(listProduct());
-  }, [dispatch]);
+    dispatch(listProduct(keyword));
+  }, [dispatch, keyword]);
   return (
     <>
       {/* <Grid /> */}
