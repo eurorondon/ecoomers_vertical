@@ -70,9 +70,7 @@ const SingleProduct = ({ history, match }) => {
   return (
     <>
       <Header />
-      <Modal modal={modal} setModal={setModal} galeria={galeria}>
-        <h1>hola</h1>
-      </Modal>
+      <Modal modal={modal} setModal={setModal} galeria={galeria}></Modal>
       <div className=" container-md px-0 my-5">
         {loading ? (
           <div className="" style={{ marginTop: "200px" }}>
@@ -86,7 +84,7 @@ const SingleProduct = ({ history, match }) => {
               <div
                 className={
                   image && image.length === 1
-                    ? "col-md-6 p-0 single-product-grid-1 bg-dark  px-0"
+                    ? "col-md-6 p-0 single-product-grid-1 px-0 bg-light rounded"
                     : image && image.length === 2
                     ? "col-md-6 single-product-grid-2 px-0 "
                     : image && image.length === 3
@@ -111,16 +109,17 @@ const SingleProduct = ({ history, match }) => {
                       // className="single-card"
                       key={index}
                       style={{
-                        backgroundImage: ` url(${img})`,
+                        // backgroundImage: ` url(${img})`,
+                        backgroundImage: ` url(${product.photo.url})`,
                       }}
-                      onClick={() => modalHandle(img)}
+                      onClick={() => modalHandle(product.photo.url)}
                     ></div>
                   ))
                 ) : (
                   <p>no carga</p>
                 )}
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 mt-3">
                 <div className="product-dtl">
                   <div className="product-info">
                     <div className="product-name">{product.name}</div>

@@ -24,7 +24,7 @@ const Grid = () => {
                     navigatehandle(product._id);
                   }}
                   style={{
-                    backgroundImage: ` url(${product.image[0]})`,
+                    backgroundImage: ` url(${product.photo.url})`,
                     // aqui debe cambiarse cuando se cree el responsive OJO y tambien en css grid style!!
                     backgroundSize: "220px auto",
                     backgroundRepeat: "no-repeat",
@@ -36,7 +36,7 @@ const Grid = () => {
 
               <div>
                 <Link to={`/products/${product._id}`}>
-                  <div className="card__details d-flex justify-content-between align-items-end ">
+                  <div className="card__details d-flex justify-content-between align-items-start ">
                     {product.name} <h5>${product.price}</h5>
                   </div>
                   <button className="btn btn-primary">Comprar</button>

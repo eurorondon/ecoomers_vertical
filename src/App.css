@@ -493,7 +493,6 @@ textarea:focus {
 /* GRID PARA UN PRODUCTO */
 .single-product-grid-1 {
   display: grid;
-
   height: auto;
   grid-template-columns: repeat(1, 1fr);
   /* grid-template-rows: repeat(2, 1fr); */
@@ -615,7 +614,7 @@ textarea:focus {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(45, 45, 45, 0.8);
   /* padding: 5px; */
   display: flex;
   align-items: center;
@@ -629,9 +628,9 @@ textarea:focus {
   /* min-height: 60%; */
   /* max-height: 80%; */
   height: 80vh;
-  background-color: rgb(101, 101, 101);
+  background-color: rgb(255, 255, 255);
   position: relative;
-  /* border-radius: 5px; */
+  border-radius: 15px;
   box-shadow: rgba(100, 100, 111, 0.2) 8px 7px 29px 0px;
   /* padding: 20px; */
 }

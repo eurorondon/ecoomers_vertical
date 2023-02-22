@@ -23,12 +23,17 @@ const Modal = ({ children, modal, setModal, galeria }) => {
               </svg> */}
               x
             </button>
-            <img
-              className="img-fluid  "
-              src={galeria}
-              alt=""
-              style={{ maxHeight: "100%" }}
-            />
+            <div
+              className=" d-flex justify-content-center align-items-center"
+              style={{ height: "100%" }}
+            >
+              <img
+                className="img-fluid"
+                src={galeria}
+                alt=""
+                style={{ maxHeight: "100%", margin: "auto" }}
+              />
+            </div>
           </div>
         </div>
       )}
