@@ -20,7 +20,7 @@ const Pagination = ({
   };
 
   return (
-    <div className="paginationgit ">
+    <div className="pagination my-5 ">
       {pages.map((page, index) => {
         return (
           <button
