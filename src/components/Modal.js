@@ -2,6 +2,7 @@ import React from "react";
 import SimpleSlider from "./SlickTest";
 
 const Modal = ({ children, modal, setModal, galeria }) => {
+  console.log(galeria.url);
   return (
     <>
       {modal && (
@@ -29,7 +30,7 @@ const Modal = ({ children, modal, setModal, galeria }) => {
             >
               <img
                 className="img-fluid"
-                src={galeria}
+                src={galeria.url}
                 alt=""
                 style={{ maxHeight: "100%", margin: "auto" }}
               />

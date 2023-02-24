@@ -112,7 +112,7 @@ const SingleProduct = ({ history, match }) => {
                         // backgroundImage: ` url(${img})`,
                         backgroundImage: ` url(${img.url})`,
                       }}
-                      onClick={() => modalHandle(product.photo.url)}
+                      onClick={() => modalHandle(img)}
                     ></div>
                   ))
                 ) : (
