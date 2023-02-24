@@ -16,41 +16,62 @@ const Grid = () => {
       <div className="shoptext" style={{}}>
         <div className="grid my-2">
           {products.map((product) => (
-            <div className=" mb-5" style={{ flex: "1" }}>
+            <div className="  " style={{ flex: "1" }}>
               <Link to={`/products/${product._id}`}>
                 <div
                   className="cardpen"
+                  style={{
+                    backgroundImage: ` url(${product.photo[0].url})`,
+                    // aqui debe cambiarse cuando se cree el responsive OJO y tambien en css grid style!!
+                    backgroundSize: "220px auto",
+                    backgroundRepeat: "no-repeat",
+                    // aqui debe cambiarse cuando se cree el responsive OJO !!
+                    minHeight: "200px",
+                    position: "relative",
+                  }}
+                >
+                  <span
+                    className="rounded bg-secondary"
+                    style={{
+                      position: "absolute",
+                      bottom: "0px",
+                      right: "0px",
+                      zIndex: "3",
+                      color: "white",
+                      padding: "0px 10px",
+                      background: "",
+                    }}
+                  >
+                    {product.price}$
+                  </span>
+                </div>
+                <div
+                  className=""
                   onClick={() => {
                     navigatehandle(product._id);
                   }}
-                  style={
-                    product.photo.length > 0
-                      ? {
-                          backgroundImage: ` url(${product.photo[0].url})`,
-                          // aqui debe cambiarse cuando se cree el responsive OJO y tambien en css grid style!!
-                          backgroundSize: "220px auto",
-                          backgroundRepeat: "no-repeat",
-                          // aqui debe cambiarse cuando se cree el responsive OJO !!
-                          minHeight: "200px",
-                        }
-                      : {
-                          backgroundImage: ` url(${product.image[0]})`,
-                          // aqui debe cambiarse cuando se cree el responsive OJO y tambien en css grid style!!
-                          backgroundSize: "220px auto",
-                          backgroundRepeat: "no-repeat",
-                          // aqui debe cambiarse cuando se cree el responsive OJO !!
-                          minHeight: "200px",
-                        }
-                  }
                 />
               </Link>
 
               <div>
                 <Link to={`/products/${product._id}`}>
-                  <div className="card__details d-flex justify-content-between align-items-start ">
-                    {product.name} <h5>${product.price}</h5>
+                  <div
+                    className="d-flex flex-column "
+                    style={{ position: "relative", height: "85px" }}
+                  >
+                    <div className="card__details ms-2  ">{product.name}</div>
+                    <button
+                      className="btn btn-primary"
+                      style={{
+                        width: "100%",
+                        position: "absolute",
+                        bottom: "0px",
+                        zIndex: "2",
+                      }}
+                    >
+                      Informacion
+                    </button>
                   </div>
-                  <button className="btn btn-primary">Comprar</button>
                 </Link>
               </div>
             </div>

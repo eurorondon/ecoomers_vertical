@@ -151,7 +151,7 @@ textarea:focus {
   /* grid-column-start: auto; */
   /* grid-row-start: auto; */
   color: #fff;
-  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7IfaiqU50kf2sO2IpNJQ2vrphzqadKgtblA&usqp=CAU");
+  background: white;
   background-size: cover;
   background-position: center;
   cursor: pointer;
@@ -184,7 +184,7 @@ textarea:focus {
 .card__details {
   position: relative;
   z-index: 1;
-  padding: 15px;
+  padding: 0px;
   background: #fff;
   color: #393939;
   border-bottom-left-radius: 10px;
