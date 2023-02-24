@@ -84,9 +84,9 @@ const SingleProduct = ({ history, match }) => {
               <div
                 className={
                   photo && photo.length === 1
-                    ? "col-md-6 p-0 single-product-grid-1 px-0 bg-light rounded"
+                    ? "col-md-6 p-0 single-product-grid-1 px-0   "
                     : photo && photo.length === 2
-                    ? "col-md-6 single-product-grid-2 px-0 "
+                    ? "col-md-6 single-product-grid-2 px-0  "
                     : photo && photo.length === 3
                     ? "col-md-6 single-product-grid-3 px-0 "
                     : photo && photo.length === 4
@@ -103,8 +103,8 @@ const SingleProduct = ({ history, match }) => {
                     <div
                       className={
                         product.image.length != 1
-                          ? "  single-card"
-                          : "single-card-1"
+                          ? "  single-card border "
+                          : "single-card-1 border rounded bg-light "
                       }
                       // className="single-card"
                       key={index}
