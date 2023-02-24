@@ -13,7 +13,7 @@ const Grid = () => {
 
   return (
     <>
-      <div className="shoptext" style={{}}>
+      <div className="shoptext mb-5" style={{}}>
         <div className="grid my-2">
           {products.map((product) => (
             <div className="  " style={{ flex: "1" }}>
@@ -60,17 +60,20 @@ const Grid = () => {
                     style={{ position: "relative", height: "85px" }}
                   >
                     <div className="card__details ms-2  ">{product.name}</div>
-                    <button
-                      className="btn btn-primary"
-                      style={{
-                        width: "100%",
-                        position: "absolute",
-                        bottom: "0px",
-                        zIndex: "2",
-                      }}
-                    >
-                      Informacion
-                    </button>
+
+                    <div className="d-flex justify-content-center">
+                      <button
+                        className="btn btn-primary  "
+                        style={{
+                          width: "100%",
+                          position: "absolute",
+                          bottom: "0px",
+                          zIndex: "2",
+                        }}
+                      >
+                        Información
+                      </button>
+                    </div>
                   </div>
                 </Link>
               </div>

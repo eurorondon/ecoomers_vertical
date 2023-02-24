@@ -110,7 +110,7 @@ const SingleProduct = ({ history, match }) => {
                       key={index}
                       style={{
                         // backgroundImage: ` url(${img})`,
-                        backgroundImage: ` url(${product.photo[0].url})`,
+                        backgroundImage: ` url(${img.url})`,
                       }}
                       onClick={() => modalHandle(product.photo.url)}
                     ></div>
