@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import Rating from "./Rating";
-import Pagination from "./pagination";
+
 import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../../Redux/Actions/ProductActions";
 import Loading from "../LoadingError/Loading";
 import Message from "../LoadingError/Error";
 import Grid from "../Grid";
+import Pagination from "../Pagination";
 
 const ShopSection = (props) => {
   // const { keyword, pagenumber } = props;
@@ -19,11 +20,19 @@ const ShopSection = (props) => {
   const [category, setCategory] = useState();
   let history = useHistory();
   // const [filters, setFilters] = useState("");
-  console.log(category);
+
+  // PAGINACION DESDE REACT
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(12);
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = products.slice(firstPostIndex, lastPostIndex);
 
   useEffect(() => {
     dispatch(listProduct(keyword, pagenumber, category));
   }, [dispatch, keyword, pagenumber, category]);
+
+  console.log(category);
 
   const handleCategory = (e) => {
     if (category) {
@@ -70,16 +79,23 @@ const ShopSection = (props) => {
               <option value="aluminio">Aluminio</option>
               <option value="tobos">Tobos</option>
             </select>
-            <Grid />
+            <Grid currentPosts={currentPosts} />
           </>
         )}
 
-        {/* Pagination */}
         <Pagination
+          totalPosts={products.length}
+          postsPerPage={postsPerPage}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
+
+        {/* Pagination */}
+        {/* <Pagination
           pages={pages}
           page={page}
           keyword={keyword ? keyword : ""}
-        />
+        /> */}
       </div>
     </>
   );

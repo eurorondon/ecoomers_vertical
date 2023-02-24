@@ -3,9 +3,11 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 
-const Grid = () => {
-  const productList = useSelector((state) => state.productList);
-  const { products } = productList;
+const Grid = ({ currentPosts }) => {
+  // const productList = useSelector((state) => state.productList);
+  // const { products } = productList;
+
+  let products = currentPosts;
 
   const navigatehandle = (id) => {
     <Navigate to={`/products/${id}`} />;
