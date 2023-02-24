@@ -64,8 +64,8 @@ const ShopSection = (props) => {
                 {category ? category : "Categoria"}
               </option>
               <option value="">Todos</option>
-              <option value="women">women</option>
-              <option value="Platos">Platos</option>
+              <option value="vasos">Vasos</option>
+              <option value="plastico">Plastico</option>
               <option value="Conservadores">Conservadores</option>
               <option value="Aluminio">Aluminio</option>
               <option value="Limpieza">Limpieza</option>

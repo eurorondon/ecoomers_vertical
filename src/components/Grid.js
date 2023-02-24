@@ -23,14 +23,25 @@ const Grid = () => {
                   onClick={() => {
                     navigatehandle(product._id);
                   }}
-                  style={{
-                    backgroundImage: ` url(${product.photo.url})`,
-                    // aqui debe cambiarse cuando se cree el responsive OJO y tambien en css grid style!!
-                    backgroundSize: "220px auto",
-                    backgroundRepeat: "no-repeat",
-                    // aqui debe cambiarse cuando se cree el responsive OJO !!
-                    minHeight: "200px",
-                  }}
+                  style={
+                    product.photo.length > 0
+                      ? {
+                          backgroundImage: ` url(${product.photo[0].url})`,
+                          // aqui debe cambiarse cuando se cree el responsive OJO y tambien en css grid style!!
+                          backgroundSize: "220px auto",
+                          backgroundRepeat: "no-repeat",
+                          // aqui debe cambiarse cuando se cree el responsive OJO !!
+                          minHeight: "200px",
+                        }
+                      : {
+                          backgroundImage: ` url(${product.image[0]})`,
+                          // aqui debe cambiarse cuando se cree el responsive OJO y tambien en css grid style!!
+                          backgroundSize: "220px auto",
+                          backgroundRepeat: "no-repeat",
+                          // aqui debe cambiarse cuando se cree el responsive OJO !!
+                          minHeight: "200px",
+                        }
+                  }
                 />
               </Link>
 

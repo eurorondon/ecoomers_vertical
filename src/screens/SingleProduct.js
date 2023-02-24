@@ -65,7 +65,7 @@ const SingleProduct = ({ history, match }) => {
     setModal(true);
   };
 
-  const { image } = product;
+  const { photo, image } = product;
 
   return (
     <>
@@ -83,23 +83,23 @@ const SingleProduct = ({ history, match }) => {
             <div className="row">
               <div
                 className={
-                  image && image.length === 1
+                  photo && photo.length === 1
                     ? "col-md-6 p-0 single-product-grid-1 px-0 bg-light rounded"
-                    : image && image.length === 2
+                    : photo && photo.length === 2
                     ? "col-md-6 single-product-grid-2 px-0 "
-                    : image && image.length === 3
+                    : photo && photo.length === 3
                     ? "col-md-6 single-product-grid-3 px-0 "
-                    : image && image.length === 4
+                    : photo && photo.length === 4
                     ? "col-md-6 single-product-grid-4 px-0 "
-                    : image && image.length === 5
+                    : photo && photo.length === 5
                     ? "col col-md-6 single-product-grid-5 px-0 "
                     : "single-product-grid-5"
                 }
                 // ojoooooo oaqui le cambie para verion telefono
                 style={{ minHeight: "250px" }}
               >
-                {product.image ? (
-                  product.image.map((img, index) => (
+                {product.photo ? (
+                  product.photo.map((img, index) => (
                     <div
                       className={
                         product.image.length != 1
@@ -110,7 +110,7 @@ const SingleProduct = ({ history, match }) => {
                       key={index}
                       style={{
                         // backgroundImage: ` url(${img})`,
-                        backgroundImage: ` url(${product.photo.url})`,
+                        backgroundImage: ` url(${product.photo[0].url})`,
                       }}
                       onClick={() => modalHandle(product.photo.url)}
                     ></div>
