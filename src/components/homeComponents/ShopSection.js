@@ -64,11 +64,11 @@ const ShopSection = (props) => {
                 {category ? category : "Categoria"}
               </option>
               <option value="">Todos</option>
+              <option value="conservadores">Conservadores</option>
               <option value="vasos">Vasos</option>
-              <option value="plastico">Plastico</option>
-              <option value="Conservadores">Conservadores</option>
-              <option value="Aluminio">Aluminio</option>
-              <option value="Limpieza">Limpieza</option>
+              <option value="poncheras">Poncheras</option>
+              <option value="aluminio">Aluminio</option>
+              <option value="tobos">Tobos</option>
             </select>
             <Grid />
           </>
