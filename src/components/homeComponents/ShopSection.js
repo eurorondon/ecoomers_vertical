@@ -32,15 +32,27 @@ const ShopSection = (props) => {
     dispatch(listProduct(keyword, pagenumber, category));
   }, [dispatch, keyword, pagenumber, category]);
 
-  console.log(category);
+  useEffect(() => {
+    // Función que se ejecuta al inicio para establecer el valor inicial, esta funcion es para variar la cantidad de tarjetas o productos que se muestran dependeiendo del responsive o query screen
 
-  const handleCategory = (e) => {
-    if (category) {
-      history.push(`/search/${category}`);
-    } else {
-      history.push("/");
+    function handleResize() {
+      if (window.innerWidth < 1400) {
+        setPostsPerPage(10);
+      }
+      if (window.innerWidth < 1200) {
+        setPostsPerPage(12);
+      }
     }
-  };
+    handleResize(); // Llamamos a la función al inicio
+
+    window.addEventListener("resize", handleResize); // Agregamos el event listener
+
+    return () => {
+      window.removeEventListener("resize", handleResize); // Eliminamos el event listener
+    };
+  }, []);
+
+  console.log(category);
 
   // const handleCategory = (e) => {
   //   const value = e.target.value;
@@ -52,6 +64,11 @@ const ShopSection = (props) => {
 
   // const location = useLocation();
   // console.log(location.pathname);
+
+  const handleCategoria = () => {
+    setCategory(e.target.value);
+    setCurrentPage(1);
+  };
   return (
     <>
       {/* <Grid /> */}
@@ -67,7 +84,10 @@ const ShopSection = (props) => {
             <select
               name="categoria"
               id=""
-              onChange={(e) => setCategory(e.target.value)}
+              onChange={(e) => {
+                setCategory(e.target.value);
+                setCurrentPage(1);
+              }}
             >
               <option disabled selected value="">
                 {category ? category : "Categoria"}
