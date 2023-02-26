@@ -52,8 +52,6 @@ const ShopSection = (props) => {
     };
   }, []);
 
-  console.log(category);
-
   // const handleCategory = (e) => {
   //   const value = e.target.value;
   //   setCategory({
@@ -69,7 +67,9 @@ const ShopSection = (props) => {
     const value = e.target.value;
     setCategory(value);
     setCurrentPage(1);
-    history.push("/");
+    if (value === "") {
+      history.push(`/`);
+    } else history.push(`/category/${value}`);
   };
   return (
     <>

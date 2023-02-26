@@ -19,11 +19,22 @@ export const listProduct =
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
-      const { data } = await axios.get(
+
+      if (keyword != "") {
+        const { data } = await axios.get(
+          `${URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+        );
+        dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+      } else {
+        const { data } = await axios.get(
+          `${URL}/api/products?&pageNumber=${pageNumber}&category=${category}`
+        );
+        dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+      }
+
+      console.log(
         `${URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}&category=${category}`
       );
-      console.log(category);
-      dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
     } catch (error) {
       dispatch({
         type: PRODUCT_LIST_FAIL,

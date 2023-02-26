@@ -17,8 +17,8 @@ const Grid = ({ currentPosts }) => {
     <>
       <div className="shoptext mb-5" style={{}}>
         <div className="grid my-2">
-          {products.map((product) => (
-            <div className="  " style={{ flex: "1" }}>
+          {products.map((product, index) => (
+            <div className="  " key={index} style={{ flex: "1" }}>
               <Link to={`/products/${product._id}`}>
                 <div
                   className="cardpen"
