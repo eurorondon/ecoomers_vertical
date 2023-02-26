@@ -65,9 +65,11 @@ const ShopSection = (props) => {
   // const location = useLocation();
   // console.log(location.pathname);
 
-  const handleCategoria = () => {
-    setCategory(e.target.value);
+  const handleCategoria = (e) => {
+    const value = e.target.value;
+    setCategory(value);
     setCurrentPage(1);
+    history.push("/");
   };
   return (
     <>
@@ -84,10 +86,11 @@ const ShopSection = (props) => {
             <select
               name="categoria"
               id=""
-              onChange={(e) => {
-                setCategory(e.target.value);
-                setCurrentPage(1);
-              }}
+              // onChange={(e) => {
+              //   setCategory(e.target.value);
+              //   setCurrentPage(1);
+              // }}
+              onChange={handleCategoria}
             >
               <option disabled selected value="">
                 {category ? category : "Categoria"}

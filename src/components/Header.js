@@ -133,11 +133,6 @@ const Header = () => {
                     <button type="submit" className="search-button">
                       search
                     </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
 
           {/* PC HEADER */}
           <div className="pc-header">
