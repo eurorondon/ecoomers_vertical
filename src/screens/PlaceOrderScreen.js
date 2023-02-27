@@ -22,8 +22,9 @@ const PlaceOrderScreen = ({ history }) => {
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   );
-  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100);
-  cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)));
+  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 0);
+  // cart.taxPrice = addDecimals(Number((0.16 * cart.itemsPrice).toFixed(2)));
+  cart.taxPrice = 0;
   cart.totalPrice = (
     Number(cart.itemsPrice) +
     Number(cart.shippingPrice) +
@@ -32,6 +33,7 @@ const PlaceOrderScreen = ({ history }) => {
 
   const orderCreate = useSelector((state) => state.orderCreate);
   const { order, success, error } = orderCreate;
+  console.log(order);
 
   useEffect(() => {
     if (success) {
@@ -52,6 +54,38 @@ const PlaceOrderScreen = ({ history }) => {
         totalPrice: cart.totalPrice,
       })
     );
+
+    const telefono = "NUMERO_DE_TELEFONO"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
+    // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
+    const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
+      mensaje
+    )}`;
+    window.location.href = url;
+
+    if (order) {
+      console.log(order);
+    }
+  };
+
+  const productos = cart.cartItems
+    .map((item) => `${item.name} = ${item.price}$`)
+    .join(",");
+
+  const name = userInfo.name;
+  const mensaje = `hola mi nombre es ${name}, deseo comprar estos productos ${productos}. Para pagar un total de ${cart.totalPrice}$`;
+  console.log(mensaje);
+
+  const whatsappHandler = () => {
+    const telefono = "NUMERO_DE_TELEFONO"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
+    // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
+    const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
+      mensaje
+    )}`;
+    window.location.href = url;
+
+    if (order) {
+      console.log(order);
+    }
   };
 
   return (
@@ -176,6 +210,19 @@ const PlaceOrderScreen = ({ history }) => {
             {cart.cartItems.length === 0 ? null : (
               <button type="submit" onClick={placeOrderHandler}>
                 PLACE ORDER
+              </button>
+            )}
+            {error && (
+              <div className="my-3 col-12">
+                <Message variant="alert-danger">{error}</Message>
+              </div>
+            )}
+
+            <br />
+
+            {cart.cartItems.length === 0 ? null : (
+              <button type="submit" onClick={whatsappHandler}>
+                Enviar a Whatsapp
               </button>
             )}
             {error && (

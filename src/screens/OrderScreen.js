@@ -20,6 +20,13 @@ const OrderScreen = ({ match }) => {
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
 
+  // const userName = orderDetails.order.user.name;
+  // const mensajes = orderDetails.order.orderItems.map(
+  //   (pedido) =>
+  //     `hola mi nombre es ${userName}, me interesa comprar estos productos ${pedido.name}`
+  // );
+  // console.log(JSON.stringify(mensajes));
+
   const orderPay = useSelector((state) => state.orderPay);
   const { loading: loadingPay, success: successPay } = orderPay;
 
@@ -230,20 +237,20 @@ const OrderScreen = ({ match }) => {
                   </tbody>
                 </table>
 
-                <button onClick={successPaymentHandler}>Pagar aqui</button>
-                {/* {!order.isPaid && (
-                  <div className="col-12">
-                    {loadingPay && <Loading />}
-                    {!sdkReady ? (
-                      <Loading />
-                    ) : (
-                      <PayPalButton
-                        amount={order.totalPrice}
-                        onSuccess={successPaymentHandler}
-                      />
-                    )}
-                  </div>
-                )} */}
+                {/* <button onClick={successPaymentHandler}>Pagar aqui</button> */}
+
+                <button
+                  onClick={() => {
+                    const telefono = "+584126773234"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
+                    // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
+                    const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
+                      mensajes
+                    )}`;
+                    window.location.href = url;
+                  }}
+                >
+                  Pagar por WhatsApp
+                </button>
               </div>
             </div>
           </>
