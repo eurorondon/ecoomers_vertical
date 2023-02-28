@@ -105,7 +105,7 @@ const OrderScreen = ({ match }) => {
                 </div>
               </div>
               {/* 2 */}
-              <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
+              {/* <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
                 <div className="row">
                   <div className="col-md-4 center">
                     <div className="alert-success order-box">
@@ -139,9 +139,9 @@ const OrderScreen = ({ match }) => {
                     )}
                   </div>
                 </div>
-              </div>
+              </div> */}
               {/* 3 */}
-              <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
+              {/* <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
                 <div className="row">
                   <div className="col-md-4 center">
                     <div className="alert-success order-box">
@@ -172,7 +172,7 @@ const OrderScreen = ({ match }) => {
                     )}
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="row order-products justify-content-between">
@@ -186,7 +186,7 @@ const OrderScreen = ({ match }) => {
                     {order.orderItems.map((item, index) => (
                       <div className="order-product row" key={index}>
                         <div className="col-md-3 col-6">
-                          <img src={item.photo} alt={item.name} />
+                          <img src={item.image} alt={item.name} />
                         </div>
                         <div className="col-md-5 col-6 d-flex align-items-center">
                           <Link to={`/products/${item.product}`}>
@@ -237,20 +237,19 @@ const OrderScreen = ({ match }) => {
                   </tbody>
                 </table>
 
-                {/* <button onClick={successPaymentHandler}>Pagar aqui</button> */}
-
-                <button
-                  onClick={() => {
-                    const telefono = "+584126773234"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
-                    // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
-                    const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
-                      mensajes
-                    )}`;
-                    window.location.href = url;
-                  }}
-                >
-                  Pagar por WhatsApp
-                </button>
+                <div className="">
+                  <form action="" style={{ maxWidth: "250px" }}>
+                    <input type="file" />
+                    <button
+                      className="mt-1"
+                      type="submit"
+                      required
+                      onClick={successPaymentHandler}
+                    >
+                      Subir Comprobante
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </>

@@ -22,7 +22,7 @@ const CartScreen = ({ match, location, history }) => {
   }, [dispatch, productId, qty]);
 
   const checkOutHandler = () => {
-    history.push("/login?redirect=shipping");
+    history.push("/login?redirect=placeorder");
   };
 
   const removeFromCartHandle = (id) => {
@@ -64,7 +64,7 @@ const CartScreen = ({ match, location, history }) => {
                   <i className="fas fa-times"></i>
                 </div>
                 <div className="cart-image col-md-3">
-                  <img src={item.photo} alt={item.name} />
+                  <img src={item.image} alt={item.name} />
                 </div>
                 <div className="cart-text col-md-5 d-flex align-items-center">
                   <Link to={`/products/${item.product}`}>

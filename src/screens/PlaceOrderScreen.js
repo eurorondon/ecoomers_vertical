@@ -55,12 +55,15 @@ const PlaceOrderScreen = ({ history }) => {
       })
     );
 
-    const telefono = "NUMERO_DE_TELEFONO"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
+    const telefono = "+584245116397"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
     // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
     const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
       mensaje
     )}`;
-    window.location.href = url;
+
+    // const enlace = `<a href="${url}" target="_blank">Haz clic aquí para abrir en una nueva ventana</a>`;
+
+    window.open(url, "_blank");
 
     if (order) {
       console.log(order);
@@ -68,25 +71,15 @@ const PlaceOrderScreen = ({ history }) => {
   };
 
   const productos = cart.cartItems
-    .map((item) => `${item.name} = ${item.price}$`)
-    .join(",");
-
+    .map(
+      (item) =>
+        ` \n ✅ *${item.name}*   \n *Cantidad*: ${item.qty} \n *Precio*:${item.price}$ \n`
+    )
+    .join("");
+  const link = "google.com";
   const name = userInfo.name;
-  const mensaje = `hola mi nombre es ${name}, deseo comprar estos productos ${productos}. Para pagar un total de ${cart.totalPrice}$`;
+  const mensaje = `👋 Hola, mi nombre es ${name}.\n Deseo comprar estos artículos: 💭 \n ${productos} \n Para pagar un total de 🔜 *${cart.totalPrice}$* \n Haz click aquí para pagar: ${link}`;
   console.log(mensaje);
-
-  const whatsappHandler = () => {
-    const telefono = "NUMERO_DE_TELEFONO"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
-    // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
-    const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
-      mensaje
-    )}`;
-    window.location.href = url;
-
-    if (order) {
-      console.log(order);
-    }
-  };
 
   return (
     <>
@@ -110,7 +103,7 @@ const PlaceOrderScreen = ({ history }) => {
             </div>
           </div>
           {/* 2 */}
-          <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
+          {/* <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
             <div className="row">
               <div className="col-md-4 center">
                 <div className="alert-success order-box">
@@ -125,9 +118,9 @@ const PlaceOrderScreen = ({ history }) => {
                 <p>Pay method: {cart.paymentMethod}</p>
               </div>
             </div>
-          </div>
+          </div> */}
           {/* 3 */}
-          <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
+          {/* <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
             <div className="row">
               <div className="col-md-4 center">
                 <div className="alert-success order-box">
@@ -145,7 +138,7 @@ const PlaceOrderScreen = ({ history }) => {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="row order-products justify-content-between">
@@ -157,7 +150,7 @@ const PlaceOrderScreen = ({ history }) => {
                 {cart.cartItems.map((item, index) => (
                   <div className="order-product row" key={index}>
                     <div className="col-md-3 col-6">
-                      <img src={item.photo} alt={item.name} />
+                      <img src={item.image} alt={item.name} />
                     </div>
                     <div className="col-md-5 col-6 d-flex align-items-center">
                       <Link to={`/products/${item.product}`}>
@@ -209,7 +202,7 @@ const PlaceOrderScreen = ({ history }) => {
             </table>
             {cart.cartItems.length === 0 ? null : (
               <button type="submit" onClick={placeOrderHandler}>
-                PLACE ORDER
+                Realizar Pedido
               </button>
             )}
             {error && (
@@ -220,11 +213,6 @@ const PlaceOrderScreen = ({ history }) => {
 
             <br />
 
-            {cart.cartItems.length === 0 ? null : (
-              <button type="submit" onClick={whatsappHandler}>
-                Enviar a Whatsapp
-              </button>
-            )}
             {error && (
               <div className="my-3 col-12">
                 <Message variant="alert-danger">{error}</Message>
