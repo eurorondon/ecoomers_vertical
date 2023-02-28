@@ -39,6 +39,34 @@ const PlaceOrderScreen = ({ history }) => {
     if (success) {
       history.push(`/order/${order._id}`);
       dispatch({ type: ORDER_CREATE_RESET });
+
+      const productos = cart.cartItems
+        .map(
+          (item) =>
+            ` \n ✅ *${item.name}*   \n *Cantidad*: ${item.qty} \n *Precio*:${item.price}$ \n`
+        )
+        .join("");
+      const link = `cachifiando.com/order/${order._id}`;
+      const name = userInfo.name;
+      const mensaje = `👋 Hola, mi nombre es ${name}.\n Deseo comprar estos artículos: 💭 \n ${productos} \n Para pagar un total de 🔜 *${cart.totalPrice}$* \n \n Link de orden ${link}`;
+
+      // para enviar  orden a whatsapp
+
+      const telefono = "+584245116397"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
+      // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
+      const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
+        mensaje
+      )}`;
+
+      // const enlace = `<a href="${url}" target="_blank">Haz clic aquí para abrir en una nueva ventana</a>`;
+
+      window.open(url, "_blank");
+
+      if (order) {
+        console.log(order._id);
+      } else {
+        console.log("no existe order _id");
+      }
     }
   }, [history, dispatch, success, order]);
 
@@ -54,32 +82,7 @@ const PlaceOrderScreen = ({ history }) => {
         totalPrice: cart.totalPrice,
       })
     );
-
-    const telefono = "+584245116397"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
-    // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
-    const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
-      mensaje
-    )}`;
-
-    // const enlace = `<a href="${url}" target="_blank">Haz clic aquí para abrir en una nueva ventana</a>`;
-
-    window.open(url, "_blank");
-
-    if (order) {
-      console.log(order);
-    }
   };
-
-  const productos = cart.cartItems
-    .map(
-      (item) =>
-        ` \n ✅ *${item.name}*   \n *Cantidad*: ${item.qty} \n *Precio*:${item.price}$ \n`
-    )
-    .join("");
-  const link = "google.com";
-  const name = userInfo.name;
-  const mensaje = `👋 Hola, mi nombre es ${name}.\n Deseo comprar estos artículos: 💭 \n ${productos} \n Para pagar un total de 🔜 *${cart.totalPrice}$* \n Haz click aquí para pagar: ${link}`;
-  console.log(mensaje);
 
   return (
     <>
