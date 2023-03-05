@@ -14,6 +14,7 @@ import { URL } from "./../Redux/Url";
 const OrderScreen = ({ match }) => {
   window.scrollTo(0, 0);
   const [sdkReady, setSdkReady] = useState(false);
+  const [image, setImage] = useState([]);
   const orderId = match.params.id;
   const dispatch = useDispatch();
 
@@ -69,9 +70,28 @@ const OrderScreen = ({ match }) => {
     }
   }, [dispatch, orderId, successPay, order]);
 
-  const successPaymentHandler = () => {
-    dispatch(payOrder(orderId, order, email));
+  const successPaymentHandler = () => {};
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(payOrder(orderId, order, email, image));
+
+    // para enviar  orden a whatsapp
+    const link = `cachifiando.com/order/${order._id}`;
+
+    const mensaje = `${JSON.stringify(image)}`;
+    const telefono = "+584245116397"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
+    // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
+    const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
+      mensaje
+    )}`;
+
+    console.log(image);
+
+    window.open(url, "_blank");
   };
+
+  useEffect(() => {}, [third]);
 
   return (
     <>
@@ -238,16 +258,24 @@ const OrderScreen = ({ match }) => {
                 </table>
 
                 <div className="">
-                  <form action="" style={{ maxWidth: "250px" }}>
-                    <input type="file" />
-                    <button
-                      className="mt-1"
-                      type="submit"
-                      required
-                      onClick={successPaymentHandler}
-                    >
-                      Subir Comprobante
-                    </button>
+                  <form
+                    action=""
+                    style={{ maxWidth: "250px" }}
+                    onSubmit={submitHandler}
+                  >
+                    <input
+                      className="form-control mt-3"
+                      type="file"
+                      name="image"
+                      multiple
+                      onChange={(e) =>
+                        setImage(
+                          e.target.files[0]
+                          // console.log(e.target.files[0])
+                        )
+                      }
+                    />
+                    <button>pagares</button>
                   </form>
                 </div>
               </div>

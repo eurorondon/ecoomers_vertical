@@ -87,7 +87,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
 
 // ORDER PAY
 export const payOrder =
-  (orderId, order, email) => async (dispatch, getState) => {
+  (orderId, order, email, image) => async (dispatch, getState) => {
     const userName = order.user.name;
     const { totalPrice, _id } = order;
 
@@ -111,6 +111,26 @@ export const payOrder =
         config
       );
 
+      const form = new FormData();
+      form.append("name", order.user.name);
+      form.append("email", order.user.email);
+      form.append("image", image);
+
+      console.log(order.user.name, order.user.email);
+
+      const configComprobante = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const result = await axios.post(
+        `${URL}/api/orders/upload`,
+        form,
+        configComprobante
+      );
+      console.log(result);
+
       try {
         const datas = {
           totalPrice,
@@ -119,13 +139,11 @@ export const payOrder =
           email,
         };
         const sendMail = await axios.post(`${URL}/api/orders/send`, datas);
-        console.log(sendMail);
       } catch (error) {
         alert(error.response.data.message);
       }
 
       dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
-      console.log("pagado");
     } catch (error) {
       const message =
         error.response && error.response.data.message
