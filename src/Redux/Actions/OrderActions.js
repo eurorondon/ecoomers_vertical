@@ -124,8 +124,8 @@ export const payOrder =
         },
       };
 
-      const result = await axios.post(
-        `${URL}/api/orders/upload`,
+      const result = await axios.put(
+        `${URL}/api/orders/${orderId}/upload`,
         form,
         configComprobante
       );
