@@ -79,19 +79,32 @@ const OrderScreen = ({ match }) => {
 
   useEffect(() => {
     // para enviar  orden a whatsapp
-    const link = order.comprobantePago;
-
-    const mensaje = `👋 Hola, Adjunto link de  comprobante de pago por mis productos  \n \n  ${link}`;
-    const telefono = "+584245116397"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
-    // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
-    const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
-      mensaje
-    )}`;
-
-    console.log(order.comprobantePago);
-
-    window.open(url, "_blank");
-  }, [orderDetails]);
+    // if (order.comprobantePago) {
+    //   const link = order.comprobantePago;
+    //   const mensaje = `👋 Hola, Adjunto link de  comprobante de pago por mis productos  \n \n  ${link}`;
+    //   const telefono = "+584245116397"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
+    //   // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
+    //   const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
+    //     mensaje
+    //   )}`;
+    //   console.log(order.comprobantePago);
+    //   window.open(url, "_blank");
+    // }
+    if (order?.comprobantePago) {
+      // para enviar  orden a whatsapp
+      if (order.comprobantePago) {
+        const link = order.comprobantePago;
+        const mensaje = `👋 Hola, Adjunto link de  comprobante de pago por mis productos  \n \n  ${link}`;
+        const telefono = "+584245116397"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
+        // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
+        const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
+          mensaje
+        )}`;
+        console.log(order.comprobantePago);
+        window.open(url, "_blank");
+      }
+    }
+  }, [order]);
 
   return (
     <>
