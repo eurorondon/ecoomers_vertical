@@ -77,34 +77,21 @@ const OrderScreen = ({ match }) => {
     dispatch(payOrder(orderId, order, email, image));
   };
 
-  useEffect(() => {
-    // para enviar  orden a whatsapp
-    // if (order.comprobantePago) {
-    //   const link = order.comprobantePago;
-    //   const mensaje = `👋 Hola, Adjunto link de  comprobante de pago por mis productos  \n \n  ${link}`;
-    //   const telefono = "+584245116397"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
-    //   // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
-    //   const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
-    //     mensaje
-    //   )}`;
-    //   console.log(order.comprobantePago);
-    //   window.open(url, "_blank");
-    // }
-    if (order?.comprobantePago) {
+  const whatsappHandler = () => {
+    if (order.comprobantePago) {
       // para enviar  orden a whatsapp
-      if (order.comprobantePago) {
-        const link = order.comprobantePago;
-        const mensaje = `👋 Hola, Adjunto link de  comprobante de pago por mis productos  \n \n  ${link}`;
-        const telefono = "+584245116397"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
-        // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
-        const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
-          mensaje
-        )}`;
-        console.log(order.comprobantePago);
-        window.open(url, "_blank");
-      }
+      const link = order.comprobantePago;
+      const mensaje = `👋 Hola, Adjunto link de  comprobante de pago por mis productos  \n \n  ${link}`;
+      const telefono = "+584245116397"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
+      // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
+      const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
+        mensaje
+      )}`;
+      console.log(order.comprobantePago);
+      // window.open(url, "_blank");
+      window.open(url);
     }
-  }, [order]);
+  };
 
   return (
     <>
@@ -270,27 +257,41 @@ const OrderScreen = ({ match }) => {
                   </tbody>
                 </table>
 
-                <div className="">
-                  <form
-                    action=""
-                    style={{ maxWidth: "250px" }}
-                    onSubmit={submitHandler}
-                  >
-                    <input
-                      className="form-control mt-3"
-                      type="file"
-                      name="image"
-                      multiple
-                      onChange={(e) =>
-                        setImage(
-                          e.target.files[0]
-                          // console.log(e.target.files[0])
-                        )
-                      }
-                    />
-                    <button>pagares</button>
-                  </form>
-                </div>
+                {order.comprobantePago ? (
+                  <>
+                    <div className="my-1">
+                      <p>
+                        Tu comprobante ha sido cargado con exito, gracias por tu
+                        compra
+                      </p>
+
+                      <button onClick={whatsappHandler}>ir a Whatsapp</button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="">
+                    <form
+                      action=""
+                      style={{ maxWidth: "250px" }}
+                      onSubmit={submitHandler}
+                    >
+                      <input
+                        className="form-control mt-3"
+                        type="file"
+                        name="image"
+                        multiple
+                        required
+                        onChange={(e) =>
+                          setImage(
+                            e.target.files[0]
+                            // console.log(e.target.files[0])
+                          )
+                        }
+                      />
+                      <button>Subir Comprobante</button>
+                    </form>
+                  </div>
+                )}
               </div>
             </div>
           </>

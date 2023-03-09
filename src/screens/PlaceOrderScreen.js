@@ -45,27 +45,20 @@ const PlaceOrderScreen = ({ history }) => {
             ` \n ✅ *${item.name}*   \n *Cantidad*: ${item.qty} \n *Precio*:${item.price}$ \n`
         )
         .join("");
-      const link = `cachifiando.com/order/${order._id}`;
+      const link = `${URL}/order/${order._id}`;
       const name = userInfo.name;
-      const mensaje = `👋 Hola, mi nombre es ${name}.\n Deseo comprar estos artículos: 💭 \n ${productos} \n Para pagar un total de 🔜 *${cart.totalPrice}$* \n \n Link de orden ${link}`;
+      const mensaje = `👋 Hola, mi nombre es ${name}.\n Deseo comprar estos artículos: 💭 \n ${productos} \n Para pagar un total de 🔜 *${cart.totalPrice}$* \n \n ${name} Recuerda subir tu comrpobante de pago en este Link  ${link}`;
 
       // para enviar  orden a whatsapp
 
-      const telefono = "+584245116397"; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
-      // const mensaje = "Hola, quiero hacer un pago"; // Reemplaza con el mensaje que quieres enviar
+      const telefono = "+584245116397";
       const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
         mensaje
       )}`;
 
-      // const enlace = `<a href="${url}" target="_blank">Haz clic aquí para abrir en una nueva ventana</a>`;
-
-      window.open(url, "_blank");
-
-      if (order) {
-        console.log(order._id);
-      } else {
-        console.log("no existe order _id");
-      }
+      // window.open(url, "_blank");
+      // window.open(url);
+      window.open(url, "_self");
     }
   }, [history, dispatch, success, order]);
 

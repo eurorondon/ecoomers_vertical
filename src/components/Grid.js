@@ -24,8 +24,8 @@ const Grid = ({ currentPosts }) => {
                   className="cardpen"
                   style={{
                     backgroundImage: ` url(${product.photo[0].url})`,
-                    // aqui debe cambiarse cuando se cree el responsive OJO y tambien en css grid style!!
-                    backgroundSize: "220px auto",
+                    // SUUUPERRR IMPORTANTE !!!aqui debe cambiarse cuando se cree el responsive OJO y tambien en css grid style!!
+                    backgroundSize: "180px auto",
                     backgroundRepeat: "no-repeat",
                     // aqui debe cambiarse cuando se cree el responsive OJO !!
                     minHeight: "200px",
