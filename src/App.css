@@ -975,6 +975,39 @@ svg {
   }
 }
 
+/* CARRUCEL */
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.carousel img {
+  max-width: 80%;
+  height: auto;
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.thumbnails img {
+  max-width: 50px;
+  height: auto;
+  margin: 0 0px;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.thumbnails img.selected {
+  opacity: 1;
+}
+
 @media only screen and (max-width: 600px) {
   .shopBack {
     height: 150px;

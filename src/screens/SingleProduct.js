@@ -14,6 +14,7 @@ import moment from "moment";
 import SimpleSlider from "../components/SlickTest";
 import Grid from "../components/Grid";
 import Modal from "../components/Modal";
+import Carousel from "./../components/Carousel";
 
 const SingleProduct = ({ history, match }) => {
   const [qty, setQty] = useState(1);
@@ -67,6 +68,10 @@ const SingleProduct = ({ history, match }) => {
 
   const { photo, image } = product;
 
+  if (photo) {
+    console.log(photo);
+  }
+
   return (
     <>
       <Header />
@@ -81,7 +86,7 @@ const SingleProduct = ({ history, match }) => {
         ) : (
           <>
             <div className="row">
-              <div
+              {/* <div
                 className={
                   photo && photo.length === 1
                     ? "col-md-6 p-0 single-product-grid-1 px-0   "
@@ -118,6 +123,9 @@ const SingleProduct = ({ history, match }) => {
                 ) : (
                   <p>no carga</p>
                 )}
+              </div> */}
+              <div className=" col-md-6">
+                {photo ? <Carousel images={photo} className="col-6" /> : null}
               </div>
               <div className="col-md-6 mt-3">
                 <div className="product-dtl">
