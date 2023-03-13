@@ -85,6 +85,7 @@ const SingleProduct = ({ history, match }) => {
           <Message variant="alert-danger">{error}</Message>
         ) : (
           <>
+            <button onClick={handleGoBack}>Atrás</button>
             <div className="row">
               {/* <div
                 className={

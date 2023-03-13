@@ -8,6 +8,8 @@ import Loading from "../LoadingError/Loading";
 import Message from "../LoadingError/Error";
 import Grid from "../Grid";
 import Pagination from "../Pagination";
+import ReactPaginate from "react-paginate";
+import { ArrowBack, ArrowForward } from "@material-ui/icons";
 
 const ShopSection = (props) => {
   // const { keyword, pagenumber } = props;
@@ -21,12 +23,18 @@ const ShopSection = (props) => {
   let history = useHistory();
   // const [filters, setFilters] = useState("");
 
-  // PAGINACION DESDE REACT
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [postsPerPage, setPostsPerPage] = useState(12);
-  const lastPostIndex = currentPage * postsPerPage;
-  const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = products.slice(firstPostIndex, lastPostIndex);
+  const indexOfLastPost = (currentPage + 1) * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
+  const totalPosts = products.length;
+
+  const handlePageClick = (data) => {
+    const selectedPage = data.selected;
+    setCurrentPage(selectedPage);
+    scroll(0, 0);
+  };
 
   useEffect(() => {
     dispatch(listProduct(keyword, pagenumber, category));
@@ -52,25 +60,28 @@ const ShopSection = (props) => {
     };
   }, []);
 
-  // const handleCategory = (e) => {
-  //   const value = e.target.value;
-  //   setCategory({
-  //     [e.target.name]: value,
-  //   });
-  //   console.log(value);
-  // };
+  useEffect(() => {
+    localStorage.setItem("currentPage", JSON.stringify(currentPage));
+  }, [currentPage]);
 
-  // const location = useLocation();
-  // console.log(location.pathname);
+  useEffect(() => {
+    const storedPage = localStorage.getItem("currentPage");
+    if (storedPage) {
+      setCurrentPage(JSON.parse(storedPage));
+    } else {
+      setCurrentPage(location.state?.currentPage || 0);
+    }
+  }, [location.state?.currentPage]);
 
   const handleCategoria = (e) => {
     const value = e.target.value;
     setCategory(value);
-    setCurrentPage(1);
+    // setCurrentPage(0);
     if (value === "") {
       history.push(`/`);
     } else history.push(`/category/${value}`);
   };
+
   return (
     <>
       {/* <Grid /> */}
@@ -83,15 +94,7 @@ const ShopSection = (props) => {
           <Message variant="alert-danger">{error}</Message>
         ) : (
           <>
-            <select
-              name="categoria"
-              id=""
-              // onChange={(e) => {
-              //   setCategory(e.target.value);
-              //   setCurrentPage(1);
-              // }}
-              onChange={handleCategoria}
-            >
+            <select name="categoria" id="" onChange={handleCategoria}>
               <option disabled selected value="">
                 {category ? category : "Categoria"}
               </option>
@@ -110,19 +113,18 @@ const ShopSection = (props) => {
           </>
         )}
 
-        <Pagination
+        <ReactPaginate
+          previousLabel={<ArrowBack />}
+          nextLabel={<ArrowForward />}
           totalPosts={products.length}
-          postsPerPage={postsPerPage}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
+          pageCount={Math.ceil(totalPosts / postsPerPage)}
+          marginPagesDisplayed={1}
+          pageRangeDisplayed={2} // Aquí estableces el número de botones de página a mostrar
+          onPageChange={handlePageClick}
+          containerClassName={"pagination"}
+          activeClassName={"active"}
+          forcePage={currentPage}
         />
-
-        {/* Pagination */}
-        {/* <Pagination
-          pages={pages}
-          page={page}
-          keyword={keyword ? keyword : ""}
-        /> */}
       </div>
     </>
   );
