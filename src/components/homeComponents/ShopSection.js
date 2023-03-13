@@ -7,39 +7,26 @@ import { listProduct } from "../../Redux/Actions/ProductActions";
 import Loading from "../LoadingError/Loading";
 import Message from "../LoadingError/Error";
 import Grid from "../Grid";
-import Pagination from "../Pagination";
+// import Pagination from "../Pagination";
 import ReactPaginate from "react-paginate";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
 
 const ShopSection = (props) => {
-  // const { keyword, pagenumber } = props;
   const { keyword, pagenumber } = props;
   const dispatch = useDispatch();
-
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products, page, pages } = productList;
-
+  const { loading, error, products } = productList;
   const [selectedCategory, setSelectedCategory] = useState();
-
   const { category } = useParams();
-  console.log(category);
-
   let history = useHistory();
-  // const [filters, setFilters] = useState("");
-
   const [currentPage, setCurrentPage] = useState(0);
   const [postsPerPage, setPostsPerPage] = useState(12);
   const indexOfLastPost = (currentPage + 1) * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
   const totalPosts = products.length;
-
-  const handlePageClick = (data) => {
-    const selectedPage = data.selected;
-    setCurrentPage(selectedPage);
-    scroll(0, 0);
-    history.push(`?page=${selectedPage}`);
-  };
+  const url = window.location.href;
+  const match = url.match(/\d+$/);
 
   useEffect(() => {
     dispatch(listProduct(keyword, pagenumber, category));
@@ -79,17 +66,18 @@ const ShopSection = (props) => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("currentPage", JSON.stringify(currentPage));
-  }, [currentPage]);
-
-  useEffect(() => {
-    const storedPage = localStorage.getItem("currentPage");
-    if (storedPage) {
-      setCurrentPage(JSON.parse(storedPage));
-    } else {
-      setCurrentPage(location.state?.currentPage || 0);
+    if (url.includes("page")) {
+      const match = url.match(/\d+$/);
+      setCurrentPage(match[0] * 1);
     }
-  }, [location.state?.currentPage]);
+  }, []);
+
+  const handlePageClick = (data) => {
+    const selectedPage = data.selected;
+    setCurrentPage(selectedPage);
+    scroll(0, 0);
+    history.push(`?page=${selectedPage}`);
+  };
 
   const handleCategoria = (e) => {
     const value = e.target.value;
@@ -102,23 +90,8 @@ const ShopSection = (props) => {
     }
   };
 
-  const url = window.location.href;
-  console.log(url);
-  const match = url.match(/\d+$/);
-
-  useEffect(() => {
-    if (url.includes("page")) {
-      const match = url.match(/\d+$/);
-      console.log("hay pages");
-      setCurrentPage(match[0] * 1);
-    }
-  }, []);
-
-  console.log(currentPage);
-
   return (
     <>
-      {/* <Grid /> */}
       <div className="container">
         {loading ? (
           <div className="" style={{ margin: "200px 0px" }}>
@@ -143,6 +116,7 @@ const ShopSection = (props) => {
               <option value="Adonis">Adonis</option>
               <option value="IPM">IPM</option>
             </select>
+
             <Grid currentPosts={currentPosts} />
           </>
         )}
@@ -157,7 +131,7 @@ const ShopSection = (props) => {
           onPageChange={handlePageClick}
           containerClassName={"pagination"}
           activeClassName={"active"}
-          forcePage={currentPage}
+          // forcePage={currentPage}
         />
       </div>
     </>

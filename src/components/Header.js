@@ -25,11 +25,6 @@ const Header = () => {
       history.push("/");
     }
   };
-
-  const handleLogoClick = () => {
-    window.location.reload();
-  };
-
   return (
     <div>
       {/* Top Header */}
@@ -67,7 +62,7 @@ const Header = () => {
           <div className="mobile-header">
             <div className="container ">
               <div className="row ">
-                <div className="col-6 d-flex align-items-center">
+                {/* <div className="col-6 d-flex align-items-center">
                   <a href="#" onclick="location.reload();">
                     <img
                       alt="logo"
@@ -77,6 +72,17 @@ const Header = () => {
                       onClick={handleLogoClick}
                     />
                   </a>
+                </div> */}
+
+                <div className="col-6 d-flex align-items-center">
+                  <Link className="navbar-brand" to="/">
+                    <img
+                      alt="logo"
+                      src="/images/logo.png"
+                      className="rounded-circle border border-danger bg-danger"
+                      style={{ maxWidth: "200px" }}
+                    />
+                  </Link>
                 </div>
                 <div className="col-6 d-flex align-items-center justify-content-end Login-Register">
                   {userInfo ? (
@@ -153,15 +159,26 @@ const Header = () => {
           {/* PC HEADER */}
           <div className="pc-header">
             <div className="row">
-              <div className="col-md-3 col-4 d-flex align-items-center">
-                <a href="/" onClick={() => window.location.reload()}>
+              {/* <div className="col-6 d-flex align-items-center">
+                <a href="#" onclick="location.reload();">
                   <img
                     alt="logo"
                     src="/images/logo.png"
                     className="rounded-circle border border-danger bg-danger"
                     style={{ maxWidth: "100px" }}
+                    onClick={handleLogoClick}
                   />
                 </a>
+              </div> */}
+              <div className="col-md-3 col-4 d-flex align-items-center">
+                <Link className="navbar-brand" to="/">
+                  <img
+                    alt="logo"
+                    src="/images/logo.png"
+                    className="rounded-circle border border-danger bg-danger"
+                    style={{ maxWidth: "200px" }}
+                  />
+                </Link>
               </div>
               <div className="col-md-6 col-8 d-flex align-items-center">
                 <form onSubmit={submitHandler} className="input-group">

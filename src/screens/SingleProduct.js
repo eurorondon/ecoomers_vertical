@@ -68,10 +68,6 @@ const SingleProduct = ({ history, match }) => {
 
   const { photo, image } = product;
 
-  if (photo) {
-    console.log(photo);
-  }
-
   const handleGoBack = () => {
     history.goBack();
   };
