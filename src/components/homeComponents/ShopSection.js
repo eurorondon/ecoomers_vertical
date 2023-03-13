@@ -102,6 +102,23 @@ const ShopSection = (props) => {
     }
   };
 
+  const handleButtonCategoria = (e) => {
+    const value = e.target.value;
+    setSelectedCategory(value);
+    if (value === "") {
+      history.push(`/`);
+    } else {
+      history.push(`/category/${value}`);
+      setCurrentPage(0); // reseteamos la página al cambiar de categoría
+    }
+  };
+
+  const handleGoBack = () => {
+    history.push(`/`);
+    setSelectedCategory("");
+    setCurrentPage(0);
+  };
+
   const url = window.location.href;
   console.log(url);
   const match = url.match(/\d+$/);
@@ -114,12 +131,13 @@ const ShopSection = (props) => {
     }
   }, []);
 
-  console.log(currentPage);
+  const currentPath = history.location.pathname;
+  console.log(currentPath);
 
   return (
     <>
       {/* <Grid /> */}
-      <div className="container">
+      <div className="container ">
         {loading ? (
           <div className="" style={{ margin: "200px 0px" }}>
             <Loading />
@@ -128,21 +146,53 @@ const ShopSection = (props) => {
           <Message variant="alert-danger">{error}</Message>
         ) : (
           <>
-            <select name="categoria" id="" onChange={handleCategoria}>
-              <option disabled selected value="">
-                {selectedCategory ? selectedCategory : "Categoria"}
-              </option>
-              <option value="">Todos</option>
-              <option value="Conservadores">Conservadores</option>
-              <option value="Vasos">Vasos</option>
-              <option value="Poncheras">Poncheras</option>
-              <option value="Aluminio">Aluminio</option>
-              <option value="Tobos">Tobos</option>
-              <option value="Bigmark">Bigmark</option>
-              <option value="Inplast">Inplast</option>
-              <option value="Adonis">Adonis</option>
-              <option value="IPM">IPM</option>
-            </select>
+            {currentPath == "/" ? (
+              <div className="bg-dark " style={{ height: "300px" }}>
+                <h5 className="text-white py-3">Categorias</h5>
+                <button onClick={handleButtonCategoria} value="Aluminio">
+                  Aluminio
+                </button>
+                <button onClick={handleButtonCategoria} value="Inplast">
+                  Inplast
+                </button>
+                <button onClick={handleButtonCategoria} value="Conservadores">
+                  Conservadores
+                </button>
+              </div>
+            ) : null}
+
+            {!category ? null : (
+              <button className="btn btn-primary" onClick={handleGoBack}>
+                Volver Atrás
+              </button>
+            )}
+
+            {!category ? (
+              <div className="mt-5">
+                <h2>Nuevos Productos</h2>
+                <div>
+                  <select name="categoria" id="" onChange={handleCategoria}>
+                    <option disabled selected value="">
+                      {selectedCategory ? selectedCategory : "Categoria"}
+                    </option>
+                    <option value="">Todos</option>
+                    <option value="Conservadores">Conservadores</option>
+                    <option value="Vasos">Vasos</option>
+                    <option value="Poncheras">Poncheras</option>
+                    <option value="Aluminio">Aluminio</option>
+                    <option value="Tobos">Tobos</option>
+                    <option value="Bigmark">Bigmark</option>
+                    <option value="Inplast">Inplast</option>
+                    <option value="Adonis">Adonis</option>
+                    <option value="IPM">IPM</option>
+                  </select>
+                </div>
+              </div>
+            ) : (
+              <div className="mt-5">
+                <h2>{category}</h2>
+              </div>
+            )}
             <Grid currentPosts={currentPosts} />
           </>
         )}
