@@ -72,6 +72,10 @@ const SingleProduct = ({ history, match }) => {
     console.log(photo);
   }
 
+  const handleGoBack = () => {
+    history.goBack();
+  };
+
   return (
     <>
       <Header />
@@ -254,10 +258,10 @@ const SingleProduct = ({ history, match }) => {
                 ) : (
                   <div className="my-3">
                     <Message variant={"alert-warning"}>
-                      Please{" "}
+                      Please
                       <Link to="/login">
                         " <strong>Login</strong> "
-                      </Link>{" "}
+                      </Link>
                       to write a review{" "}
                     </Message>
                   </div>

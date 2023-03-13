@@ -34,6 +34,7 @@ const ShopSection = (props) => {
     const selectedPage = data.selected;
     setCurrentPage(selectedPage);
     scroll(0, 0);
+    history.push(`?page=${selectedPage}`);
   };
 
   useEffect(() => {
@@ -55,6 +56,13 @@ const ShopSection = (props) => {
 
     window.addEventListener("resize", handleResize); // Agregamos el event listener
 
+    const searchParams = new URLSearchParams(location.search);
+    const storedPage = searchParams.get("page");
+    if (storedPage) {
+      setCurrentPage(parseInt(storedPage, 10));
+    } else {
+      setCurrentPage(location.state?.currentPage || 0);
+    }
     return () => {
       window.removeEventListener("resize", handleResize); // Eliminamos el event listener
     };
@@ -76,11 +84,27 @@ const ShopSection = (props) => {
   const handleCategoria = (e) => {
     const value = e.target.value;
     setCategory(value);
-    // setCurrentPage(0);
     if (value === "") {
       history.push(`/`);
-    } else history.push(`/category/${value}`);
+    } else {
+      history.push(`/category/${value}`);
+      setCurrentPage(0); // reseteamos la página al cambiar de categoría
+    }
   };
+
+  const url = window.location.href;
+  console.log(url);
+  const match = url.match(/\d+$/);
+
+  useEffect(() => {
+    if (url.includes("page")) {
+      const match = url.match(/\d+$/);
+      console.log("hay pages");
+      setCurrentPage(match[0] * 1);
+    }
+  }, []);
+
+  console.log(currentPage);
 
   return (
     <>
