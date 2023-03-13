@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory, useParams, useLocation } from "react-router-dom";
 import Rating from "./Rating";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +19,11 @@ const ShopSection = (props) => {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
 
-  const [category, setCategory] = useState();
+  const [selectedCategory, setSelectedCategory] = useState();
+
+  const { category } = useParams();
+  console.log(category);
+
   let history = useHistory();
   // const [filters, setFilters] = useState("");
 
@@ -52,6 +56,12 @@ const ShopSection = (props) => {
         setPostsPerPage(12);
       }
     }
+
+    function handleCategoryFromUrl() {
+      const { category } = useParams();
+      setSelectedCategory(category || ""); // establecer la categoría si existe en la URL
+    }
+
     handleResize(); // Llamamos a la función al inicio
 
     window.addEventListener("resize", handleResize); // Agregamos el event listener
@@ -83,7 +93,7 @@ const ShopSection = (props) => {
 
   const handleCategoria = (e) => {
     const value = e.target.value;
-    setCategory(value);
+    setSelectedCategory(value);
     if (value === "") {
       history.push(`/`);
     } else {
@@ -120,7 +130,7 @@ const ShopSection = (props) => {
           <>
             <select name="categoria" id="" onChange={handleCategoria}>
               <option disabled selected value="">
-                {category ? category : "Categoria"}
+                {selectedCategory ? selectedCategory : "Categoria"}
               </option>
               <option value="">Todos</option>
               <option value="Conservadores">Conservadores</option>
