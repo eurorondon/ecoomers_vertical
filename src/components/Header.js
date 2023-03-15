@@ -32,8 +32,8 @@ const Header = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-6 d-flex align-items-center display-none">
-              <p>+255 768 356 890</p>
-              <p>info@zpunet.com</p>
+              <p>0412-602-2881</p>
+              <p>larahogar@gmail.com</p>
             </div>
             <div className=" col-12 col-lg-6 justify-content-center justify-content-lg-end d-flex align-items-center">
               <Link to="">
@@ -98,7 +98,7 @@ const Header = () => {
                       </button>
                       <div className="dropdown-menu">
                         <Link className="dropdown-item" to="/profile">
-                          Profile
+                          Perfil
                         </Link>
 
                         <Link
@@ -127,7 +127,7 @@ const Header = () => {
                         </Link>
 
                         <Link className="dropdown-item" to="/register">
-                          Register
+                          Registrar
                         </Link>
                       </div>
                     </div>
@@ -144,11 +144,11 @@ const Header = () => {
                     <input
                       type="search"
                       className="form-control rounded search"
-                      placeholder="Search"
+                      placeholder="Buscar"
                       onChange={(e) => setKeyword(e.target.value)}
                     />
                     <button type="submit" className="search-button">
-                      search
+                      Buscar
                     </button>
                   </form>
                 </div>
@@ -186,11 +186,11 @@ const Header = () => {
                   <input
                     type="search"
                     className="form-control rounded search"
-                    placeholder="Search"
+                    placeholder="Buscar"
                     onChange={(e) => setKeyword(e.target.value)}
                   />
                   <button type="submit" className="search-button">
-                    search
+                    Buscar
                   </button>
                 </form>
               </div>
@@ -204,11 +204,11 @@ const Header = () => {
                       aria-haspopup="true"
                       aria-expanded="false"
                     >
-                      Hi, {userInfo.name}
+                      Hola, {userInfo.name}
                     </button>
                     <div className="dropdown-menu">
                       <Link className="dropdown-item" to="/profile">
-                        Profile
+                        Perfil
                       </Link>
 
                       <Link
@@ -222,7 +222,7 @@ const Header = () => {
                   </div>
                 ) : (
                   <>
-                    <Link to="/register">Register</Link>
+                    <Link to="/register">Registrar</Link>
                     <Link to="/login">Login</Link>
                   </>
                 )}

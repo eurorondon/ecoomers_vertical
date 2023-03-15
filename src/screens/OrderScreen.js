@@ -113,7 +113,7 @@ const OrderScreen = ({ match }) => {
                   </div>
                   <div className="col-md-8 center">
                     <h5>
-                      <strong>Customer</strong>
+                      <strong>Cliente</strong>
                     </h5>
                     <p>{order.user.name}</p>
                     <p>
@@ -199,7 +199,7 @@ const OrderScreen = ({ match }) => {
               <div className="col-lg-8">
                 {order.orderItems.length === 0 ? (
                   <Message variant="alert-info mt-5">
-                    Your order is empty
+                    Tu pedido está vacío
                   </Message>
                 ) : (
                   <>
@@ -232,19 +232,19 @@ const OrderScreen = ({ match }) => {
                   <tbody>
                     <tr>
                       <td>
-                        <strong>Products</strong>
+                        <strong>Productos</strong>
                       </td>
                       <td>${order.itemsPrice}</td>
                     </tr>
                     <tr>
                       <td>
-                        <strong>Shipping</strong>
+                        <strong>Delivery</strong>
                       </td>
                       <td>${order.shippingPrice}</td>
                     </tr>
                     <tr>
                       <td>
-                        <strong>Tax</strong>
+                        <strong>Impuesto</strong>
                       </td>
                       <td>${order.taxPrice}</td>
                     </tr>

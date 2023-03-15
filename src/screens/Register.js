@@ -42,7 +42,7 @@ const Register = ({ location, history }) => {
         >
           <input
             type="text"
-            placeholder="Username"
+            placeholder="Nombre de Usuario"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -54,7 +54,7 @@ const Register = ({ location, history }) => {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Contraseña"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -62,7 +62,7 @@ const Register = ({ location, history }) => {
           <button type="submit">Register</button>
           <p>
             <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
-              I Have Account <strong>Login</strong>
+              Tengo cuenta <strong>iniciar sesión</strong>
             </Link>
           </p>
         </form>
