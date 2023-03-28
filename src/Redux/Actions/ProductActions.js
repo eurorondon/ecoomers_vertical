@@ -24,17 +24,19 @@ export const listProduct =
         const { data } = await axios.get(
           `${URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
         );
+        console.log(data);
         dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
       } else {
         const { data } = await axios.get(
           `${URL}/api/products?&pageNumber=${pageNumber}&category=${category}`
         );
         dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+        console.log(data);
       }
 
-      console.log(
-        `${URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}&category=${category}`
-      );
+      // console.log(
+      //   `${URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}&category=${category}`
+      // );
     } catch (error) {
       dispatch({
         type: PRODUCT_LIST_FAIL,

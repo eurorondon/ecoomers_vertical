@@ -7,7 +7,6 @@ import { listProduct } from "../../Redux/Actions/ProductActions";
 import Loading from "../LoadingError/Loading";
 import Message from "../LoadingError/Error";
 import Grid from "../Grid";
-import Pagination from "../Pagination";
 import ReactPaginate from "react-paginate";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
 
@@ -22,7 +21,6 @@ const ShopSection = (props) => {
   const [selectedCategory, setSelectedCategory] = useState();
 
   const { category } = useParams();
-  console.log(category);
 
   let history = useHistory();
   // const [filters, setFilters] = useState("");
