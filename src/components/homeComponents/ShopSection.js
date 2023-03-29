@@ -9,10 +9,11 @@ import Message from "../LoadingError/Error";
 import Grid from "../Grid";
 import ReactPaginate from "react-paginate";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
+import CategoriaSelector from "../CategoriaSelector";
 
 const ShopSection = (props) => {
   // const { keyword, pagenumber } = props;
-  const { keyword, pagenumber } = props;
+  const { keyword, pagenumber, setCurrentPage, currentPage } = props;
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
@@ -25,7 +26,6 @@ const ShopSection = (props) => {
   let history = useHistory();
   // const [filters, setFilters] = useState("");
 
-  const [currentPage, setCurrentPage] = useState(0);
   const [postsPerPage, setPostsPerPage] = useState(12);
   const indexOfLastPost = (currentPage + 1) * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -40,8 +40,8 @@ const ShopSection = (props) => {
   };
 
   useEffect(() => {
-    dispatch(listProduct(keyword, pagenumber, category));
-  }, [dispatch, keyword, pagenumber, category]);
+    dispatch(listProduct(keyword, currentPage, category));
+  }, [dispatch, keyword, pagenumber, category, currentPage]);
 
   useEffect(() => {
     // Función que se ejecuta al inicio para establecer el valor inicial, esta funcion es para variar la cantidad de tarjetas o productos que se muestran dependeiendo del responsive o query screen
@@ -118,19 +118,16 @@ const ShopSection = (props) => {
   };
 
   const url = window.location.href;
-  console.log(url);
   const match = url.match(/\d+$/);
 
   useEffect(() => {
     if (url.includes("page")) {
       const match = url.match(/\d+$/);
-      console.log("hay pages");
       setCurrentPage(match[0] * 1);
     }
   }, []);
 
   const currentPath = history.location.pathname;
-  console.log(currentPath);
 
   return (
     <>

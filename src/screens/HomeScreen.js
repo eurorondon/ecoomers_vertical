@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./../components/Header";
 import ShopSection from "./../components/homeComponents/ShopSection";
 import ContactInfo from "./../components/homeComponents/ContactInfo";
@@ -9,10 +9,18 @@ const HomeScreen = ({ match }) => {
   window.scrollTo(0, 0);
   const keyword = match.params.keyword;
   const pagenumber = match.params.pagenumber;
+
+  const [currentPage, setCurrentPage] = useState(0);
   return (
     <div>
-      <Header />
-      <ShopSection keyword={keyword} pagenumber={pagenumber} />
+      <Header setCurrentPage={setCurrentPage} />
+
+      <ShopSection
+        keyword={keyword}
+        pagenumber={pagenumber}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
       <CalltoActionSection />
       <ContactInfo />
       <Footer />

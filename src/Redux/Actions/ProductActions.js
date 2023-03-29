@@ -15,8 +15,11 @@ import { logout } from "./userActions";
 
 // PRODUCT LIST
 export const listProduct =
-  (keyword = "", pageNumber = "", category = "") =>
+  (keyword = "", pageNumber = "", category = "", currentPage = "") =>
   async (dispatch) => {
+    console.log(currentPage);
+    console.log(keyword);
+    console.log(category);
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
 
@@ -24,19 +27,14 @@ export const listProduct =
         const { data } = await axios.get(
           `${URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
         );
-        console.log(data);
+
         dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
       } else {
         const { data } = await axios.get(
           `${URL}/api/products?&pageNumber=${pageNumber}&category=${category}`
         );
         dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
-        console.log(data);
       }
-
-      // console.log(
-      //   `${URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}&category=${category}`
-      // );
     } catch (error) {
       dispatch({
         type: PRODUCT_LIST_FAIL,
