@@ -120,7 +120,10 @@ textarea:focus {
 /* boton desplegable */
 .categorias-container {
   position: relative;
+  z-index: 3;
 }
+
+/* TopSell */
 
 .categorias-button {
   background-color: #007bff;
@@ -332,8 +335,12 @@ textarea:focus {
 
 /* NEWSLATTER */
 .subscribe-section {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.226), rgba(0, 0, 0, 0.226)),
-    url("https://sasshoes-com.s3.us-west-2.amazonaws.com/img/banner-uplift-21.jpg")
+  background: linear-gradient(
+      0deg,
+      rgba(159, 224, 9, 0.11),
+      rgba(26, 1, 1, 0.384)
+    ),
+    url("https://www.plasticoslanin.com.ar/img/colores-plasticos-lanin.png")
       no-repeat scroll center / cover;
   padding: 100px 0 100px;
 }
@@ -1134,5 +1141,13 @@ svg {
   .rating i {
     font-size: 10px;
     color: #ebb450;
+  }
+}
+
+/* CATEGORIAS  BOTONES RESPONSIVE */
+@media (max-width: 767px) {
+  .row-cols-lg-3 > div {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
   }
 }

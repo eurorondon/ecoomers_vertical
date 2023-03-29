@@ -15,7 +15,7 @@ const Grid = ({ currentPosts }) => {
 
   return (
     <>
-      <div className="shoptext mb-5" style={{}}>
+      <div className="shoptext mb-5 container" style={{}}>
         <div className="grid my-2">
           {products.map((product, index) => (
             <div className="  " key={index} style={{ flex: "1" }}>

@@ -10,6 +10,7 @@ import Grid from "../Grid";
 import ReactPaginate from "react-paginate";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
 import CategoriaSelector from "../CategoriaSelector";
+import Slider from "../Slider";
 
 const ShopSection = (props) => {
   // const { keyword, pagenumber } = props;
@@ -132,7 +133,7 @@ const ShopSection = (props) => {
   return (
     <>
       {/* <Grid /> */}
-      <div className="container ">
+      <div className="">
         {loading ? (
           <div className="" style={{ margin: "200px 0px" }}>
             <Loading />
@@ -141,21 +142,6 @@ const ShopSection = (props) => {
           <Message variant="alert-danger">{error}</Message>
         ) : (
           <>
-            {currentPath == "/" ? (
-              <div className="bg-dark " style={{ height: "300px" }}>
-                <h5 className="text-white py-3">Categorias</h5>
-                <button onClick={handleButtonCategoria} value="Aluminio">
-                  Aluminio
-                </button>
-                <button onClick={handleButtonCategoria} value="Inplast">
-                  Inplast
-                </button>
-                <button onClick={handleButtonCategoria} value="Conservadores">
-                  Conservadores
-                </button>
-              </div>
-            ) : null}
-
             {!category ? null : (
               <button className="btn btn-primary" onClick={handleGoBack}>
                 Volver Atrás
@@ -163,7 +149,7 @@ const ShopSection = (props) => {
             )}
 
             {!category ? (
-              <div className="mt-5">
+              <div className="mt-5 container">
                 <h2>Nuevos Productos</h2>
                 <div>
                   <select name="categoria" id="" onChange={handleCategoria}>

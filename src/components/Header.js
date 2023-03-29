@@ -138,7 +138,7 @@ const Header = ({ setCurrentPage }) => {
           </div>
         </div>
       </div>
-      <Announcement />
+      <Announcement className="" />
       {/* Header */}
       {/* <div className="header"> */}
       <div className="">
