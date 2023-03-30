@@ -4,7 +4,7 @@ import Product from "../Product";
 
 import "../topsell.css";
 import { useDispatch, useSelector } from "react-redux";
-import { listProductCategoria1 } from "../Redux/Actions/ProductActions";
+import { listProductCategoria2 } from "../Redux/Actions/ProductActions";
 import { useEffect } from "react";
 import Loading from "./LoadingError/Loading";
 
@@ -30,17 +30,17 @@ const responsive = {
   },
 };
 
-export default function TopSell() {
+export default function CarrucelCategoria2() {
   const dispatch = useDispatch();
 
-  const productListCategoria1 = useSelector(
-    (state) => state.productListCategoria1
+  const productListCategoria2 = useSelector(
+    (state) => state.productListCategoria2
   );
 
-  const { products } = productListCategoria1;
+  const { products } = productListCategoria2;
 
   useEffect(() => {
-    dispatch(listProductCategoria1());
+    dispatch(listProductCategoria2());
   }, [dispatch]);
 
   const product = products
@@ -49,7 +49,6 @@ export default function TopSell() {
           name={item.name}
           url={item.image[0]}
           price={item.price}
-
           // description={item.description}
         />
       ))
@@ -59,8 +58,8 @@ export default function TopSell() {
     <>
       {products && products.length > 1 ? (
         <div className={window.innerWidth > 767 ? "mx-5" : ""}>
-          <h2 className=".topsell-title">Cocina</h2>
-          <Carousel showDots={false} responsive={responsive}>
+          <h2 className=".topsell-title">Lo mas vendido</h2>
+          <Carousel showDots={true} responsive={responsive}>
             {product}
           </Carousel>
         </div>

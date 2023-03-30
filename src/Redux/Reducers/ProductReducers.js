@@ -9,6 +9,12 @@ import {
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
+  PRODUCT_LIST_CATEGORIA1_FAIL,
+  PRODUCT_LIST_CATEGORIA1_REQUEST,
+  PRODUCT_LIST_CATEGORIA1_SUCCESS,
+  PRODUCT_LIST_CATEGORIA2_FAIL,
+  PRODUCT_LIST_CATEGORIA2_REQUEST,
+  PRODUCT_LIST_CATEGORIA2_SUCCESS,
 } from "../Constants/ProductConstants";
 
 // PRODUCT LIST
@@ -19,12 +25,52 @@ export const productListReducer = (state = { products: [] }, action) => {
     case PRODUCT_LIST_SUCCESS:
       return {
         loading: false,
-        page: action.payload.page,
-        pages: action.payload.pages,
         products: action.payload.products,
       };
 
     case PRODUCT_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+// PRODUCT CATEGORIA1  LIST
+export const productListCategoria1Reducer = (
+  state = { productsCategoria1: [] },
+  action
+) => {
+  switch (action.type) {
+    case PRODUCT_LIST_CATEGORIA1_REQUEST:
+      return { loading: true, productsCategoria1: [] };
+    case PRODUCT_LIST_CATEGORIA1_SUCCESS:
+      return {
+        loading: false,
+        products: action.payload.products,
+      };
+
+    case PRODUCT_LIST_CATEGORIA1_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+// PRODUCT CATEGORIA2  LIST
+export const productListCategoria2Reducer = (
+  state = { productsCategoria2: [] },
+  action
+) => {
+  switch (action.type) {
+    case PRODUCT_LIST_CATEGORIA2_REQUEST:
+      return { loading: true, productsCategoria2: [] };
+    case PRODUCT_LIST_CATEGORIA2_SUCCESS:
+      return {
+        loading: false,
+        products: action.payload.products,
+      };
+
+    case PRODUCT_LIST_CATEGORIA2_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

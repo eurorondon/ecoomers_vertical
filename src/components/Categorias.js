@@ -11,9 +11,9 @@ function Categorias() {
   return (
     <div className={window.innerWidth > 767 ? "mx-5" : ""}>
       <h2 className="">Categorias destacadas</h2>
-      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-6  ">
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-6   ">
         {categorias.map((categoria, index) => (
-          <div className={window.innerWidth > 767 ? "p-3" : ""} key={index}>
+          <div className={window.innerWidth > 767 ? "p-3" : "p-1"} key={index}>
             <img
               src={categoria.imagen}
               className="card-img-top"

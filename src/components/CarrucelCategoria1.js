@@ -1,3 +1,4 @@
+import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Product from "../Product";
@@ -30,18 +31,16 @@ const responsive = {
   },
 };
 
-export default function TopSell() {
-  const dispatch = useDispatch();
+const CarrucelCategoria1 = () => {
+  //   const dispatch = useDispatch();
 
-  const productListCategoria1 = useSelector(
-    (state) => state.productListCategoria1
-  );
+  const productList = useSelector((state) => state.productList);
 
-  const { products } = productListCategoria1;
+  const { products } = productList;
 
-  useEffect(() => {
-    dispatch(listProductCategoria1());
-  }, [dispatch]);
+  //   useEffect(() => {
+  //     dispatch(listProductCategoria1());
+  //   }, [dispatch]);
 
   const product = products
     ? products.map((item) => (
@@ -49,7 +48,6 @@ export default function TopSell() {
           name={item.name}
           url={item.image[0]}
           price={item.price}
-
           // description={item.description}
         />
       ))
@@ -59,7 +57,7 @@ export default function TopSell() {
     <>
       {products && products.length > 1 ? (
         <div className={window.innerWidth > 767 ? "mx-5" : ""}>
-          <h2 className=".topsell-title">Cocina</h2>
+          <h2 className=".topsell-title">Lo mas vendido</h2>
           <Carousel showDots={false} responsive={responsive}>
             {product}
           </Carousel>
@@ -73,7 +71,7 @@ export default function TopSell() {
         </div>
       )}
     </>
-
-    // <h1>hola</h1>
   );
-}
+};
+
+export default CarrucelCategoria1;

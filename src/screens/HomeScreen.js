@@ -9,6 +9,8 @@ import { useHistory } from "react-router-dom";
 import TopSell from "../components/TopSell";
 import Categorias from "../components/Categorias";
 import Tarjetas from "../components/Tarjetas";
+import CarrucelCategoria1 from "./../components/CarrucelCategoria1";
+import CarrucelCategoria2 from "../components/CarrucelCategoria2";
 
 const HomeScreen = ({ match }) => {
   window.scrollTo(0, 0);
@@ -31,9 +33,9 @@ const HomeScreen = ({ match }) => {
       <CalltoActionSection />
 
       <Tarjetas />
-      <TopSell />
+      <CarrucelCategoria1 />
 
-      <TopSell />
+      <CarrucelCategoria2 />
       {/* <ShopSection
         keyword={keyword}
         pagenumber={pagenumber}
