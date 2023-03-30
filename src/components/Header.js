@@ -51,94 +51,96 @@ const Header = ({ setCurrentPage }) => {
   return (
     <div>
       {/* Top Header */}
-      <div className="Announcement  pc-header  ">
-        <div className="mx-4">
-          <div className="row">
-            <div className="col-4 d-flex align-items-center  justify-content-start   ">
-              <Link className="navbar-brand" to="/">
-                <img
-                  alt="logo"
-                  src="/images/logo.png"
-                  className="rounded-circle border border-white border-2 bg-danger"
-                  style={{ maxWidth: "100px" }}
+      <div className=" pc-header">
+        <div className=" Announcement  ">
+          <div className="mx-4">
+            <div className="row">
+              <div className="col-4 d-flex align-items-center  justify-content-start   ">
+                <Link className="navbar-brand" to="/">
+                  <img
+                    alt="logo"
+                    src="/images/logo.png"
+                    className="rounded-circle border border-white border-2 bg-danger"
+                    style={{ maxWidth: "100px" }}
+                  />
+                </Link>
+
+                <CategoriaSelector
+                  setSelectedCategory={setSelectedCategory}
+                  setCurrentPage={setCurrentPage}
                 />
-              </Link>
 
-              <CategoriaSelector
-                setSelectedCategory={setSelectedCategory}
-                setCurrentPage={setCurrentPage}
-              />
-
-              <div
-                className="d-flex mx-1 text-white button "
-                onClick={() => console.log("click")}
-                style={{ border: "none" }}
-              >
-                <Assessment /> <span>Emprende</span>
-              </div>
-            </div>
-            <div className="col-md-4 col-8 d-flex align-items-center justify-content-center pb-2">
-              <form onSubmit={submitHandler} className="input-group">
-                {/* <form className="input-group"> */}
-                <input
-                  type="search"
-                  className="form-control rounded search"
-                  placeholder="Buscar"
-                  onChange={(e) => setKeyword(e.target.value)}
-                />
-                <button type="submit" className="search-button ">
-                  <Search />
-                </button>
-              </form>
-            </div>
-
-            <div className="col-md-4 d-flex align-items-center justify-content-end Login-Register ">
-              {userInfo ? (
-                <div className="btn-group">
-                  <button
-                    type="button"
-                    className="name-button dropdown-toggle"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Hola, {userInfo.name}
-                  </button>
-                  <div className="dropdown-menu">
-                    <Link className="dropdown-item" to="/profile">
-                      Perfil
-                    </Link>
-
-                    <Link
-                      className="dropdown-item"
-                      to="#"
-                      onClick={logoutHandler}
-                    >
-                      Logout
-                    </Link>
-                  </div>
+                <div
+                  className="d-flex mx-1 text-white button "
+                  style={{ border: "none" }}
+                >
+                  <Assessment /> <span>Emprende</span>
                 </div>
-              ) : (
-                <>
-                  <Link to="/register" className=" button text-white my-auto">
-                    Registrar
-                  </Link>
-                  <Link to="/login" className=" button text-white my-auto">
-                    Login
-                  </Link>
-                </>
-              )}
+              </div>
+              <div className="col-md-4 col-8 d-flex align-items-center justify-content-center pb-2">
+                <form onSubmit={submitHandler} className="input-group">
+                  {/* <form className="input-group"> */}
+                  <input
+                    type="search"
+                    className="form-control rounded search"
+                    placeholder="Buscar"
+                    onChange={(e) => setKeyword(e.target.value)}
+                  />
+                  <button type="submit" className="search-button ">
+                    <Search />
+                  </button>
+                </form>
+              </div>
 
-              <Link to="/cart">
-                <ShoppingCart className="text-white" />
-                {/* <i className="fas fa-shopping-bag text-white"></i> */}
-                <span className="badge">{cartItems.length}</span>
-              </Link>
+              <div className="col-md-4 d-flex align-items-center justify-content-end Login-Register ">
+                {userInfo ? (
+                  <div className="btn-group">
+                    <button
+                      type="button"
+                      className="name-button dropdown-toggle"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Hola, {userInfo.name}
+                    </button>
+                    <div className="dropdown-menu">
+                      <Link className="dropdown-item" to="/profile">
+                        Perfil
+                      </Link>
+
+                      <Link
+                        className="dropdown-item"
+                        to="#"
+                        onClick={logoutHandler}
+                      >
+                        Logout
+                      </Link>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <Link to="/register" className=" button text-white my-auto">
+                      Registrar
+                    </Link>
+                    <Link to="/login" className=" button text-white my-auto">
+                      Login
+                    </Link>
+                  </>
+                )}
+
+                <Link to="/cart">
+                  <ShoppingCart className="text-white" />
+                  {/* <i className="fas fa-shopping-bag text-white"></i> */}
+                  <span className="badge">{cartItems.length}</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
+        <Announcement className="" />
       </div>
-      <Announcement className="" />
+
       {/* Header */}
       {/* <div className="header"> */}
       <div className="">
