@@ -7,18 +7,28 @@
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 320px;
-  margin: auto 1rem;
-  text-align: center;
+  /* margin: auto 1rem; */
+  /* text-align: center; */
   font-family: arial;
+  position: relative;
+}
+.test {
+  z-index: 5;
+  background-color: aqua;
 }
 
 .price {
   color: grey;
-  font-size: clamp(0.8rem, 2vw, 1.5rem);
-  /* font-size: 1px; */
+  font-size: clamp(0.7rem, 2vw, 1.5rem);
+  text-align: end;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 .name {
-  font-size: clamp(0.6rem, 2vw, 1.5rem);
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
+  text-align: center;
+  margin-left: 5px;
 }
 
 .call-action {
@@ -40,4 +50,13 @@
 
 .card button:hover {
   opacity: 0.7;
+}
+
+/* 
+.react-multiple-carousel__arrow {
+  bottom: 0%;
+} */
+
+.react-multi-carousel-list .react-multiple-carousel__arrow {
+  display: none;
 }

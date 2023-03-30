@@ -147,7 +147,7 @@ const Header = ({ setCurrentPage }) => {
         <div className="container">
           {/* MOBILE HEADER */}
           <div className="mobile-header">
-            <div className="container ">
+            <div className="container mb-5 ">
               <div className="row ">
                 {/* <div className="col-6 d-flex align-items-center">
                   <a href="#" onclick="location.reload();">

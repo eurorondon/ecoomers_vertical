@@ -45,13 +45,7 @@ export default function TopSell() {
 
   const product = products
     ? products.map((item) => (
-        <Product
-          name={item.name}
-          url={item.image[0]}
-          price={item.price}
-
-          // description={item.description}
-        />
+        <Product name={item.name} url={item.image[0]} price={item.price} />
       ))
     : null;
 
@@ -60,7 +54,11 @@ export default function TopSell() {
       {products && products.length > 1 ? (
         <div className={window.innerWidth > 767 ? "mx-5" : ""}>
           <h2 className=".topsell-title">Cocina</h2>
-          <Carousel showDots={false} responsive={responsive}>
+          <Carousel
+            showDots={false}
+            responsive={responsive}
+            customButtonGroup={false}
+          >
             {product}
           </Carousel>
         </div>
