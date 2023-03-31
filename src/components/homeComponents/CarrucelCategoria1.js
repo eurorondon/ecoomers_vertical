@@ -1,12 +1,13 @@
+import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Product from "../Product";
+import Product from "../../Product";
 
-import "../topsell.css";
+import "./topsell.css";
 import { useDispatch, useSelector } from "react-redux";
-import { listProductCategoria2 } from "../Redux/Actions/ProductActions";
+import { listProductCategoria1 } from "../../Redux/Actions/ProductActions";
 import { useEffect } from "react";
-import Loading from "./LoadingError/Loading";
+import Loading from "../LoadingError/Loading";
 
 const responsive = {
   superLargeDesktop: {
@@ -26,25 +27,23 @@ const responsive = {
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 3,
-    slidesToSlide: 2,
+    slidesToSlide: 3,
   },
 };
 
-export default function CarrucelCategoria2() {
-  const dispatch = useDispatch();
+const CarrucelCategoria1 = () => {
+  //   const dispatch = useDispatch();
 
-  const productListCategoria2 = useSelector(
-    (state) => state.productListCategoria2
-  );
+  const productList = useSelector((state) => state.productList);
 
-  const { products } = productListCategoria2;
+  const { products } = productList;
 
-  useEffect(() => {
-    dispatch(listProductCategoria2());
-  }, [dispatch]);
+  //   useEffect(() => {
+  //     dispatch(listProductCategoria1());
+  //   }, [dispatch]);
 
   const product = products
-    ? products.map((item) => (
+    ? products.slice(0, window.innerWidth > 767 ? 30 : 10).map((item) => (
         <Product
           name={item.name}
           url={item.image[0]}
@@ -59,7 +58,7 @@ export default function CarrucelCategoria2() {
       {products && products.length > 1 ? (
         <div className={window.innerWidth > 767 ? "mx-5" : ""}>
           <h2 className=".topsell-title">Lo mas vendido</h2>
-          <Carousel showDots={false} responsive={responsive}>
+          <Carousel showDots={true} responsive={responsive}>
             {product}
           </Carousel>
         </div>
@@ -72,7 +71,7 @@ export default function CarrucelCategoria2() {
         </div>
       )}
     </>
-
-    // <h1>hola</h1>
   );
-}
+};
+
+export default CarrucelCategoria1;

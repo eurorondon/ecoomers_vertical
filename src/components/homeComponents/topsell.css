@@ -57,6 +57,13 @@
   bottom: 0%;
 } */
 
-.react-multi-carousel-list .react-multiple-carousel__arrow {
-  display: none;
+@media screen and (min-width: 768px) {
+  .react-multi-carousel-dot {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .react-multi-carousel-list .react-multiple-carousel__arrow {
+    display: none;
+  }
 }

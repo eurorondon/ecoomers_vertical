@@ -4,13 +4,14 @@ import ShopSection from "./../components/homeComponents/ShopSection";
 import ContactInfo from "./../components/homeComponents/ContactInfo";
 import CalltoActionSection from "./../components/homeComponents/CalltoActionSection";
 import Footer from "./../components/Footer";
-import Slider from "../components/Slider";
+import Slider from "../components/homeComponents/Slider";
 import { useHistory } from "react-router-dom";
-import TopSell from "../components/TopSell";
-import Categorias from "../components/Categorias";
-import Tarjetas from "../components/Tarjetas";
-import CarrucelCategoria1 from "./../components/CarrucelCategoria1";
-import CarrucelCategoria2 from "../components/CarrucelCategoria2";
+import TopSell from "../components/homeComponents/CarrucelCategoria3";
+import Categorias from "../components/homeComponents/Categorias";
+import Tarjetas from "../components/homeComponents/Tarjetas";
+import CarrucelCategoria1 from "../components/homeComponents/CarrucelCategoria1";
+import CarrucelCategoria2 from "../components/homeComponents/CarrucelCategoria2";
+import CarrucelCategoria3 from "../components/homeComponents/CarrucelCategoria3";
 
 const HomeScreen = ({ match }) => {
   window.scrollTo(0, 0);
@@ -26,16 +27,17 @@ const HomeScreen = ({ match }) => {
       <Header setCurrentPage={setCurrentPage} />
       {currentPath == "/" ? <Slider /> : null}
 
-      <TopSell />
+      <CarrucelCategoria1 />
+      {/* <TopSell /> */}
 
       <Categorias />
 
       <CalltoActionSection />
 
       <Tarjetas />
-      <CarrucelCategoria1 />
 
       <CarrucelCategoria2 />
+      <CarrucelCategoria3 />
       {/* <ShopSection
         keyword={keyword}
         pagenumber={pagenumber}

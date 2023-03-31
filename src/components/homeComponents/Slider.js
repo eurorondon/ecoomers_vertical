@@ -26,6 +26,18 @@ const sliderItems = [
   },
 ];
 
+const promociones = [
+  {
+    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680232745/1_ihs8nv.png",
+  },
+  {
+    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680232745/3_zvsj6w.png",
+  },
+  {
+    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680232745/2_brzbfx.png",
+  },
+];
+
 const Container = styled.div`
   width: 100%;
   height: 50vh;
@@ -64,7 +76,7 @@ const Wrapper = styled.div`
 // PARA CAMBIAR EL TAMANO DEBE SER AQUI
 const Slide = styled.div`
   width: 100vw;
-  height: 50vh;
+  height: 56vh;
   display: flex;
   align-items: center;
   background-color: #${(props) => props.bg};
@@ -121,20 +133,33 @@ const Slider = () => {
       {/* <Arrow direction="left" onClick={() => handleClick("left")}>
         <ArrowLeftOutlined className="text-white" />
       </Arrow> */}
-      <Wrapper slideIndex={slideIndex}>
-        {sliderItems.map((item) => (
-          <Slide bg={item.bg} key={item.id}>
-            <ImageContainer>
-              <img src={item.img} alt="" style={{ height: "100%" }} />
-            </ImageContainer>
-            <InfoContainer>
-              <Tittle>{item.title}</Tittle>
-              <Desc>{item.desc}</Desc>
-              <Button>SHOW NOW</Button>
-            </InfoContainer>
-          </Slide>
-        ))}
-      </Wrapper>
+      {window.innerWidth < 767 ? (
+        <Wrapper slideIndex={slideIndex}>
+          {promociones.map((item) => (
+            <Slide bg={item.bg} key={item.id}>
+              <div>
+                <img src={item.img} className="img-fluid" alt="" style={{}} />
+              </div>
+            </Slide>
+          ))}
+        </Wrapper>
+      ) : (
+        <Wrapper slideIndex={slideIndex}>
+          {sliderItems.map((item) => (
+            <Slide bg={item.bg} key={item.id}>
+              <ImageContainer>
+                <img src={item.img} alt="" style={{ height: "100%" }} />
+              </ImageContainer>
+              <InfoContainer>
+                <Tittle>{item.title}</Tittle>
+                <Desc>{item.desc}</Desc>
+                <Button>SHOW NOW</Button>
+              </InfoContainer>
+            </Slide>
+          ))}
+        </Wrapper>
+      )}
+
       {/* <Arrow direction="rigth" onClick={() => handleClick("rigth")}>
         <ArrowRightOutlined className="text-white" />
       </Arrow> */}

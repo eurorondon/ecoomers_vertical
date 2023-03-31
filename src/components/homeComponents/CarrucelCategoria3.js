@@ -1,13 +1,12 @@
-import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Product from "../Product";
+import Product from "../../Product";
 
-import "../topsell.css";
+import "./topsell.css";
 import { useDispatch, useSelector } from "react-redux";
-import { listProductCategoria1 } from "../Redux/Actions/ProductActions";
+import { listProductCategoria3 } from "../../Redux/Actions/ProductActions";
 import { useEffect } from "react";
-import Loading from "./LoadingError/Loading";
+import Loading from "../LoadingError/Loading";
 
 const responsive = {
   superLargeDesktop: {
@@ -27,23 +26,25 @@ const responsive = {
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 3,
-    slidesToSlide: 2,
+    slidesToSlide: 3,
   },
 };
 
-const CarrucelCategoria1 = () => {
-  //   const dispatch = useDispatch();
+export default function CarrucelCategoria3() {
+  const dispatch = useDispatch();
 
-  const productList = useSelector((state) => state.productList);
+  const productListCategoria3 = useSelector(
+    (state) => state.productListCategoria3
+  );
 
-  const { products } = productList;
+  const { products } = productListCategoria3;
 
-  //   useEffect(() => {
-  //     dispatch(listProductCategoria1());
-  //   }, [dispatch]);
+  useEffect(() => {
+    dispatch(listProductCategoria3());
+  }, [dispatch]);
 
   const product = products
-    ? products.map((item) => (
+    ? products.slice(0, window.innerWidth > 767 ? 30 : 10).map((item) => (
         <Product
           name={item.name}
           url={item.image[0]}
@@ -57,8 +58,8 @@ const CarrucelCategoria1 = () => {
     <>
       {products && products.length > 1 ? (
         <div className={window.innerWidth > 767 ? "mx-5" : ""}>
-          <h2 className=".topsell-title">Lo mas vendido</h2>
-          <Carousel showDots={false} responsive={responsive}>
+          <h2 className=".topsell-title">Conservadores</h2>
+          <Carousel showDots={true} responsive={responsive}>
             {product}
           </Carousel>
         </div>
@@ -71,7 +72,7 @@ const CarrucelCategoria1 = () => {
         </div>
       )}
     </>
-  );
-};
 
-export default CarrucelCategoria1;
+    // <h1>hola</h1>
+  );
+}
