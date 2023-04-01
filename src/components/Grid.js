@@ -1,6 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Navigate } from "react-router";
+import Product from "./ProductGrid";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Grid = ({ currentPosts }) => {
@@ -13,75 +14,21 @@ const Grid = ({ currentPosts }) => {
     <Navigate to={`/products/${id}`} />;
   };
 
+  const product = products
+    ? products.map((item) => (
+        <Product
+          url={item.image[0]}
+          name={item.name}
+          description={item.description}
+          price={item.price}
+        />
+      ))
+    : null;
+
   return (
     <>
-      <div className="shoptext mb-5 container" style={{}}>
-        <div className="grid my-2">
-          {products.map((product, index) => (
-            <div className="  " key={index} style={{ flex: "1" }}>
-              <Link to={`/products/${product._id}`}>
-                <div
-                  className="cardpen"
-                  style={{
-                    backgroundImage: ` url(${product.photo[0].url})`,
-                    // SUUUPERRR IMPORTANTE !!!aqui debe cambiarse cuando se cree el responsive OJO y tambien en css grid style!!
-                    backgroundSize: "180px auto",
-                    backgroundRepeat: "no-repeat",
-                    // aqui debe cambiarse cuando se cree el responsive OJO !!
-                    minHeight: "200px",
-                    position: "relative",
-                  }}
-                >
-                  <span
-                    className="rounded bg-secondary"
-                    style={{
-                      position: "absolute",
-                      bottom: "0px",
-                      right: "0px",
-                      zIndex: "3",
-                      color: "white",
-                      padding: "0px 10px",
-                      background: "",
-                    }}
-                  >
-                    {product.price}$
-                  </span>
-                </div>
-                <div
-                  className=""
-                  onClick={() => {
-                    navigatehandle(product._id);
-                  }}
-                />
-              </Link>
-
-              <div>
-                <Link to={`/products/${product._id}`}>
-                  <div
-                    className="d-flex flex-column "
-                    style={{ position: "relative", height: "85px" }}
-                  >
-                    <div className="card__details ms-2  ">{product.name}</div>
-
-                    <div className="d-flex justify-content-center">
-                      <button
-                        className="btn btn-primary  "
-                        style={{
-                          width: "100%",
-                          position: "absolute",
-                          bottom: "0px",
-                          zIndex: "2",
-                        }}
-                      >
-                        Información
-                      </button>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
+      <div className=" container mb-5 " style={{}}>
+        <div className="grid my-2">{product}</div>
       </div>
     </>
   );

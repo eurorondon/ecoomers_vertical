@@ -2,11 +2,9 @@ export default function Product(props) {
   const MAX_TITLE_LENGTH = 17; // El número máximo de caracteres permitidos en el título
   const MAX_DESCRIPTION_LENGTH = 40; // El número máximo de caracteres permitidos en la descripción\
 
-  console.log(props);
-
   return (
     <div
-      className="card  text-start  "
+      className="carosel-card  text-start  "
       style={
         window.innerWidth > 767
           ? { marginBottom: "40px" }

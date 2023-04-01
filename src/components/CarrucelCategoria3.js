@@ -1,6 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Product from "../Product";
+import Product from "./Product";
 
 import "../topsell.css";
 import { useDispatch, useSelector } from "react-redux";
