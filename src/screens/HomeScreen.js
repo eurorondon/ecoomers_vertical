@@ -36,12 +36,12 @@ const HomeScreen = ({ match }) => {
       <CarrucelCategoria1 />
 
       <CarrucelCategoria2 />
-      {/* <ShopSection
+      <ShopSection
         keyword={keyword}
         pagenumber={pagenumber}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
-      /> */}
+      />
       <ContactInfo />
       <Footer />
     </div>
