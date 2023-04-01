@@ -44,14 +44,16 @@ const CarrucelCategoria1 = () => {
   }, [dispatch]);
 
   const product = products
-    ? products.slice(0, window.innerWidth > 767 ? 30 : 10).map((item) => (
-        <Product
-          name={item.name}
-          url={item.image[0]}
-          price={item.price}
-          // description={item.description}
-        />
-      ))
+    ? products
+        .slice(0, window.innerWidth > 767 ? 30 : 10)
+        .map((item) => (
+          <Product
+            url={item.image[0]}
+            name={item.name}
+            description={item.description}
+            price={item.price}
+          />
+        ))
     : null;
 
   return (
