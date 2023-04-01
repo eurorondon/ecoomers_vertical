@@ -27,7 +27,7 @@ const Grid = ({ currentPosts }) => {
 
   return (
     <>
-      <div className=" container mb-5 " style={{}}>
+      <div className="  mb-5 " style={{}}>
         <div className="grid my-2">{product}</div>
       </div>
     </>

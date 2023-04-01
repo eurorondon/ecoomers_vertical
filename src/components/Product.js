@@ -4,7 +4,7 @@ export default function Product(props) {
 
   return (
     <div
-      className="carosel-card  text-start  "
+      className=" card carousel-card  text-start  "
       style={
         window.innerWidth > 767
           ? { marginBottom: "40px" }

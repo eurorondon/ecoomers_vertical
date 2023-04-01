@@ -4,7 +4,7 @@ export default function Product(props) {
 
   return (
     <div
-      className="card  text-start  "
+      className="card my-1 text-start   "
       style={
         window.innerWidth > 767
           ? { marginBottom: "40px" }
@@ -12,7 +12,10 @@ export default function Product(props) {
       }
     >
       <img className="product--image" src={props.url} alt="product image" />
-      <div className="p-2" style={{ backgroundColor: "#f2f2f2" }}>
+      <div
+        className="p-2"
+        style={{ backgroundColor: "#f2f2f2", height: "100%" }}
+      >
         <h5 className="name" style={{ fontWeight: "bold" }}>
           {props.name.length > MAX_TITLE_LENGTH
             ? props.name.substring(0, MAX_TITLE_LENGTH) + "..."
@@ -21,7 +24,7 @@ export default function Product(props) {
         <div
           className="my-2"
           style={
-            window.innerWidth > 767 ? { height: "50px" } : { height: "40px" }
+            window.innerWidth > 767 ? { height: "80px" } : { height: "55px" }
           }
         >
           {props.description ? (
@@ -35,7 +38,10 @@ export default function Product(props) {
           )}
         </div>
 
-        <p className="price" style={{ fontWeight: "bold" }}>
+        <p
+          className="price"
+          style={{ fontWeight: "bold", position: "absolute", bottom: "5px" }}
+        >
           {props.price} $
         </p>
         {/* <p>

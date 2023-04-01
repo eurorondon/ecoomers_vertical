@@ -4,7 +4,7 @@
   object-fit: cover;
 }
 
-.carosel-card {
+.carousel-card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 320px;
   margin: auto 1rem;
@@ -30,7 +30,7 @@
   font-size: 60px;
 }
 
-.card button {
+.carousel-card button {
   border: none;
   outline: 0;
   padding: 12px;
@@ -42,7 +42,7 @@
   font-size: 18px;
 }
 
-.card button:hover {
+.carousel-card button:hover {
   opacity: 0.7;
 }
 
