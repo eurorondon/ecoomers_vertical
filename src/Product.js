@@ -40,7 +40,7 @@ export default function Product(props) {
             : { margin: "0px 1px" }
         }
       >
-        <div className="card">
+        <div className="">
           <img className="product--image" src={props.url} alt="product image" />
 
           <p className="price bg-dark px-2 rounded text-white m-1 ">
