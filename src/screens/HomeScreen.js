@@ -11,6 +11,7 @@ import Categorias from "../components/Categorias";
 import Tarjetas from "../components/Tarjetas";
 import CarrucelCategoria1 from "./../components/CarrucelCategoria1";
 import CarrucelCategoria2 from "../components/CarrucelCategoria2";
+import CarrucelCategoria3 from "../components/CarrucelCategoria3";
 
 const HomeScreen = ({ match }) => {
   window.scrollTo(0, 0);
@@ -26,16 +27,16 @@ const HomeScreen = ({ match }) => {
       <Header setCurrentPage={setCurrentPage} />
       {currentPath == "/" ? <Slider /> : null}
 
-      <TopSell />
+      <CarrucelCategoria1 />
 
       <Categorias />
 
       <CalltoActionSection />
 
       <Tarjetas />
-      <CarrucelCategoria1 />
 
       <CarrucelCategoria2 />
+      <CarrucelCategoria3 />
       <ShopSection
         keyword={keyword}
         pagenumber={pagenumber}

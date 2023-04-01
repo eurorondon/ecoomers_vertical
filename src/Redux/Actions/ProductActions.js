@@ -15,6 +15,9 @@ import {
   PRODUCT_LIST_CATEGORIA2_FAIL,
   PRODUCT_LIST_CATEGORIA2_REQUEST,
   PRODUCT_LIST_CATEGORIA2_SUCCESS,
+  PRODUCT_LIST_CATEGORIA3_FAIL,
+  PRODUCT_LIST_CATEGORIA3_REQUEST,
+  PRODUCT_LIST_CATEGORIA3_SUCCESS,
 } from "../Constants/ProductConstants";
 import { URL } from "../Url";
 import { logout } from "./userActions";
@@ -82,9 +85,9 @@ export const listProductCategoria1 =
     }
   };
 
-// PRODUCT LIST CATEGORIA2 EN ESPECIFICO
+// PRODUCT LIST CATEGORIA2 EN ESPECIFICO ALUMINIO
 export const listProductCategoria2 =
-  (keyword = "", pageNumber = "", category = "") =>
+  (keyword = "", pageNumber = "", category = "Aluminio") =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_CATEGORIA2_REQUEST });
@@ -104,6 +107,36 @@ export const listProductCategoria2 =
     } catch (error) {
       dispatch({
         type: PRODUCT_LIST_CATEGORIA2_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+
+// PRODUCT LIST CATEGORIA3 EN ESPECIFICO CONSERVADORES
+export const listProductCategoria3 =
+  (keyword = "", pageNumber = "", category = "Conservadores") =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: PRODUCT_LIST_CATEGORIA3_REQUEST });
+
+      if (keyword != "") {
+        const { data } = await axios.get(
+          `${URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+        );
+
+        dispatch({ type: PRODUCT_LIST_CATEGORIA3_SUCCESS, payload: data });
+      } else {
+        const { data } = await axios.get(
+          `${URL}/api/products?&pageNumber=${pageNumber}&category=${category}`
+        );
+        dispatch({ type: PRODUCT_LIST_CATEGORIA3_SUCCESS, payload: data });
+      }
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_LIST_CATEGORIA3_FAIL,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message

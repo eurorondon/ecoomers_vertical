@@ -15,6 +15,9 @@ import {
   PRODUCT_LIST_CATEGORIA2_FAIL,
   PRODUCT_LIST_CATEGORIA2_REQUEST,
   PRODUCT_LIST_CATEGORIA2_SUCCESS,
+  PRODUCT_LIST_CATEGORIA3_FAIL,
+  PRODUCT_LIST_CATEGORIA3_REQUEST,
+  PRODUCT_LIST_CATEGORIA3_SUCCESS,
 } from "../Constants/ProductConstants";
 
 // PRODUCT LIST
@@ -71,6 +74,27 @@ export const productListCategoria2Reducer = (
       };
 
     case PRODUCT_LIST_CATEGORIA2_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+// PRODUCT CATEGORIA3  LIST
+export const productListCategoria3Reducer = (
+  state = { productsCategoria3: [] },
+  action
+) => {
+  switch (action.type) {
+    case PRODUCT_LIST_CATEGORIA3_REQUEST:
+      return { loading: true, productsCategoria3: [] };
+    case PRODUCT_LIST_CATEGORIA3_SUCCESS:
+      return {
+        loading: false,
+        products: action.payload.products,
+      };
+
+    case PRODUCT_LIST_CATEGORIA3_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
