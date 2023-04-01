@@ -57,7 +57,7 @@ export default function CarrucelCategoria3() {
   return (
     <>
       {products && products.length > 1 ? (
-        <div className={window.innerWidth > 767 ? "mx-5" : ""}>
+        <div className={window.innerWidth > 767 ? "mx-5" : "container"}>
           <h2 className=".topsell-title">Conservadores</h2>
           <Carousel showDots={true} responsive={responsive}>
             {product}

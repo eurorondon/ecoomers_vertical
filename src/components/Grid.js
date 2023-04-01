@@ -1,33 +1,41 @@
 import React from "react";
-import { Navigate } from "react-router";
-import Product from "./ProductGrid";
 import { useSelector } from "react-redux";
+import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
+import Product from "./ProductGrid";
 
 const Grid = ({ currentPosts }) => {
   // const productList = useSelector((state) => state.productList);
   // const { products } = productList;
 
   let products = currentPosts;
+  // console.log(products);
+
+  const product = products
+    ? products.map((item) => (
+        <div className="product-container" key={item._id}>
+          <Link to={`/products/${item._id}`}>
+            <Product
+              url={item.image[0]}
+              name={item.name}
+              description={item.description}
+              price={item.price}
+            />
+          </Link>
+        </div>
+      ))
+    : null;
 
   const navigatehandle = (id) => {
     <Navigate to={`/products/${id}`} />;
   };
 
-  const product = products
-    ? products.map((item) => (
-        <Product
-          url={item.image[0]}
-          name={item.name}
-          description={item.description}
-          price={item.price}
-        />
-      ))
-    : null;
-
   return (
     <>
-      <div className="  mb-5 " style={{}}>
+      <div
+        className={window.innerWidth > 767 ? "mb-5 mx-5" : "container"}
+        style={{}}
+      >
         <div className="grid my-2">{product}</div>
       </div>
     </>
@@ -35,29 +43,3 @@ const Grid = ({ currentPosts }) => {
 };
 
 export default Grid;
-
-// {
-//   products.map((product) => (
-//     <div className="shop col-6 col-xl-4 col-lg-6" key={product._id}>
-//       <div className="border-product">
-//         <Link to={`/products/${product._id}`}>
-//           <div className="shopBack">
-//             <img src={product.image[0]} alt={product.name} />
-//           </div>
-//         </Link>
-
-//         <div className="shoptext">
-//           <p>
-//             <Link to={`/products/${product._id}`}>{product.name}</Link>
-//           </p>
-
-//           <Rating
-//             value={product.rating}
-//             text={`${product.numReviews} reviews`}
-//           />
-//           <h3>${product.price}</h3>
-//         </div>
-//       </div>
-//     </div>
-//   ));
-// }

@@ -58,7 +58,7 @@ const CarrucelCategoria1 = () => {
   return (
     <>
       {products && products.length > 1 ? (
-        <div className={window.innerWidth > 767 ? "mx-5" : ""}>
+        <div className={window.innerWidth > 767 ? "mx-5" : "container"}>
           <h2 className=".topsell-title">Lo mas vendido</h2>
           <Carousel showDots={true} responsive={responsive} swipeable={true}>
             {product}

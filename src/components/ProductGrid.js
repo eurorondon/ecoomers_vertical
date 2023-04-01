@@ -11,7 +11,15 @@ export default function Product(props) {
           : { margin: " 0px 1px  60px 1px" }
       }
     >
-      <img className="product--image" src={props.url} alt="product image" />
+      <div className="mx-auto">
+        <img
+          className="product--image"
+          src={props.url}
+          alt="product image"
+          style={{ maxWidth: "15rem" }}
+        />
+      </div>
+
       <div
         className="p-2"
         style={{ backgroundColor: "#f2f2f2", height: "100%" }}
