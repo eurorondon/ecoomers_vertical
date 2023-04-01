@@ -45,7 +45,7 @@ const CarrucelCategoria1 = () => {
 
   const product = products
     ? products
-        .slice(0, window.innerWidth > 767 ? 30 : 10)
+        .slice(0, window.innerWidth > 767 ? 30 : 12)
         .map((item) => (
           <Product
             url={item.image[0]}

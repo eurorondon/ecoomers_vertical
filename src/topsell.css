@@ -45,3 +45,21 @@
 .card button:hover {
   opacity: 0.7;
 }
+
+.react-multi-carousel-dot {
+  bottom: 0%;
+}
+
+/* @media screen and (min-width: 768px) {
+  .react-multi-carousel-dot {
+    display: none;
+  }
+} */
+@media screen and (max-width: 768px) {
+  /* .react-multi-carousel-list .react-multiple-carousel__arrow {
+    display: none;
+  } */
+  .react-multiple-carousel__arrow {
+    bottom: 0%;
+  }
+}

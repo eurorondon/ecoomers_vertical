@@ -6,8 +6,12 @@ export default function Product(props) {
 
   return (
     <div
-      className="card mb-5  text-start  "
-      style={window.innerWidth > 767 ? {} : { margin: "0px 1px" }}
+      className="card  text-start  "
+      style={
+        window.innerWidth > 767
+          ? { marginBottom: "40px" }
+          : { margin: " 0px 1px  60px 1px" }
+      }
     >
       <img className="product--image" src={props.url} alt="product image" />
       <div className="p-2" style={{ backgroundColor: "#f2f2f2" }}>

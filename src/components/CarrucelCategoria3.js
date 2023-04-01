@@ -44,7 +44,7 @@ export default function CarrucelCategoria3() {
   }, [dispatch]);
 
   const product = products
-    ? products.slice(0, window.innerWidth > 767 ? 30 : 10).map((item) => (
+    ? products.slice(0, window.innerWidth > 767 ? 30 : 12).map((item) => (
         <Product
           name={item.name}
           url={item.image[0]}
