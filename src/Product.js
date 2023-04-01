@@ -16,7 +16,12 @@ export default function Product(props) {
             ? props.name.substring(0, MAX_TITLE_LENGTH) + "..."
             : props.name}
         </h5>
-        <div className="my-2" style={{ height: "50px" }}>
+        <div
+          className="my-2"
+          style={
+            window.innerWidth > 767 ? { height: "50px" } : { height: "40px" }
+          }
+        >
           {props.description ? (
             <p className="description">
               {props.description.length > MAX_DESCRIPTION_LENGTH
@@ -28,7 +33,9 @@ export default function Product(props) {
           )}
         </div>
 
-        <p className="price">{props.price} $</p>
+        <p className="price" style={{ fontWeight: "bold" }}>
+          {props.price} $
+        </p>
         {/* <p>
           <button
             className="call-action"

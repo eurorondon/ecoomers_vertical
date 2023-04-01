@@ -14,14 +14,14 @@
 
 .price {
   color: grey;
-  font-size: clamp(0.8rem, 2vw, 1.5rem);
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
   /* font-size: 1px; */
 }
 .name {
-  font-size: clamp(0.8rem, 2vw, 1.5rem);
+  font-size: clamp(0.7rem, 2vw, 1.2rem);
 }
 .description {
-  font-size: clamp(0.8rem, 2vw, 1.2rem);
+  font-size: clamp(0.7rem, 2vw, 1.2rem);
   text-align: start;
 }
 
