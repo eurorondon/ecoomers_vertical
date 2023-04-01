@@ -10,7 +10,6 @@ import Grid from "../Grid";
 import ReactPaginate from "react-paginate";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
 import CategoriaSelector from "../CategoriaSelector";
-import Slider from "../Slider";
 
 const ShopSection = (props) => {
   // const { keyword, pagenumber } = props;

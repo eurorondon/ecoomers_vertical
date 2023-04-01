@@ -41,3 +41,79 @@
 .card button:hover {
   opacity: 0.7;
 }
+
+/* esta es la segunda version de tarjetas  ojoooooooooooooooooooo o escojes la de arriba o la de abajo */
+
+.product--image {
+  width: 100%;
+  /* height: 16em; */
+  object-fit: cover;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 320px;
+  /* margin: auto 1rem; */
+  /* text-align: center; */
+  font-family: arial;
+  position: relative;
+}
+.test {
+  z-index: 5;
+  background-color: aqua;
+}
+
+.price {
+  color: grey;
+  font-size: clamp(0.7rem, 2vw, 1.5rem);
+  text-align: end;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.name {
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
+  text-align: center;
+  margin-left: 5px;
+}
+
+.call-action {
+  font-size: clamp(0.8rem, 2vw, 1.5rem);
+  font-size: 60px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+.react-multi-carousel-dot {
+  font-size: 10px;
+}
+
+/* 
+.react-multiple-carousel__arrow {
+  bottom: 0%;
+} */
+
+@media screen and (min-width: 768px) {
+  .react-multi-carousel-dot {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .react-multi-carousel-list .react-multiple-carousel__arrow {
+    display: none;
+  }
+}

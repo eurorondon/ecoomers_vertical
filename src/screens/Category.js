@@ -26,22 +26,13 @@ const HomeScreen = ({ match }) => {
     <div>
       <Header setCurrentPage={setCurrentPage} />
       {currentPath == "/" ? <Slider /> : null}
-      {currentPath == "/" ? <CarrucelCategoria1 /> : null}
-      {currentPath == "/" ? <Categorias /> : null}
-      {currentPath == "/" ? <CalltoActionSection /> : null}
-      {currentPath == "/" ? <Tarjetas /> : null}
-      {currentPath == "/" ? <CarrucelCategoria2 /> : null}
-      {currentPath == "/" ? <CarrucelCategoria3 /> : null}
 
-      {currentPath !== "/" ? (
-        <ShopSection
-          keyword={keyword}
-          pagenumber={pagenumber}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-      ) : null}
-
+      <ShopSection
+        keyword={keyword}
+        pagenumber={pagenumber}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
       <ContactInfo />
       <Footer />
     </div>

@@ -16,13 +16,9 @@ const Header = ({ setCurrentPage }) => {
   const { cartItems } = cart;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-  const { category } = useParams();
+  // const { category } = useParams();
 
   const [selectedCategory, setSelectedCategory] = useState();
-
-  useEffect(() => {
-    dispatch(listProduct(category));
-  }, [dispatch, category]);
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -32,6 +28,7 @@ const Header = ({ setCurrentPage }) => {
     e.preventDefault();
     if (keyword.trim()) {
       history.push(`/search/${keyword}`);
+      setCurrentPage(0);
     } else {
       history.push("/");
     }
