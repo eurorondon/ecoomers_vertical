@@ -33,13 +33,6 @@ const HomeScreen = ({ match }) => {
       {currentPath == "/" ? <CarrucelCategoria2 /> : null}
       {currentPath == "/" ? <CarrucelCategoria3 /> : null}
 
-      <ShopSection
-        keyword={keyword}
-        pagenumber={pagenumber}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-
       {currentPath !== "/" ? (
         <ShopSection
           keyword={keyword}

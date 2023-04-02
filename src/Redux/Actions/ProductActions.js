@@ -26,6 +26,7 @@ import { logout } from "./userActions";
 export const listProduct =
   (keyword = "", pageNumber = "", category = "") =>
   async (dispatch) => {
+    console.log(category);
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
 

@@ -1,4 +1,4 @@
-import { MenuBookOutlined, MenuOpen } from "@material-ui/icons";
+import { MenuOpen } from "@material-ui/icons";
 import React, { useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 
