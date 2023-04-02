@@ -154,8 +154,12 @@ const ShopSection = (props) => {
             )} */}
 
             {!category ? (
-              <div className="mt-5 container">
-                <h2>Nuevos Productos</h2>
+              <div
+                className={
+                  window.innerWidth > 1240 ? "ms-5  mt-4" : "container mt-4"
+                }
+              >
+                <h2>{keyword}</h2>
                 <div>
                   <select name="categoria" id="" onChange={handleCategoria}>
                     <option disabled selected value="">
