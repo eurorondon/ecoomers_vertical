@@ -76,7 +76,7 @@ const Wrapper = styled.div`
 // PARA CAMBIAR EL TAMANO DEBE SER AQUI
 const Slide = styled.div`
   width: 100vw;
-  height: 56vh;
+  height: 50vh;
   display: flex;
   align-items: center;
   background-color: #${(props) => props.bg};
@@ -93,18 +93,19 @@ const InfoContainer = styled.div`
   padding: 50px;
 `;
 
-const Tittle = styled.h1`
-  font-size: 70px;
+const Tittle = styled.h2`
+  font-size: clamp(0.8rem, 2.5vw, 4rem);
 `;
+
 const Desc = styled.p`
-  margin: 50px 0px;
-  font-size: 20px;
+  margin: 20px 0px;
+  font-size: clamp(0.8rem, 2vw, 1rem);
   font-weight: 500;
   letter-spacing: 3px;
 `;
 const Button = styled.button`
   padding: 10px;
-  font-size: 20px;
+  font-size: clamp(0.1rem, 1vw, 2rem);
   background-color: transparent;
   cursor: pointer;
 `;
@@ -148,7 +149,7 @@ const Slider = () => {
           {sliderItems.map((item) => (
             <Slide bg={item.bg} key={item.id}>
               <ImageContainer>
-                <img src={item.img} alt="" style={{ height: "100%" }} />
+                <img src={item.img} alt="" className="img-fluid" />
               </ImageContainer>
               <InfoContainer>
                 <Tittle>{item.title}</Tittle>

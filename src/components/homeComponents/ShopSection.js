@@ -147,11 +147,11 @@ const ShopSection = (props) => {
           <Message variant="alert-danger">{error}</Message>
         ) : (
           <>
-            {!category ? null : (
+            {/* {!category ? null : (
               <button className="btn btn-primary" onClick={handleGoBack}>
                 Volver Atrás
               </button>
-            )}
+            )} */}
 
             {!category ? (
               <div className="mt-5 container">
@@ -175,7 +175,11 @@ const ShopSection = (props) => {
                 </div>
               </div>
             ) : (
-              <div className="mt-5">
+              <div
+                className={
+                  window.innerWidth > 1240 ? "ms-5  mt-4" : "container mt-4"
+                }
+              >
                 <h2>{category}</h2>
               </div>
             )}

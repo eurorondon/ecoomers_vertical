@@ -12,6 +12,7 @@ import Tarjetas from "../components/Tarjetas";
 import CarrucelCategoria1 from "./../components/CarrucelCategoria1";
 import CarrucelCategoria2 from "../components/CarrucelCategoria2";
 import CarrucelCategoria3 from "../components/CarrucelCategoria3";
+import { Undo } from "@material-ui/icons";
 
 const HomeScreen = ({ match }) => {
   window.scrollTo(0, 0);
@@ -21,10 +22,28 @@ const HomeScreen = ({ match }) => {
   let history = useHistory();
   const currentPath = history.location.pathname;
 
+  const handleGoBack = () => {
+    history.push(`/`);
+    // setSelectedCategory("");
+    setCurrentPage(0);
+  };
+
   const [currentPage, setCurrentPage] = useState(0);
   return (
     <div>
       <Header setCurrentPage={setCurrentPage} />
+
+      {currentPath == "/" ? null : (
+        <div className="mt-3 ms-3">
+          <button className="btn btn-primary" onClick={handleGoBack}>
+            <div>
+              <Undo className="mx-1" />
+              Atrás
+            </div>
+          </button>
+        </div>
+      )}
+
       {currentPath == "/" ? <Slider /> : null}
       {currentPath == "/" ? <CarrucelCategoria1 /> : null}
       {currentPath == "/" ? <Categorias /> : null}

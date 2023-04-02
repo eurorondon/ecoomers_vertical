@@ -28,7 +28,10 @@ function CategoriaSelector({ setSelectedCategory, setCurrentPage }) {
   };
 
   return (
-    <div className="categorias-container button">
+    <div
+      className="categorias-container  button-desplegable  rounded  "
+      onClick={handleMostrarCategorias}
+    >
       <div
         className=""
         style={{
@@ -36,9 +39,8 @@ function CategoriaSelector({ setSelectedCategory, setCurrentPage }) {
           backgroundColor: "transparent",
           cursor: "pointer",
         }}
-        onClick={handleMostrarCategorias}
       >
-        <div className="d-flex justify-content-center text-white ">
+        <div className="d-flex justify-content-center text-white  ">
           <MenuOpen />
           <span>Categorías</span>
         </div>

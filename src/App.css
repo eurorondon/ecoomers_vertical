@@ -123,7 +123,7 @@ textarea:focus {
   z-index: 3;
 }
 
-/* TopSell */
+/* CATEGORIAS DESPLEGABLE */
 
 .categorias-button {
   background-color: #007bff;
@@ -160,6 +160,7 @@ textarea:focus {
 .button {
   border: none;
   background-color: transparent;
+  border-radius: 5px;
   padding: 5px;
   margin: 0;
   cursor: pointer;
@@ -167,8 +168,24 @@ textarea:focus {
 }
 
 .button:hover {
-  background-color: #1d1c1c;
+  background-color: #000000;
+  /* border-radius: 1px; */
+}
+
+.button-desplegable {
+  border: none;
+  background-color: #000000;
   border-radius: 5px;
+  padding: 5px;
+  margin: 0;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+.button-desplegable:hover {
+  background-color: #007bff;
+  padding: 8px;
+  transition: 0.5s;
 }
 
 /* GRID CARDS PRODUCTS */
