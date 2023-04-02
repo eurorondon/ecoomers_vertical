@@ -8,8 +8,9 @@ import Loading from "../LoadingError/Loading";
 import Message from "../LoadingError/Error";
 import Grid from "../Grid";
 import ReactPaginate from "react-paginate";
-import { ArrowBack, ArrowForward } from "@material-ui/icons";
+import { ArrowBack, ArrowForward, Search } from "@material-ui/icons";
 import CategoriaSelector from "../CategoriaSelector";
+import Categorias from "../Categorias";
 
 const ShopSection = (props) => {
   // const { keyword, pagenumber } = props;
@@ -135,6 +136,8 @@ const ShopSection = (props) => {
 
   const currentPath = history.location.pathname;
 
+  console.log(currentPosts);
+
   return (
     <>
       {/* <Grid /> */}
@@ -159,24 +162,88 @@ const ShopSection = (props) => {
                   window.innerWidth > 1240 ? "ms-5  mt-4" : "container mt-4"
                 }
               >
-                <h2>{keyword}</h2>
-                <div>
-                  <select name="categoria" id="" onChange={handleCategoria}>
-                    <option disabled selected value="">
-                      {selectedCategory ? selectedCategory : "Categoria"}
-                    </option>
-                    <option value="">Todos</option>
-                    <option value="Conservadores">Conservadores</option>
-                    <option value="Vasos">Vasos</option>
-                    <option value="Poncheras">Poncheras</option>
-                    <option value="Aluminio">Aluminio</option>
-                    <option value="Tobos">Tobos</option>
-                    <option value="Bigmark">Bigmark</option>
-                    <option value="Inplast">Inplast</option>
-                    <option value="Adonis">Adonis</option>
-                    <option value="IPM">IPM</option>
-                  </select>
-                </div>
+                {currentPosts.length > 0 ? (
+                  <>
+                    <div className="d-flex  align-items-center">
+                      <h2 className="me-4">
+                        {keyword.charAt(0).toUpperCase() + keyword.slice(1)}
+                      </h2>
+
+                      <div>
+                        <select
+                          name="categoria"
+                          id=""
+                          onChange={handleCategoria}
+                        >
+                          <option disabled selected value="">
+                            {selectedCategory ? selectedCategory : "Categoria"}
+                          </option>
+
+                          <option value="Conservadores">Conservadores</option>
+                          <option value="Vasos">Vasos</option>
+                          <option value="Poncheras">Poncheras</option>
+                          <option value="Aluminio">Aluminio</option>
+                          <option value="Tobos">Tobos</option>
+                          <option value="Bigmark">Bigmark</option>
+                          <option value="Inplast">Inplast</option>
+                          <option value="Adonis">Adonis</option>
+                          <option value="IPM">IPM</option>
+                        </select>
+                      </div>
+                    </div>
+                    <Grid currentPosts={currentPosts} />
+                  </>
+                ) : (
+                  <>
+                    <div className="d-flex flex-column align-items-center my-2">
+                      <h2>
+                        Sin Resultados <Search style={{ fontSize: "2rem" }} />
+                      </h2>
+
+                      <div className=" ">
+                        <p className="my-3" style={{ fontSize: "1.3rem" }}>
+                          Puedes intentar con otro Nombre o buscar en alguna de
+                          nuestras Categorias
+                        </p>
+
+                        <div className=" d-flex justify-content-center mt-3">
+                          <select
+                            name="categoria"
+                            id=""
+                            onChange={handleCategoria}
+                          >
+                            <option disabled selected value="">
+                              {selectedCategory
+                                ? selectedCategory
+                                : "Categoria"}
+                            </option>
+
+                            <option value="Conservadores">Conservadores</option>
+                            <option value="Vasos">Vasos</option>
+                            <option value="Poncheras">Poncheras</option>
+                            <option value="Aluminio">Aluminio</option>
+                            <option value="Tobos">Tobos</option>
+                            <option value="Bigmark">Bigmark</option>
+                            <option value="Inplast">Inplast</option>
+                            <option value="Adonis">Adonis</option>
+                            <option value="IPM">IPM</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <img
+                        style={{
+                          width: "100%",
+                          height: "300px",
+                          objectFit: "contain",
+                        }}
+                        src="/images/not-found.png"
+                        alt="Not-found"
+                      />
+                    </div>
+                  </>
+                )}
               </div>
             ) : (
               <div
@@ -184,25 +251,46 @@ const ShopSection = (props) => {
                   window.innerWidth > 1240 ? "ms-5  mt-4" : "container mt-4"
                 }
               >
-                <h2>{category}</h2>
+                <div className="d-flex  align-items-center">
+                  <h2 className="me-4">{category}</h2>
+                  <div>
+                    <select name="categoria" id="" onChange={handleCategoria}>
+                      <option disabled selected value="">
+                        {selectedCategory ? selectedCategory : "Categoria"}
+                      </option>
+                      <option value="">Todos</option>
+                      <option value="Conservadores">Conservadores</option>
+                      <option value="Vasos">Vasos</option>
+                      <option value="Poncheras">Poncheras</option>
+                      <option value="Aluminio">Aluminio</option>
+                      <option value="Tobos">Tobos</option>
+                      <option value="Bigmark">Bigmark</option>
+                      <option value="Inplast">Inplast</option>
+                      <option value="Adonis">Adonis</option>
+                      <option value="IPM">IPM</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             )}
             <Grid currentPosts={currentPosts} />
           </>
         )}
 
-        <ReactPaginate
-          previousLabel={<ArrowBack />}
-          nextLabel={<ArrowForward />}
-          totalPosts={products.length}
-          pageCount={Math.ceil(totalPosts / postsPerPage)}
-          marginPagesDisplayed={1}
-          pageRangeDisplayed={2} // Aquí estableces el número de botones de página a mostrar
-          onPageChange={handlePageClick}
-          containerClassName={"pagination"}
-          activeClassName={"active"}
-          forcePage={currentPage}
-        />
+        {currentPosts.length > 0 ? (
+          <ReactPaginate
+            previousLabel={<ArrowBack />}
+            nextLabel={<ArrowForward />}
+            totalPosts={products.length}
+            pageCount={Math.ceil(totalPosts / postsPerPage)}
+            marginPagesDisplayed={1}
+            pageRangeDisplayed={2} // Aquí estableces el número de botones de página a mostrar
+            onPageChange={handlePageClick}
+            containerClassName={"pagination"}
+            activeClassName={"active"}
+            forcePage={currentPage}
+          />
+        ) : null}
       </div>
     </>
   );
