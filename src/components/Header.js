@@ -222,7 +222,7 @@ const Header = ({ setCurrentPage }) => {
                     <span className="badge">{cartItems.length}</span>
                   </Link>
                 </div>
-                <div className="col-12 d-flex align-items-center">
+                <div className="col-12 d-flex align-items-center mt-2 mb-4">
                   <form onSubmit={submitHandler} className="input-group">
                     {/* <form className="input-group"> */}
                     <input

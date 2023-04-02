@@ -1,5 +1,5 @@
 export default function Product(props) {
-  const MAX_TITLE_LENGTH = 17; // El número máximo de caracteres permitidos en el título
+  const MAX_TITLE_LENGTH = 21; // El número máximo de caracteres permitidos en el título
   const MAX_DESCRIPTION_LENGTH = 40; // El número máximo de caracteres permitidos en la descripción\
 
   return (
@@ -11,7 +11,12 @@ export default function Product(props) {
           : { margin: " 0px 1px  60px 1px" }
       }
     >
-      <img className="product--image" src={props.url} alt="product image" />
+      <img
+        className="product--image"
+        src={props.url}
+        alt="product image"
+        style={{ maxWidth: "10rem", margin: "auto" }}
+      />
       <div className="p-2" style={{ backgroundColor: "#f2f2f2" }}>
         <h5 className="name" style={{ fontWeight: "bold" }}>
           {props.name.length > MAX_TITLE_LENGTH

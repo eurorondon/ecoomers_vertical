@@ -13,7 +13,7 @@ const Grid = ({ currentPosts }) => {
 
   const product = products
     ? products.map((item) => (
-        <div className="product-container" key={item._id}>
+        <div className="" key={item._id}>
           <Link to={`/products/${item._id}`}>
             <Product
               url={item.image[0]}

@@ -1,6 +1,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Product from "./Product";
+import { Link } from "react-router-dom";
 
 import "../topsell.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,17 +12,20 @@ import Loading from "./LoadingError/Loading";
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 1024 },
-    items: 6,
-    slidesToSlide: 6,
+    breakpoint: { max: 4000, min: 1615 },
+    items: 7,
+    slidesToSlide: 7,
   },
+
   desktop: {
-    breakpoint: { max: 1024, min: 800 },
-    items: 4,
+    breakpoint: { max: 1615, min: 1000 },
+    items: 5,
+    slidesToSlide: 5,
   },
   tablet: {
-    breakpoint: { max: 800, min: 464 },
-    items: 2,
+    breakpoint: { max: 1000, min: 464 },
+    items: 3,
+    slidesToSlide: 3,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
@@ -45,19 +49,21 @@ export default function CarrucelCategoria3() {
 
   const product = products
     ? products.slice(0, window.innerWidth > 767 ? 30 : 12).map((item) => (
-        <Product
-          name={item.name}
-          url={item.image[0]}
-          price={item.price}
-          // description={item.description}
-        />
+        <Link to={`/products/${item._id}`}>
+          <Product
+            url={item.image[0]}
+            name={item.name}
+            description={item.description}
+            price={item.price}
+          />
+        </Link>
       ))
     : null;
 
   return (
     <>
       {products && products.length > 1 ? (
-        <div className={window.innerWidth > 767 ? "mx-5" : "container"}>
+        <div className={window.innerWidth > 1240 ? "mx-5" : "container"}>
           <h2 className=".topsell-title">Conservadores</h2>
           <Carousel showDots={true} responsive={responsive}>
             {product}

@@ -4,7 +4,7 @@ export default function Product(props) {
 
   return (
     <div
-      className="card my-1 text-start   "
+      className=" card my-1 text-start  "
       style={
         window.innerWidth > 767
           ? { marginBottom: "40px" }
@@ -16,7 +16,11 @@ export default function Product(props) {
           className="product--image"
           src={props.url}
           alt="product image"
-          style={{ maxWidth: "15rem" }}
+          style={
+            window.innerWidth > 1615
+              ? { maxWidth: "13rem" }
+              : { maxWidth: "10rem" }
+          }
         />
       </div>
 

@@ -47,10 +47,16 @@ const ShopSection = (props) => {
     // Función que se ejecuta al inicio para establecer el valor inicial, esta funcion es para variar la cantidad de tarjetas o productos que se muestran dependeiendo del responsive o query screen
 
     function handleResize() {
-      if (window.innerWidth < 1400) {
+      if (window.innerWidth > 1615) {
+        setPostsPerPage(14);
+      }
+      if (window.innerWidth < 1726) {
+        setPostsPerPage(12);
+      }
+      if (window.innerWidth < 1491) {
         setPostsPerPage(10);
       }
-      if (window.innerWidth < 1200) {
+      if (window.innerWidth < 1256) {
         setPostsPerPage(12);
       }
     }

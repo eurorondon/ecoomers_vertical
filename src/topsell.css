@@ -5,9 +5,9 @@
 }
 
 .carousel-card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
   max-width: 320px;
-  margin: auto 1rem;
+  margin: auto 0.5rem;
   text-align: center;
   font-family: arial;
 }
@@ -48,6 +48,15 @@
 
 .react-multi-carousel-dot {
   bottom: 0%;
+}
+
+.react-multiple-carousel__arrow {
+  bottom: 0%;
+  background-color: #ba0000d6;
+}
+
+.react-multiple-carousel__arrow:hover {
+  background-color: #920101d6;
 }
 
 /* @media screen and (min-width: 768px) {

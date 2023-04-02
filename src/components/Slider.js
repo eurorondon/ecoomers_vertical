@@ -136,7 +136,7 @@ const Slider = () => {
       {window.innerWidth < 767 ? (
         <Wrapper slideIndex={slideIndex}>
           {promociones.map((item) => (
-            <Slide bg={item.bg} key={item.id}>
+            <Slide bg={item.bg} key={item.id} className="my-3">
               <div>
                 <img src={item.img} className="img-fluid" alt="" style={{}} />
               </div>
