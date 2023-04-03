@@ -191,7 +191,6 @@ const ShopSection = (props) => {
                         </select>
                       </div>
                     </div>
-                    <Grid currentPosts={currentPosts} />
                   </>
                 ) : (
                   <>
