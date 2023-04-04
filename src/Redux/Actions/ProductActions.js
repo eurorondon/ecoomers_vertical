@@ -26,7 +26,6 @@ import { logout } from "./userActions";
 export const listProduct =
   (keyword = "", pageNumber = "", category = "") =>
   async (dispatch) => {
-    console.log(category);
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
 
@@ -42,11 +41,11 @@ export const listProduct =
         dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
       } else {
         const { data } = await axios.get(
-          `${URL}/api/products?&pageNumber=${pageNumber}&category=${category}`,
-          console.log(
-            "CON CATEGORIAS",
-            `${URL}/api/products?&pageNumber=${pageNumber}&category=${category}`
-          )
+          `${URL}/api/products?&pageNumber=${pageNumber}&category=${category}`
+          // console.log(
+          //   "CON CATEGORIAS",
+          //   `${URL}/api/products?&pageNumber=${pageNumber}&category=${category}`
+          // )
         );
         dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
       }

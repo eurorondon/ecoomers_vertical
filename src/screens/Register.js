@@ -9,6 +9,7 @@ import Header from "./../components/Header";
 const Register = ({ location, history }) => {
   window.scrollTo(0, 0);
   const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,7 +27,7 @@ const Register = ({ location, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(register(name, email, password));
+    dispatch(register(name, number, email, password));
   };
 
   return (
@@ -45,6 +46,13 @@ const Register = ({ location, history }) => {
             placeholder="Nombre de Usuario"
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            type="number"
+            required
+            placeholder="Telefono"
+            value={number}
+            onChange={(e) => setNumber(e.target.value)}
           />
           <input
             type="email"

@@ -30,7 +30,7 @@ const ShopSection = (props) => {
   const [postsPerPage, setPostsPerPage] = useState(12);
   const indexOfLastPost = (currentPage + 1) * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = products?.slice(indexOfFirstPost, indexOfLastPost);
   const totalPosts = products.length;
 
   const handlePageClick = (data) => {
@@ -136,8 +136,6 @@ const ShopSection = (props) => {
 
   const currentPath = history.location.pathname;
 
-  console.log(currentPosts);
-
   return (
     <>
       {/* <Grid /> */}
@@ -162,7 +160,7 @@ const ShopSection = (props) => {
                   window.innerWidth > 1240 ? "ms-5  mt-4" : "container mt-4"
                 }
               >
-                {currentPosts.length > 0 ? (
+                {currentPosts?.length > 0 ? (
                   <>
                     <div className="d-flex  align-items-center">
                       <h2 className="me-4">
@@ -276,7 +274,7 @@ const ShopSection = (props) => {
           </>
         )}
 
-        {currentPosts.length > 0 ? (
+        {currentPosts?.length > 0 ? (
           <ReactPaginate
             previousLabel={<ArrowBack />}
             nextLabel={<ArrowForward />}

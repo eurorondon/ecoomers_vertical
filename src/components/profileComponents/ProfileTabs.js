@@ -8,6 +8,7 @@ import { updateUserProfile } from "../../Redux/Actions/userActions";
 
 const ProfileTabs = () => {
   const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -31,6 +32,7 @@ const ProfileTabs = () => {
   useEffect(() => {
     if (user) {
       setName(user.name);
+      setNumber(user.number);
       setEmail(user.email);
     }
   }, [dispatch, user]);
@@ -43,7 +45,9 @@ const ProfileTabs = () => {
         toastId.current = toast.error("Password does not match", Toastobjects);
       }
     } else {
-      dispatch(updateUserProfile({ id: user._id, name, email, password }));
+      dispatch(
+        updateUserProfile({ id: user._id, name, number, email, password })
+      );
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.success("Profile Updated", Toastobjects);
       }
@@ -58,7 +62,7 @@ const ProfileTabs = () => {
       <form className="row  form-container" onSubmit={submitHandler}>
         <div className="col-md-6">
           <div className="form">
-            <label for="account-fn">UserName</label>
+            <label for="account-fn">Usuario</label>
             <input
               className="form-control"
               type="text"
@@ -71,7 +75,20 @@ const ProfileTabs = () => {
 
         <div className="col-md-6">
           <div className="form">
-            <label for="account-email">E-mail Address</label>
+            <label for="account-fn">Telefono</label>
+            <input
+              className="form-control"
+              type="text"
+              required
+              value={number}
+              onChange={(e) => setNumber(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <div className="col-md-6">
+          <div className="form">
+            <label for="account-email">Email </label>
             <input
               className="form-control"
               type="email"
@@ -83,7 +100,7 @@ const ProfileTabs = () => {
         </div>
         <div className="col-md-6">
           <div className="form">
-            <label for="account-pass">New Password</label>
+            <label for="account-pass">Nueva contraseña</label>
             <input
               className="form-control"
               type="password"
@@ -94,7 +111,7 @@ const ProfileTabs = () => {
         </div>
         <div className="col-md-6">
           <div className="form">
-            <label for="account-confirm-pass">Confirm Password</label>
+            <label for="account-confirm-pass">Confirmar contraseña</label>
             <input
               className="form-control"
               type="password"
@@ -103,7 +120,7 @@ const ProfileTabs = () => {
             />
           </div>
         </div>
-        <button type="submit">Update Profile</button>
+        <button type="submit">Actualizar Perfil</button>
       </form>
     </>
   );
