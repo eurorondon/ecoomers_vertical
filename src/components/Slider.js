@@ -5,24 +5,24 @@ import styled from "styled-components";
 const sliderItems = [
   {
     id: 1,
-    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1679362772/laraPlastic/kicdgikcmvylmq3fryzm.png",
+    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680622945/D_NQ_699222-MLA54807115324_042023-OO_yfbjlv.webp",
+    bg: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680622945/D_NQ_699222-MLA54807115324_042023-OO_yfbjlv.webp",
     title: "MESA PARA NIÑOS",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    bg: "f5fafd",
   },
   {
     id: 2,
-    img: "https://i.ibb.co/DG69bQ4/2.png",
+    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680622945/D_NQ_835579-MLA54802360247_042023-OO_vjzxim.webp",
+    bg: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680622945/D_NQ_835579-MLA54802360247_042023-OO_vjzxim.webp",
     title: "AUTUMN COLLECTION",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    bg: "fcf1ed",
   },
   {
     id: 3,
-    img: "https://i.ibb.co/cXFnLLV/3.png",
+    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680623012/D_NQ_699455-MLA54436135729_032023-OO_p5dq8u.webp",
+    bg: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680623012/D_NQ_699455-MLA54436135729_032023-OO_p5dq8u.webp",
     title: "LOUNGEWEAR LOVE",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    bg: "fbf0f4",
   },
 ];
 
@@ -44,11 +44,15 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
+
+  @media screen and (max-width: 1650px) {
+    height: auto;
+  }
 `;
 
 const Arrow = styled.div`
   width: 50px;
-  height: 50px;
+  /* height: 50px; */
   /* background-color: #fff7f7; */
   background-color: black;
   border-radius: 50%;
@@ -79,11 +83,18 @@ const Slide = styled.div`
   height: 50vh;
   display: flex;
   align-items: center;
-  background-color: #${(props) => props.bg};
+  /* background-image: url("https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680622945/D_NQ_699222-MLA54807115324_042023-OO_yfbjlv.webp"); */
+  background-image: url(${(props) => props.bg});
+  background-size: cover;
+  background-position: center center;
+
+  @media screen and (max-width: 1650px) {
+    height: auto;
+  }
 `;
 const ImageContainer = styled.div`
   flex: 1;
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   justify-content: center;
 `;
@@ -134,13 +145,23 @@ const Slider = () => {
       {/* <Arrow direction="left" onClick={() => handleClick("left")}>
         <ArrowLeftOutlined className="text-white" />
       </Arrow> */}
-      {window.innerWidth < 767 ? (
+      {window.innerWidth < 1650 && window.innerWidth > 767 ? (
+        <Wrapper slideIndex={slideIndex}>
+          {sliderItems.map((item) => (
+            <Slide key={item.id} className="">
+              <ImageContainer>
+                <img src={item.img} alt="" className="img-fluid" />
+              </ImageContainer>
+            </Slide>
+          ))}
+        </Wrapper>
+      ) : window.innerWidth < 767 ? (
         <Wrapper slideIndex={slideIndex}>
           {promociones.map((item) => (
-            <Slide bg={item.bg} key={item.id} className="my-3">
-              <div>
-                <img src={item.img} className="img-fluid" alt="" style={{}} />
-              </div>
+            <Slide key={item.id} className="">
+              <ImageContainer>
+                <img src={item.img} alt="" className="img-fluid" />
+              </ImageContainer>
             </Slide>
           ))}
         </Wrapper>
@@ -148,19 +169,18 @@ const Slider = () => {
         <Wrapper slideIndex={slideIndex}>
           {sliderItems.map((item) => (
             <Slide bg={item.bg} key={item.id}>
-              <ImageContainer>
-                <img src={item.img} alt="" className="img-fluid" />
-              </ImageContainer>
-              <InfoContainer>
-                <Tittle>{item.title}</Tittle>
-                <Desc>{item.desc}</Desc>
-                <Button>SHOW NOW</Button>
-              </InfoContainer>
+              {/* <ImageContainer>
+            <img src={item.img} alt="" className="img-fluid" />
+          </ImageContainer>
+          <InfoContainer>
+            <Tittle>{item.title}</Tittle>
+            <Desc>{item.desc}</Desc>
+            <Button>SHOW NOW</Button>
+          </InfoContainer> */}
             </Slide>
           ))}
         </Wrapper>
       )}
-
       {/* <Arrow direction="rigth" onClick={() => handleClick("rigth")}>
         <ArrowRightOutlined className="text-white" />
       </Arrow> */}
