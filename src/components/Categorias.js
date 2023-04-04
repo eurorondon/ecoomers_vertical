@@ -51,9 +51,9 @@ function Categorias() {
   };
 
   return (
-    <div className={window.innerWidth > 767 ? "mx-5 my-5" : "container my-5"}>
+    <div className={window.innerWidth > 1000 ? "mx-5 my-5" : "container my-5"}>
       <h2 className="">Categorias destacadas</h2>
-      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-6">
+      <div className="row row-cols-3 row-cols-md-3 row-cols-lg-6 row-cols-xl-6">
         {categorias.map((categoria, index) => (
           <div
             className={window.innerWidth > 767 ? "p-3" : "p-1"}

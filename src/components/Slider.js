@@ -5,21 +5,21 @@ import styled from "styled-components";
 const sliderItems = [
   {
     id: 1,
-    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680622945/D_NQ_699222-MLA54807115324_042023-OO_yfbjlv.webp",
+    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680626143/D_NQ_953092-MLA54803287789_042023-F_uhmdvw.webp",
     bg: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680622945/D_NQ_699222-MLA54807115324_042023-OO_yfbjlv.webp",
     title: "MESA PARA NIÑOS",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
   },
   {
     id: 2,
-    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680622945/D_NQ_835579-MLA54802360247_042023-OO_vjzxim.webp",
+    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680626143/D_NQ_872873-MLA54802318475_042023-F_gdfv01.webp",
     bg: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680622945/D_NQ_835579-MLA54802360247_042023-OO_vjzxim.webp",
     title: "AUTUMN COLLECTION",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
   },
   {
     id: 3,
-    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680623012/D_NQ_699455-MLA54436135729_032023-OO_p5dq8u.webp",
+    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680626143/descarga_scssic.webp",
     bg: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680623012/D_NQ_699455-MLA54436135729_032023-OO_p5dq8u.webp",
     title: "LOUNGEWEAR LOVE",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
@@ -145,17 +145,21 @@ const Slider = () => {
       {/* <Arrow direction="left" onClick={() => handleClick("left")}>
         <ArrowLeftOutlined className="text-white" />
       </Arrow> */}
-      {window.innerWidth < 1650 && window.innerWidth > 767 ? (
+      {window.innerWidth < 1650 && window.innerWidth > 500 ? (
         <Wrapper slideIndex={slideIndex}>
           {sliderItems.map((item) => (
             <Slide key={item.id} className="">
               <ImageContainer>
-                <img src={item.img} alt="" className="img-fluid" />
+                <img
+                  src={window.innerWidth < 984 ? item.img : item.bg}
+                  alt=""
+                  className="img-fluid"
+                />
               </ImageContainer>
             </Slide>
           ))}
         </Wrapper>
-      ) : window.innerWidth < 767 ? (
+      ) : window.innerWidth <= 500 ? (
         <Wrapper slideIndex={slideIndex}>
           {promociones.map((item) => (
             <Slide key={item.id} className="">
