@@ -30,7 +30,7 @@ const HomeScreen = ({ match }) => {
 
   const [currentPage, setCurrentPage] = useState(0);
   return (
-    <div>
+    <div className="" style={{ backgroundColor: "#f2f2f2" }}>
       <Header setCurrentPage={setCurrentPage} />
 
       {currentPath == "/" ? null : (

@@ -127,9 +127,9 @@
   .subscribe-head h2 {
     font-size: 25px;
   }
-  .subscribe-section {
+  /* .subscribe-section {
     padding: 70px 0 70px;
-  }
+  } */
   .card-name {
     width: 8%;
     margin: 0 7px;

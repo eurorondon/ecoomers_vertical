@@ -61,7 +61,7 @@ export default function CarrucelCategoria2() {
     : null;
 
   return (
-    <>
+    <div className="bg-white py-3">
       {products && products.length > 1 ? (
         // <div className={window.innerWidth > 767 ? "mx-5" : "container"}>
         <div className={window.innerWidth > 1240 ? "mx-5" : "container"}>
@@ -78,7 +78,7 @@ export default function CarrucelCategoria2() {
           <Loading className="" />
         </div>
       )}
-    </>
+    </div>
 
     // <h1>hola</h1>
   );

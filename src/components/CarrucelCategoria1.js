@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProductCategoria1 } from "../Redux/Actions/ProductActions";
 import { useEffect } from "react";
 import Loading from "./LoadingError/Loading";
-import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 
 const responsive = {

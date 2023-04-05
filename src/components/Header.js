@@ -141,7 +141,7 @@ const Header = ({ setCurrentPage }) => {
       {/* Header */}
       {/* <div className="header"> */}
       <div className="">
-        <div className="container">
+        <div className="container bg-white">
           {/* MOBILE HEADER */}
           <div className="mobile-header">
             <div className="container ">

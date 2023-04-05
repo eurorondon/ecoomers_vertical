@@ -5,33 +5,33 @@ import styled from "styled-components";
 const sliderItems = [
   {
     id: 1,
-    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680626143/D_NQ_953092-MLA54803287789_042023-F_uhmdvw.webp",
-    bg: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680622945/D_NQ_699222-MLA54807115324_042023-OO_yfbjlv.webp",
+    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680658837/1_usiqio.png",
+    bg: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680658011/1_dizejm.png",
     title: "MESA PARA NIÑOS",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
   },
   {
     id: 2,
-    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680626143/D_NQ_872873-MLA54802318475_042023-F_gdfv01.webp",
-    bg: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680622945/D_NQ_835579-MLA54802360247_042023-OO_vjzxim.webp",
+    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680658837/2_mk9d7z.png",
+    bg: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680658011/2_awtjo3.png",
     title: "AUTUMN COLLECTION",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
   },
-  {
-    id: 3,
-    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680626143/descarga_scssic.webp",
-    bg: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680623012/D_NQ_699455-MLA54436135729_032023-OO_p5dq8u.webp",
-    title: "LOUNGEWEAR LOVE",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-  },
+  // {
+  //   id: 3,
+  //   img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680626143/descarga_scssic.webp",
+  //   bg: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680623012/D_NQ_699455-MLA54436135729_032023-OO_p5dq8u.webp",
+  //   title: "LOUNGEWEAR LOVE",
+  //   desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+  // },
 ];
 
 const promociones = [
   {
-    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680232745/1_ihs8nv.png",
+    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680658861/1_xxrezr.png",
   },
   {
-    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680232745/3_zvsj6w.png",
+    img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680658861/2_lfrkmi.png",
   },
   {
     img: "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680232745/2_brzbfx.png",
@@ -127,7 +127,7 @@ const Slider = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const newIndex = slideIndex < 2 ? slideIndex + 1 : 0;
+      const newIndex = slideIndex < 1 ? slideIndex + 1 : 0;
       setSlideIndex(newIndex);
     }, 3500); // 300000ms = 5 minutos
     return () => clearInterval(interval);
@@ -145,13 +145,14 @@ const Slider = () => {
       {/* <Arrow direction="left" onClick={() => handleClick("left")}>
         <ArrowLeftOutlined className="text-white" />
       </Arrow> */}
-      {window.innerWidth < 1650 && window.innerWidth > 500 ? (
+      {window.innerWidth < 1651 && window.innerWidth > 500 ? (
         <Wrapper slideIndex={slideIndex}>
           {sliderItems.map((item) => (
             <Slide key={item.id} className="">
               <ImageContainer>
                 <img
-                  src={window.innerWidth < 984 ? item.img : item.bg}
+                  src={window.innerWidth < 1008 ? item.img : item.bg}
+                  // src={item.img}
                   alt=""
                   className="img-fluid"
                 />

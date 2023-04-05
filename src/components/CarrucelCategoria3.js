@@ -61,7 +61,7 @@ export default function CarrucelCategoria3() {
     : null;
 
   return (
-    <>
+    <div className="py-4">
       {products && products.length > 1 ? (
         <div className={window.innerWidth > 1240 ? "mx-5" : "container"}>
           <h2 className=".topsell-title">Conservadores</h2>
@@ -77,7 +77,7 @@ export default function CarrucelCategoria3() {
           <Loading className="" />
         </div>
       )}
-    </>
+    </div>
 
     // <h1>hola</h1>
   );

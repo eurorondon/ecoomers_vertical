@@ -7,6 +7,7 @@ body {
   font-size: 17px;
   padding: 0;
   box-sizing: border-box;
+  /* background-color: #f2f2f2; */
 }
 
 a {
@@ -115,6 +116,13 @@ textarea:focus {
 }
 .mobile-header {
   display: none;
+}
+
+/* SECCION CATEGORIA DE HOMES SCREEM */
+
+.categoria-name {
+  font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+  font-weight: bold;
 }
 
 /* boton desplegable */
@@ -358,9 +366,25 @@ textarea:focus {
       rgba(159, 224, 9, 0.11),
       rgba(26, 1, 1, 0.384)
     ),
-    url("https://www.plasticoslanin.com.ar/img/colores-plasticos-lanin.png")
-      no-repeat scroll center / cover;
-  padding: 100px 0 100px;
+    url("https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680660294/web_1440x100Banner_finito_pmyr1y.png")
+      no-repeat center / cover;
+  background: url("https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680660294/web_1440x100Banner_finito_pmyr1y.png")
+    no-repeat center / cover;
+  /* padding: 100px 0 100px; */
+}
+
+@media only screen and (max-width: 1200px) {
+  .subscribe-section {
+    background: url("https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680661012/web_Banner_finito_1200_200_px_1_sx9ehu.png")
+      no-repeat center / cover;
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  .subscribe-section {
+    background: url("https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680661012/web_Banner_finito_1200_200_px_1_sx9ehu.png")
+      no-repeat center / cover;
+  }
 }
 .subscribe-head h2 {
   color: #fff;

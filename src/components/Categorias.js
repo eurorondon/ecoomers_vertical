@@ -5,34 +5,34 @@ import { useHistory } from "react-router-dom";
 
 const categorias = [
   {
-    nombre: "Ollas",
+    nombre: "Cocina",
     imagen:
-      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680231851/Cocina_1_uioiaq.png",
+      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/1_rtfcmb.png",
   },
   {
-    nombre: "Vasos",
+    nombre: "Limpieza",
     imagen:
-      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680231851/Cocina_2_zlm1ha.png",
-  },
-  {
-    nombre: "IPM",
-    imagen:
-      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680232212/Cocina_3_p8srua.png",
-  },
-  {
-    nombre: "Poncheras",
-    imagen:
-      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680232208/Cocina_4_wltthp.png",
-  },
-  {
-    nombre: "Adonis",
-    imagen:
-      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680231851/Cocina_1_uioiaq.png",
+      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/2_eqi0xl.png",
   },
   {
     nombre: "Aluminio",
     imagen:
-      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680231851/Cocina_2_zlm1ha.png",
+      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/4_wanod2.png",
+  },
+  {
+    nombre: "Combos",
+    imagen:
+      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/5_rkp6cz.png",
+  },
+  {
+    nombre: "Belleza hombre/mujer",
+    imagen:
+      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/6_jez0au.png",
+  },
+  {
+    nombre: "Contenedores",
+    imagen:
+      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/Dise%C3%B1o_sin_t%C3%ADtulo_-_2023-04-04T145558.460_lunpzm.png",
   },
 ];
 
@@ -69,6 +69,9 @@ function Categorias() {
                 className="card-img-top rounded"
                 alt={categoria.nombre}
               />
+            </div>
+            <div className="text-center my-2">
+              <h3 className="categoria-name">{categoria.nombre}</h3>
             </div>
           </div>
         ))}

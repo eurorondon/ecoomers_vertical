@@ -7,8 +7,8 @@ export default function Product(props) {
       className=" card carousel-card  text-start  "
       style={
         window.innerWidth > 767
-          ? { marginBottom: "40px" }
-          : { margin: " 0px 1px  60px 1px" }
+          ? { marginBottom: "40px", borderRadius: "15px" }
+          : { margin: " 0px 1px  60px 1px", borderRadius: "10px" }
       }
     >
       <img
@@ -17,8 +17,8 @@ export default function Product(props) {
         alt="product image"
         style={{ maxWidth: "10rem", margin: "auto" }}
       />
-      <div className="p-2" style={{ backgroundColor: "#f2f2f2" }}>
-        <h5 className="name" style={{ fontWeight: "bold" }}>
+      <div className="p-2" style={{ backgroundColor: "" }}>
+        <h5 className="name" style={{ fontWeight: "bold", color: "#00789D" }}>
           {props.name.length > MAX_TITLE_LENGTH
             ? props.name.substring(0, MAX_TITLE_LENGTH) + "..."
             : props.name}
