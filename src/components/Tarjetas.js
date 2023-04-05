@@ -2,7 +2,7 @@ import React from "react";
 
 function CardGroupBootstrap() {
   return (
-    <div className={window.innerWidth > 630 ? "mx-5 my-5" : " my-5"}>
+    <div className={window.innerWidth > 630 ? "mx-5 my-5" : " container my-5"}>
       <h2 className="">¡Destaca tu negocio ya!</h2>
       <div className="row">
         <div className="col-md-4   ">
@@ -24,7 +24,7 @@ function CardGroupBootstrap() {
                 borderTopLeftRadius: "10px",
               }}
             />
-            <div className="card-body">
+            <div className="card-body bg-white">
               <h5 className="card-title">
                 Productos <br />
                 <span
@@ -60,7 +60,7 @@ function CardGroupBootstrap() {
                 borderTopLeftRadius: "10px",
               }}
             />
-            <div className="card-body">
+            <div className="card-body bg-white">
               <h5 className="card-title">
                 Descarga nuestro <br /> catalogo
                 <span
@@ -99,7 +99,7 @@ function CardGroupBootstrap() {
                 borderTopLeftRadius: "10px",
               }}
             />
-            <div className="card-body">
+            <div className="card-body bg-white">
               <h5 className="card-title">
                 Todos nuestros <br />
                 <span

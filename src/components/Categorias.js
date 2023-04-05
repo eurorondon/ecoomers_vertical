@@ -25,7 +25,7 @@ const categorias = [
       "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/5_rkp6cz.png",
   },
   {
-    nombre: "Belleza hombre/mujer",
+    nombre: "Belleza hombre y mujer",
     imagen:
       "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/6_jez0au.png",
   },
@@ -51,7 +51,9 @@ function Categorias() {
   };
 
   return (
-    <div className={window.innerWidth > 1000 ? "mx-5 my-5" : "container my-5"}>
+    <div
+      className={window.innerWidth > 1000 ? "mx-5 my-5" : "container mt-5 mb-2"}
+    >
       <h2 className="">Categorias destacadas</h2>
       <div className="row row-cols-3 row-cols-md-3 row-cols-lg-6 row-cols-xl-6">
         {categorias.map((categoria, index) => (
