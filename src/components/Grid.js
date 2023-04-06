@@ -16,7 +16,7 @@ const Grid = ({ currentPosts }) => {
         <div className="" key={item._id}>
           <Link to={`/products/${item._id}`}>
             <Product
-              url={item.image[0]}
+              url={item.photo[0].url}
               name={item.name}
               description={item.description}
               price={item.price}

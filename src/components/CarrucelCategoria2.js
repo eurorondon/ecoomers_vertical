@@ -51,7 +51,7 @@ export default function CarrucelCategoria2() {
     ? products.slice(0, window.innerWidth > 767 ? 30 : 12).map((item) => (
         <Link to={`/products/${item._id}`}>
           <Product
-            url={item.image[0]}
+            url={item.photo[0].url}
             name={item.name}
             description={item.description}
             price={item.price}
