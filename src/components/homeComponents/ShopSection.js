@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory, useParams, useLocation } from "react-router-dom";
-import Rating from "./Rating";
-
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../../Redux/Actions/ProductActions";
 import Loading from "../LoadingError/Loading";
@@ -9,36 +7,22 @@ import Message from "../LoadingError/Error";
 import Grid from "../Grid";
 import ReactPaginate from "react-paginate";
 import { ArrowBack, ArrowForward, Search } from "@material-ui/icons";
-import CategoriaSelector from "../CategoriaSelector";
-import Categorias from "../Categorias";
 
 const ShopSection = (props) => {
-  // const { keyword, pagenumber } = props;
   const { keyword, pagenumber, setCurrentPage, currentPage } = props;
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
-
   const [selectedCategory, setSelectedCategory] = useState();
-
   const { category } = useParams();
 
   let history = useHistory();
-  // const [filters, setFilters] = useState("");
-
   const [postsPerPage, setPostsPerPage] = useState(12);
   const indexOfLastPost = (currentPage + 1) * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = products?.slice(indexOfFirstPost, indexOfLastPost);
   const totalPosts = products.length;
-
-  const handlePageClick = (data) => {
-    const selectedPage = data.selected;
-    setCurrentPage(selectedPage);
-    scroll(0, 0);
-    history.push(`?page=${selectedPage}`);
-  };
 
   useEffect(() => {
     dispatch(listProduct(keyword, currentPage, category));
@@ -70,18 +54,9 @@ const ShopSection = (props) => {
     handleResize(); // Llamamos a la función al inicio
 
     window.addEventListener("resize", handleResize); // Agregamos el event listener
-
-    const searchParams = new URLSearchParams(location.search);
-    const storedPage = searchParams.get("page");
-    if (storedPage) {
-      setCurrentPage(parseInt(storedPage, 10));
-    } else {
-      setCurrentPage(location.state?.currentPage || 0);
-    }
-    return () => {
-      window.removeEventListener("resize", handleResize); // Eliminamos el event listener
-    };
   }, []);
+
+  // AQUI EMPIEZA FUNCIONES DE PAGINACION
 
   useEffect(() => {
     localStorage.setItem("currentPage", JSON.stringify(currentPage));
@@ -95,6 +70,25 @@ const ShopSection = (props) => {
       setCurrentPage(location.state?.currentPage || 0);
     }
   }, [location.state?.currentPage]);
+
+  const url = window.location.href;
+  const match = url.match(/\d+$/);
+
+  useEffect(() => {
+    if (url.includes("page")) {
+      const match = url.match(/\d+$/);
+      setCurrentPage(match[0] * 1);
+    }
+  }, []);
+
+  const handlePageClick = (data) => {
+    const selectedPage = data.selected;
+    setCurrentPage(selectedPage);
+    scroll(0, 0);
+    history.push(`?page=${selectedPage}`);
+  };
+
+  //AQUI TERMINA FUNCIONES DE PAGINACION
 
   const handleCategoria = (e) => {
     const value = e.target.value;
@@ -123,16 +117,6 @@ const ShopSection = (props) => {
     setSelectedCategory("");
     setCurrentPage(0);
   };
-
-  const url = window.location.href;
-  const match = url.match(/\d+$/);
-
-  useEffect(() => {
-    if (url.includes("page")) {
-      const match = url.match(/\d+$/);
-      setCurrentPage(match[0] * 1);
-    }
-  }, []);
 
   const currentPath = history.location.pathname;
 
