@@ -1,6 +1,62 @@
-import React from "react";
+import Reac, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { listProduct } from "../Redux/Actions/ProductActions";
+import Loading from "./LoadingError/Loading";
+
+const categorias = [
+  {
+    nombre: "Cocina",
+    imagen:
+      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/1_rtfcmb.png",
+  },
+  {
+    nombre: "Limpieza",
+    imagen:
+      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/2_eqi0xl.png",
+  },
+  {
+    nombre: "Aluminio",
+    imagen:
+      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/4_wanod2.png",
+  },
+  {
+    nombre: "Combos",
+    imagen:
+      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/5_rkp6cz.png",
+  },
+  {
+    nombre: "Belleza hombre y mujer",
+    imagen:
+      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/6_jez0au.png",
+  },
+  {
+    nombre: "Contenedores",
+    imagen:
+      "https://res.cloudinary.com/dpgpmqo6c/image/upload/v1680663778/Dise%C3%B1o_sin_t%C3%ADtulo_-_2023-04-04T145558.460_lunpzm.png",
+  },
+];
 
 function CardGroupBootstrap() {
+  const [category, setCategory] = useState("");
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(listProduct("", "", category));
+  }, [dispatch, category]);
+
+  const seleccionarCategoria = () => {
+    setCategory("Electronicos");
+    // console.log(nombreCategoria);
+    history.push(`/category/Electronicos`);
+  };
+
+  console.log(category);
+
+  const handleVerMasClick = () => {
+    history.push("/todos");
+  };
   return (
     <div className={window.innerWidth > 630 ? "mx-5 my-5" : " container my-5"}>
       <h2 className="">¡Destaca tu negocio ya!</h2>
@@ -37,7 +93,12 @@ function CardGroupBootstrap() {
               <p className="card-text">
                 Los mejores precios mayoristas para compras por catalogo.
               </p>
-              <button className="btn btn-danger">Ver más</button>
+              <button
+                className="btn btn-danger"
+                onClick={() => seleccionarCategoria("electronicos")}
+              >
+                Ver más
+              </button>
             </div>
           </div>
         </div>
@@ -112,7 +173,9 @@ function CardGroupBootstrap() {
               <p className="card-text">
                 Los mejores precios mayoristas para compras por catalogo.
               </p>
-              <button className="btn btn-danger">Ver más</button>
+              <button className="btn btn-danger" onClick={handleVerMasClick}>
+                Ver más
+              </button>
             </div>
           </div>
         </div>

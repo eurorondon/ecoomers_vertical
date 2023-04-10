@@ -23,6 +23,7 @@ const App = () => {
         <Route path="/" component={HomeScreen} exact />
         <Route path="/search/:keyword" component={HomeScreen} exact />
         <Route path="/category/:category" component={HomeScreen} exact />
+        <Route path="/todos" component={HomeScreen} exact />
         <Route path="/page/:pagenumber" component={HomeScreen} exact />
         <Route
           path="/search/:keyword/page/:pageNumber"

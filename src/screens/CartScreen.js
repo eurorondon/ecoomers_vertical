@@ -25,6 +25,8 @@ const CartScreen = ({ match, location, history }) => {
     history.push("/login?redirect=placeorder");
   };
 
+  
+
   const removeFromCartHandle = (id) => {
     dispatch(removefromcart(id));
   };

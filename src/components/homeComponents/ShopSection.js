@@ -147,10 +147,18 @@ const ShopSection = (props) => {
                 {currentPosts?.length > 0 ? (
                   <>
                     <div className="d-flex  align-items-center">
-                      <h2 className="me-4">
-                        {keyword.charAt(0).toUpperCase() + keyword.slice(1)}
-                      </h2>
-
+                      {keyword ? (
+                        <div>
+                          {" "}
+                          <h2 className="me-4">
+                            {keyword.charAt(0).toUpperCase() + keyword.slice(1)}
+                          </h2>
+                        </div>
+                      ) : (
+                        <div>
+                          <h2 className="me-2">Todos los productos </h2>
+                        </div>
+                      )}
                       <div>
                         <select
                           name="categoria"
