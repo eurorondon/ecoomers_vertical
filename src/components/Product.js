@@ -1,13 +1,17 @@
 export default function Product(props) {
   const MAX_TITLE_LENGTH = 21; // El número máximo de caracteres permitidos en el título
-  const MAX_DESCRIPTION_LENGTH = 40; // El número máximo de caracteres permitidos en la descripción\
+  let MAX_DESCRIPTION_LENGTH = 40; // El número máximo de caracteres permitidos en la descripción\
+
+  if (window.innerWidth < 767) {
+    MAX_DESCRIPTION_LENGTH = 25;
+  }
 
   return (
     <div
       className=" card carousel-card  text-start  "
       style={
         window.innerWidth > 767
-          ? { marginBottom: "40px", borderRadius: "15px" }
+          ? { marginBottom: "40px", borderRadius: "15px", position: "relative" }
           : { margin: " 0px 1px  60px 1px", borderRadius: "10px" }
       }
     >
@@ -40,7 +44,10 @@ export default function Product(props) {
           )}
         </div>
 
-        <p className="price" style={{ fontWeight: "bold" }}>
+        <p
+          className="price "
+          style={{ fontWeight: "bold", paddingTop: "10px" }}
+        >
           {props.price} $
         </p>
         {/* <p>

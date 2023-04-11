@@ -9,7 +9,6 @@ const Grid = ({ currentPosts }) => {
   // const { products } = productList;
 
   let products = currentPosts;
-  // console.log(products);
 
   const product = products
     ? products.map((item) => (
