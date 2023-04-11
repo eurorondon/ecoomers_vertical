@@ -178,11 +178,12 @@ const Header = ({ setCurrentPage }) => {
                         aria-haspopup="true"
                         aria-expanded="false"
                       >
-                        <i className="fas fa-user"></i>
+                        <i className="fas fa-user mx-1"></i>
+                        Hola, {userInfo.name}
                       </button>
                       <div className="dropdown-menu">
                         <Link className="dropdown-item" to="/profile">
-                          Perfil
+                          Perfils
                         </Link>
 
                         <Link
