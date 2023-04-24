@@ -129,7 +129,7 @@ const Slider = () => {
     const interval = setInterval(() => {
       const newIndex = slideIndex < 1 ? slideIndex + 1 : 0;
       setSlideIndex(newIndex);
-    }, 3500); // 300000ms = 5 minutos
+    }, 8000); // 300000ms = 5 minutos
     return () => clearInterval(interval);
   }, [slideIndex]);
 

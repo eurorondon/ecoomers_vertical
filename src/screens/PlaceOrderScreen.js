@@ -47,18 +47,18 @@ const PlaceOrderScreen = ({ history }) => {
         .join("");
       const link = `${URL}/order/${order._id}`;
       const name = userInfo.name;
-      const mensaje = `👋 Hola, mi nombre es ${name}.\n Deseo comprar estos artículos: 💭 \n ${productos} \n Para pagar un total de 🔜 *${cart.totalPrice}$* \n \n ${name} Recuerda subir tu comrpobante de pago en este Link  ${link}`;
+      const mensaje = `👋 Hola, mi nombre es ${name}.\n Deseo comprar estos artículos: 💭 \n ${productos} \n Para pagar un total de 🔜 *${cart.totalPrice}$* \n `;
 
       // para enviar  orden a whatsapp
 
-      const telefono = "+584245116397";
+      const telefono = "+584126022881";
       const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
         mensaje
       )}`;
 
-      window.open(url, "_blank");
+      // window.open(url, "_blank");
       // window.open(url);
-      // window.open(url, "_self");
+      window.open(url, "_self");
     }
   }, [history, dispatch, success, order]);
 
@@ -145,7 +145,8 @@ const PlaceOrderScreen = ({ history }) => {
                 {cart.cartItems.map((item, index) => (
                   <div className="order-product row" key={index}>
                     <div className="col-md-3 col-6">
-                      <img src={item.image} alt={item.name} />
+                      <img src={item.image[0]} alt={item.name} />
+                      {console.log(item.image)}
                     </div>
                     <div className="col-md-5 col-6 d-flex align-items-center">
                       <Link to={`/products/${item.product}`}>

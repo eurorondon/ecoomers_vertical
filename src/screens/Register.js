@@ -7,7 +7,10 @@ import { register } from "../Redux/Actions/userActions";
 import Header from "./../components/Header";
 
 const Register = ({ location, history }) => {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
@@ -46,6 +49,7 @@ const Register = ({ location, history }) => {
             placeholder="Nombre de Usuario"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            autoComplete="off"
           />
           <input
             type="number"
@@ -53,24 +57,27 @@ const Register = ({ location, history }) => {
             placeholder="Telefono"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
+            autoComplete="off"
           />
           <input
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete="off"
           />
           <input
             type="password"
             placeholder="Contraseña"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="off"
           />
 
           <button type="submit">Register</button>
           <p>
             <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
-              Tengo cuenta <strong>iniciar sesión</strong>
+              Ya tengo cuenta <strong>iniciar sesión</strong>
             </Link>
           </p>
         </form>
