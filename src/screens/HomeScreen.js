@@ -43,10 +43,9 @@ const HomeScreen = ({ match }) => {
 
       {currentPath == "/" ? null : (
         <div className="mt-3 ms-3">
-          <button className="btn btn-primary" onClick={handleGoBack}>
+          <button className="btn btn-dark" onClick={handleGoBack}>
             <div>
               <Undo className="mx-1" />
-              Atrás
             </div>
           </button>
         </div>

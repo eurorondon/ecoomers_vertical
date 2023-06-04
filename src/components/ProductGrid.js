@@ -31,10 +31,10 @@ export default function Product(props) {
             : props.name}
         </h5>
         <div
-          className="my-2"
-          style={
-            window.innerWidth > 767 ? { height: "50px" } : { height: "40px" }
-          }
+          className=""
+          // style={
+          //   window.innerWidth > 767 ? { height: "50px" } : { height: "40px" }
+          // }
         >
           {props.description ? (
             <p className="description">

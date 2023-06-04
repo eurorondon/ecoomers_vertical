@@ -86,10 +86,9 @@ const SingleProduct = ({ history, match }) => {
           <Message variant="alert-danger">{error}</Message>
         ) : (
           <>
-            <button className="btn btn-primary mx-3" onClick={handleGoBack}>
+            <button className="btn btn-dark mx-3" onClick={handleGoBack}>
               <div>
                 <Undo className="me-1" />
-                Atrás
               </div>
             </button>
             <div className="row">

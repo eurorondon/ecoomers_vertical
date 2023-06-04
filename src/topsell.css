@@ -21,11 +21,21 @@ body {
   /* font-size: 1px; */
 }
 .name {
-  font-size: clamp(0.7rem, 2vw, 1.2rem);
+  font-size: clamp(0.7rem, 1vw, 1rem);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .description {
-  font-size: clamp(0.7rem, 2vw, 1.2rem);
+  font-size: clamp(0.7rem, 1vw, 1rem);
   text-align: start;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .call-action {

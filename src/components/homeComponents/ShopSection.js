@@ -2,19 +2,28 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../../Redux/Actions/ProductActions";
-import { listCategory } from "../../Redux/Actions/CategoryActions";
 import Loading from "../LoadingError/Loading";
 import Message from "../LoadingError/Error";
 import Grid from "../Grid";
 import ReactPaginate from "react-paginate";
-import { ArrowBack, ArrowForward, Search } from "@material-ui/icons";
+import {
+  ArrowBack,
+  ArrowForward,
+  Search,
+  SearchOutlined,
+} from "@material-ui/icons";
 
 const ShopSection = (props) => {
-  const { keyword, pagenumber, setCurrentPage, currentPage } = props;
+  const { keyword, setCurrentPage, currentPage } = props;
+
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
+
+  const categoriesList = useSelector((state) => state.categoryList);
+  const categorias = categoriesList.categories;
+
   const [selectedCategory, setSelectedCategory] = useState();
   const { category } = useParams();
 
@@ -23,42 +32,17 @@ const ShopSection = (props) => {
   const indexOfLastPost = (currentPage + 1) * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = products?.slice(indexOfFirstPost, indexOfLastPost);
-  const totalPosts = products.length;
-
-  const categoriesList = useSelector((state) => state.categoryList);
-  const categorias = categoriesList.categories;
+  const totalPosts = products?.length;
 
   useEffect(() => {
     dispatch(listProduct(keyword, currentPage, category));
-  }, [dispatch, keyword, pagenumber, category, currentPage]);
+  }, [dispatch, keyword, category, currentPage]);
 
-  useEffect(() => {
-    // Función que se ejecuta al inicio para establecer el valor inicial, esta funcion es para variar la cantidad de tarjetas o productos que se muestran dependeiendo del responsive o query screen
-
-    function handleResize() {
-      if (window.innerWidth > 1615) {
-        setPostsPerPage(14);
-      }
-      if (window.innerWidth < 1726) {
-        setPostsPerPage(12);
-      }
-      if (window.innerWidth < 1491) {
-        setPostsPerPage(10);
-      }
-      if (window.innerWidth < 1256) {
-        setPostsPerPage(12);
-      }
-    }
-
-    function handleCategoryFromUrl() {
-      const { category } = useParams();
-      setSelectedCategory(category || ""); // establecer la categoría si existe en la URL
-    }
-
-    handleResize(); // Llamamos a la función al inicio
-
-    window.addEventListener("resize", handleResize); // Agregamos el event listener
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(function () {
+  //     window.scrollTo({ top: 100, left: 0, behavior: "smooth" });
+  //   }, 100);
+  // }, [category]);
 
   // AQUI EMPIEZA FUNCIONES DE PAGINACION
 
@@ -66,14 +50,14 @@ const ShopSection = (props) => {
     localStorage.setItem("currentPage", JSON.stringify(currentPage));
   }, [currentPage]);
 
-  useEffect(() => {
-    const storedPage = localStorage.getItem("currentPage");
-    if (storedPage) {
-      setCurrentPage(JSON.parse(storedPage));
-    } else {
-      setCurrentPage(location.state?.currentPage || 0);
-    }
-  }, [location.state?.currentPage]);
+  // useEffect(() => {
+  //   const storedPage = localStorage.getItem("currentPage");
+  //   if (storedPage) {
+  //     setCurrentPage(JSON.parse(storedPage));
+  //   } else {
+  //     setCurrentPage(location.state?.currentPage || 0);
+  //   }
+  // }, [location.state?.currentPage]);
 
   const url = window.location.href;
   const match = url.match(/\d+$/);
@@ -88,9 +72,16 @@ const ShopSection = (props) => {
   const handlePageClick = (data) => {
     const selectedPage = data.selected;
     setCurrentPage(selectedPage);
-    scroll(0, 0);
     history.push(`?page=${selectedPage}`);
+
+    setTimeout(function () {
+      window.scrollTo({ top: 100, left: 0, behavior: "smooth" });
+    }, 100);
   };
+
+  // useEffect(() => {
+  //   dispatch(listProduct(keyword, currentPage, category));
+  // }, [currentPage]);
 
   //AQUI TERMINA FUNCIONES DE PAGINACION
 
@@ -127,7 +118,16 @@ const ShopSection = (props) => {
   return (
     <>
       {/* <Grid /> */}
-      <div className="">
+      <div
+        className={
+          window.innerWidth > 1400
+            ? " mx-5  mt-4"
+            : window.innerWidth > 1000
+            ? "container mt-4"
+            : " mt-4"
+        }
+        id="ShopSection"
+      >
         {loading ? (
           <div className="" style={{ margin: "200px 0px" }}>
             <Loading />
@@ -143,48 +143,23 @@ const ShopSection = (props) => {
             )} */}
 
             {!category ? (
-              <div
-                className={
-                  window.innerWidth > 1240 ? "ms-5  mt-4" : "container mt-4"
-                }
-              >
-                {currentPosts?.length > 0 ? (
+              <div>
+                {products?.length > 0 ? (
                   <>
-                    <div className="d-flex  align-items-center">
+                    <div className="d-flex  align-items-center" id="">
                       {keyword ? (
                         <div>
-                          {" "}
-                          <h2 className="me-4">
-                            {keyword.charAt(0).toUpperCase() + keyword.slice(1)}
+                          <h2 className="mx-5">
+                            <SearchOutlined />{" "}
+                            {keyword.charAt(0).toUpperCase() +
+                              keyword.substring(1)}
                           </h2>
                         </div>
                       ) : (
-                        <div>
-                          <h2 className="me-2">Todos los productos </h2>
+                        <div className="text-center mx-auto">
+                          <h2 className="">Todos los productos </h2>
                         </div>
                       )}
-                      <div>
-                        <select
-                          name="categoria"
-                          id=""
-                          onChange={handleCategoria}
-                        >
-                          <option disabled selected value="">
-                            {selectedCategory ? selectedCategory : "Categoria"}
-                          </option>
-                          {categorias.map((item) => (
-                            <option
-                              key={categorias}
-                              className="categorias-list-item"
-                              onClick={() =>
-                                handleCategoriaSeleccionada(item.categoria)
-                              }
-                            >
-                              {item.categoria}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
                     </div>
                   </>
                 ) : (
@@ -194,8 +169,11 @@ const ShopSection = (props) => {
                         Sin Resultados <Search style={{ fontSize: "2rem" }} />
                       </h2>
 
-                      <div className=" ">
-                        <p className="my-3" style={{ fontSize: "1.3rem" }}>
+                      <div className="mx-2">
+                        <p
+                          className="my-3 text-center"
+                          style={{ fontSize: "1.3rem" }}
+                        >
                           Puedes intentar con otro Nombre o buscar en alguna de
                           nuestras Categorias
                         </p>
@@ -211,17 +189,9 @@ const ShopSection = (props) => {
                                 ? selectedCategory
                                 : "Categoria"}
                             </option>
-
+                            <option value="">Todos</option>
                             {categorias.map((item) => (
-                              <option
-                                key={categorias}
-                                className="categorias-list-item"
-                                onClick={() =>
-                                  handleCategoriaSeleccionada(item.categoria)
-                                }
-                              >
-                                {item.categoria}
-                              </option>
+                              <option>{item.categoria}</option>
                             ))}
                           </select>
                         </div>
@@ -243,45 +213,62 @@ const ShopSection = (props) => {
               </div>
             ) : (
               <div
-                className={
-                  window.innerWidth > 1240 ? "ms-5  mt-4" : "container mt-4"
-                }
+                className={window.innerWidth > 1240 ? "ms-5  mt-4" : " mt-4"}
               >
-                <div className="d-flex  align-items-center">
-                  <h2 className="me-4">{category}</h2>
-                  <div>
+                <div className="d-flex flex-column align-items-center justify-content-evenly  ">
+                  <h2 className="">
+                    <SearchOutlined style={{ fontSize: "2rem" }} /> {category}
+                  </h2>
+
+                  <div className="mt-3">
                     <select name="categoria" id="" onChange={handleCategoria}>
                       <option disabled selected value="">
                         {selectedCategory ? selectedCategory : "Categoria"}
                       </option>
                       <option value="">Todos</option>
                       {categorias.map((item) => (
-                        <option
-                          key={categorias}
-                          className="categorias-list-item"
-                          onClick={() =>
-                            handleCategoriaSeleccionada(item.categoria)
-                          }
-                        >
-                          {item.categoria}
-                        </option>
+                        <option>{item.categoria}</option>
                       ))}
                     </select>
                   </div>
                 </div>
               </div>
             )}
-            <Grid currentPosts={currentPosts} />
+            {products?.length > 0 ? (
+              <Grid currentPosts={products} />
+            ) : (
+              <>
+                {keyword ? null : (
+                  <>
+                    {" "}
+                    <div className="d-flex flex-column align-items-center my-2">
+                      <h2 className="mt-5">Categoria Agotada</h2>
+                    </div>
+                    <div>
+                      <img
+                        style={{
+                          width: "100%",
+                          height: "300px",
+                          objectFit: "contain",
+                        }}
+                        src="/images/not-found.png"
+                        alt="Not-found"
+                      />
+                    </div>
+                  </>
+                )}
+              </>
+            )}
           </>
         )}
 
-        {currentPosts?.length > 0 ? (
+        {products?.length > 0 ? (
           <ReactPaginate
             previousLabel={<ArrowBack />}
             nextLabel={<ArrowForward />}
-            totalPosts={products.length}
-            pageCount={Math.ceil(totalPosts / postsPerPage)}
-            marginPagesDisplayed={1}
+            // totalPosts={products.length}
+            pageCount={pages}
+            // marginPagesDisplayed={1}
             pageRangeDisplayed={2} // Aquí estableces el número de botones de página a mostrar
             onPageChange={handlePageClick}
             containerClassName={"pagination"}

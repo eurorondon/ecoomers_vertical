@@ -140,11 +140,11 @@ const Header = ({ setCurrentPage }) => {
 
       {/* Header */}
       {/* <div className="header"> */}
-      <div className="">
-        <div className="container bg-white">
+      <div className="px-2 " style={{ backgroundColor: "#b50b13" }}>
+        <div className="container ">
           {/* MOBILE HEADER */}
-          <div className="mobile-header">
-            <div className="container ">
+          <div className="mobile-header pt-2">
+            <div className=" ">
               <div className="row ">
                 {/* <div className="col-6 d-flex align-items-center">
                   <a href="#" onclick="location.reload();">
@@ -163,7 +163,7 @@ const Header = ({ setCurrentPage }) => {
                     <img
                       alt="logo"
                       src="/images/logo.png"
-                      className="rounded-circle border border-danger bg-danger"
+                      className="rounded-circle border border-white border-2"
                       style={{ maxWidth: "200px" }}
                     />
                   </Link>
@@ -218,7 +218,7 @@ const Header = ({ setCurrentPage }) => {
                     </div>
                   )}
 
-                  <Link to="/cart" className="cart-mobile-icon">
+                  <Link to="/cart" className="cart-mobile-icon text-white">
                     <i className="fas fa-shopping-bag"></i>
                     <span className="badge">{cartItems.length}</span>
                   </Link>

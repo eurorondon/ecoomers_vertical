@@ -135,7 +135,7 @@ textarea:focus {
 /* CATEGORIAS DESPLEGABLE */
 
 .categorias-button {
-  background-color: #007bff;
+  background-color: #050505;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -162,8 +162,9 @@ textarea:focus {
 }
 
 .categorias-list-item:hover {
-  background-color: #007bff;
+  background-color: #000000;
   color: #fff;
+  
 }
 
 .button {
@@ -183,7 +184,7 @@ textarea:focus {
 
 .button-desplegable {
   border: none;
-  background-color: #000000;
+  /* background-color: #000000; */
   border-radius: 5px;
   padding: 5px;
   margin: 0;
@@ -192,7 +193,7 @@ textarea:focus {
 }
 
 .button-desplegable:hover {
-  background-color: #007bff;
+  background-color: #000000;
   padding: 8px;
   transition: 0.5s;
 }
@@ -210,8 +211,9 @@ textarea:focus {
 .grid {
   display: grid;
   /* la siguiente linea se debe cambiar para responsive */
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  grid-gap: 15px;
+  /* grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); */
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
   /* grid-row-gap: 25px; */
 
   /* grid-auto-rows: 350px; */
@@ -1116,9 +1118,9 @@ svg {
 
 @media only screen and (max-width: 992px) {
   .contenedorModal {
-    /* width: 70%; */
-    /* height: 200px; */
-    /* padding: 0, 50px; */
+    width: 70%;
+    height: 200px;
+    padding: 0, 50px;
   }
 }
 

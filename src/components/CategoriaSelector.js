@@ -44,7 +44,7 @@ function CategoriaSelector({ setCurrentPage }) {
           cursor: "pointer",
         }}
       >
-        <div className="d-flex justify-content-center  ">
+        <div className="d-flex justify-content-center text-white ">
           <MenuOpen />
           <span className="" style={{ fontWeight: "bold" }}>
             CATEGORIAS
