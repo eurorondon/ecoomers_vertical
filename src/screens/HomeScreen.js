@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./../components/Header";
 import ShopSection from "./../components/homeComponents/ShopSection";
 import ContactInfo from "./../components/homeComponents/ContactInfo";
@@ -13,11 +13,19 @@ import CarrucelCategoria1 from "./../components/CarrucelCategoria1";
 import CarrucelCategoria2 from "../components/CarrucelCategoria2";
 import CarrucelCategoria3 from "../components/CarrucelCategoria3";
 import { Undo } from "@material-ui/icons";
+import { useDispatch } from "react-redux";
+import { listCategory } from "../Redux/Actions/CategoryActions";
 
 const HomeScreen = ({ match }) => {
   window.scrollTo(0, 0);
   const keyword = match.params.keyword;
   const pagenumber = match.params.pagenumber;
+
+  // Llamar y Ejecutar la funcion de Redux que trae las Lista de categorias
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(listCategory());
+  }, [dispatch]);
 
   let history = useHistory();
   const currentPath = history.location.pathname;

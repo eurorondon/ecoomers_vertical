@@ -96,7 +96,7 @@ export const listProductCategoria1 =
 
 // PRODUCT LIST CATEGORIA2 EN ESPECIFICO ALUMINIO
 export const listProductCategoria2 =
-  (keyword = "", pageNumber = "", category = "Aluminio") =>
+  (keyword = "", pageNumber = "", category = "") =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_CATEGORIA2_REQUEST });
@@ -126,7 +126,7 @@ export const listProductCategoria2 =
 
 // PRODUCT LIST CATEGORIA3 EN ESPECIFICO CONSERVADORES
 export const listProductCategoria3 =
-  (keyword = "", pageNumber = "", category = "Conservadores") =>
+  (keyword = "", pageNumber = "", category = "") =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_CATEGORIA3_REQUEST });

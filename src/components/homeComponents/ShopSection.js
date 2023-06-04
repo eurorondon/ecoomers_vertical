@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../../Redux/Actions/ProductActions";
+import { listCategory } from "../../Redux/Actions/CategoryActions";
 import Loading from "../LoadingError/Loading";
 import Message from "../LoadingError/Error";
 import Grid from "../Grid";
@@ -23,10 +24,6 @@ const ShopSection = (props) => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = products?.slice(indexOfFirstPost, indexOfLastPost);
   const totalPosts = products.length;
-
-  useEffect(() => {
-    dispatch(listProduct(keyword, currentPage, category));
-  }, [dispatch, keyword, pagenumber, category, currentPage]);
 
   useEffect(() => {
     // Función que se ejecuta al inicio para establecer el valor inicial, esta funcion es para variar la cantidad de tarjetas o productos que se muestran dependeiendo del responsive o query screen
