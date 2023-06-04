@@ -1,13 +1,17 @@
 import { MenuOpen } from "@material-ui/icons";
 import React, { useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-function CategoriaSelector({ setSelectedCategory, setCurrentPage }) {
+function CategoriaSelector({ setCurrentPage }) {
   const [mostrarCategorias, setMostrarCategorias] = useState(false);
   const [categoria, setCategoria] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState();
+
   let history = useHistory();
 
-  const categorias = ["Conservadores", "Aluminio", "Vasos", "Poncheras"];
+  const categoriesList = useSelector((state) => state.categoryList);
+  const categorias = categoriesList.categories;
 
   const handleCategoriaSeleccionada = (categoriaSeleccionada) => {
     setMostrarCategorias(false);
@@ -29,7 +33,7 @@ function CategoriaSelector({ setSelectedCategory, setCurrentPage }) {
 
   return (
     <div
-      className="categorias-container  button-desplegable  rounded  "
+      className="categorias-container button-desplegable  rounded  "
       onClick={handleMostrarCategorias}
     >
       <div
@@ -40,21 +44,23 @@ function CategoriaSelector({ setSelectedCategory, setCurrentPage }) {
           cursor: "pointer",
         }}
       >
-        <div className="d-flex justify-content-center text-white  ">
+        <div className="d-flex justify-content-center  ">
           <MenuOpen />
-          <span>Categorías</span>
+          <span className="" style={{ fontWeight: "bold" }}>
+            CATEGORIAS
+          </span>
         </div>
       </div>
 
       {mostrarCategorias && (
-        <ul className="categorias-list">
-          {categorias.map((categoria) => (
+        <ul className="categorias-list  text-black">
+          {categorias.map((item) => (
             <li
               key={categoria}
               className="categorias-list-item"
-              onClick={() => handleCategoriaSeleccionada(categoria)}
+              onClick={() => handleCategoriaSeleccionada(item.categoria)}
             >
-              {categoria}
+              {item.categoria}
             </li>
           ))}
         </ul>

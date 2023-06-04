@@ -96,20 +96,24 @@ export const listProductCategoria1 =
 
 // PRODUCT LIST CATEGORIA2 EN ESPECIFICO ALUMINIO
 export const listProductCategoria2 =
-  (keyword = "", pageNumber = "", category = "") =>
+  (keyword = "", pageNumber = "", category = "Aluminio") =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_CATEGORIA2_REQUEST });
 
       if (keyword != "") {
         const { data } = await axios.get(
-          `${URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+          `${URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`,
+          console.log("entro en kwyword")
         );
 
         dispatch({ type: PRODUCT_LIST_CATEGORIA2_SUCCESS, payload: data });
       } else {
         const { data } = await axios.get(
-          `${URL}/api/products?&pageNumber=${pageNumber}&category=${category}`
+          `${URL}/api/products?&pageNumber=${pageNumber}&category=${category}`,
+          console.log(
+            `${URL}/api/products?&pageNumber=${pageNumber}&category=${category}`
+          )
         );
         dispatch({ type: PRODUCT_LIST_CATEGORIA2_SUCCESS, payload: data });
       }
@@ -126,7 +130,7 @@ export const listProductCategoria2 =
 
 // PRODUCT LIST CATEGORIA3 EN ESPECIFICO CONSERVADORES
 export const listProductCategoria3 =
-  (keyword = "", pageNumber = "", category = "") =>
+  (keyword = "", pageNumber = "", category = "Conservadores") =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_CATEGORIA3_REQUEST });

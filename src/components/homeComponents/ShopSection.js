@@ -25,6 +25,13 @@ const ShopSection = (props) => {
   const currentPosts = products?.slice(indexOfFirstPost, indexOfLastPost);
   const totalPosts = products.length;
 
+  const categoriesList = useSelector((state) => state.categoryList);
+  const categorias = categoriesList.categories;
+
+  useEffect(() => {
+    dispatch(listProduct(keyword, currentPage, category));
+  }, [dispatch, keyword, pagenumber, category, currentPage]);
+
   useEffect(() => {
     // Función que se ejecuta al inicio para establecer el valor inicial, esta funcion es para variar la cantidad de tarjetas o productos que se muestran dependeiendo del responsive o query screen
 
@@ -165,16 +172,17 @@ const ShopSection = (props) => {
                           <option disabled selected value="">
                             {selectedCategory ? selectedCategory : "Categoria"}
                           </option>
-
-                          <option value="Conservadores">Conservadores</option>
-                          <option value="Vasos">Vasos</option>
-                          <option value="Poncheras">Poncheras</option>
-                          <option value="Aluminio">Aluminio</option>
-                          <option value="Tobos">Tobos</option>
-                          <option value="Bigmark">Bigmark</option>
-                          <option value="Inplast">Inplast</option>
-                          <option value="Adonis">Adonis</option>
-                          <option value="IPM">IPM</option>
+                          {categorias.map((item) => (
+                            <option
+                              key={categorias}
+                              className="categorias-list-item"
+                              onClick={() =>
+                                handleCategoriaSeleccionada(item.categoria)
+                              }
+                            >
+                              {item.categoria}
+                            </option>
+                          ))}
                         </select>
                       </div>
                     </div>
@@ -204,15 +212,17 @@ const ShopSection = (props) => {
                                 : "Categoria"}
                             </option>
 
-                            <option value="Conservadores">Conservadores</option>
-                            <option value="Vasos">Vasos</option>
-                            <option value="Poncheras">Poncheras</option>
-                            <option value="Aluminio">Aluminio</option>
-                            <option value="Tobos">Tobos</option>
-                            <option value="Bigmark">Bigmark</option>
-                            <option value="Inplast">Inplast</option>
-                            <option value="Adonis">Adonis</option>
-                            <option value="IPM">IPM</option>
+                            {categorias.map((item) => (
+                              <option
+                                key={categorias}
+                                className="categorias-list-item"
+                                onClick={() =>
+                                  handleCategoriaSeleccionada(item.categoria)
+                                }
+                              >
+                                {item.categoria}
+                              </option>
+                            ))}
                           </select>
                         </div>
                       </div>
@@ -245,15 +255,17 @@ const ShopSection = (props) => {
                         {selectedCategory ? selectedCategory : "Categoria"}
                       </option>
                       <option value="">Todos</option>
-                      <option value="Conservadores">Conservadores</option>
-                      <option value="Vasos">Vasos</option>
-                      <option value="Poncheras">Poncheras</option>
-                      <option value="Aluminio">Aluminio</option>
-                      <option value="Tobos">Tobos</option>
-                      <option value="Bigmark">Bigmark</option>
-                      <option value="Inplast">Inplast</option>
-                      <option value="Adonis">Adonis</option>
-                      <option value="IPM">IPM</option>
+                      {categorias.map((item) => (
+                        <option
+                          key={categorias}
+                          className="categorias-list-item"
+                          onClick={() =>
+                            handleCategoriaSeleccionada(item.categoria)
+                          }
+                        >
+                          {item.categoria}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
